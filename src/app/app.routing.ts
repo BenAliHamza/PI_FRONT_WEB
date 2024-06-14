@@ -9,7 +9,7 @@ import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component
 const routes: Routes =[
   {
     path: '',
-    redirectTo: 'dashboard',
+    redirectTo: 'co-transport',
     pathMatch: 'full',
   }, {
     path: '',
@@ -29,9 +29,10 @@ const routes: Routes =[
         loadChildren: () => import('src/app/layouts/auth-layout/auth-layout.module').then(m => m.AuthLayoutModule)
       }
     ]
-  }, {
+  },
+  { path: 'co-transport', loadChildren: () => import('./layouts/transport-layout/transport.module').then(m => m.TransportModule) }, {
     path: '**',
-    redirectTo: 'dashboard'
+    redirectTo: 'co-transport'
   }
 ];
 
