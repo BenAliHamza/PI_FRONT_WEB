@@ -1,19 +1,27 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {CommonModule, DatePipe} from '@angular/common';
 
 import { TransportRoutingModule } from './transport-routing.module';
 import { TransportComponent } from './transport.component';
-import {ComponentsModule} from "../../components/components.module";
+import {FooterComponent} from "./components/footer/footer.component";
+import {NavbarComponent} from "./components/navbar/navbar.component";
+import {NewSidebarComponent} from "./components/sidebar/sidebar.component";
+import {NgbCollapseModule, NgbDropdownModule} from "@ng-bootstrap/ng-bootstrap";
 
 
 @NgModule({
   declarations: [
-    TransportComponent
+    TransportComponent,
+    FooterComponent,
+    NavbarComponent,
+    NewSidebarComponent,
   ],
   imports: [
     CommonModule,
     TransportRoutingModule,
-    ComponentsModule,
+    DatePipe,
+    NgbCollapseModule,
+    NgbDropdownModule,
   ]
 })
 export class TransportModule { }
