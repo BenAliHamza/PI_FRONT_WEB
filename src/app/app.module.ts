@@ -13,6 +13,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
 import {TransportModule} from "./layouts/transport-layout/transport.module";
+import {ToastrModule} from "ngx-toastr";
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import {TransportModule} from "./layouts/transport-layout/transport.module";
     NgbModule,
     RouterModule,
     AppRoutingModule,
-    TransportModule
+    TransportModule ,
+    ToastrModule.forRoot(), // ToastrModule added
   ],
   declarations: [
     AppComponent,

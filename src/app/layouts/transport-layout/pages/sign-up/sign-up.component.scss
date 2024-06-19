@@ -1,0 +1,15 @@
+input.ng-touched.ng-invalid {
+  border : 1px solid red ;
+}
+input.ng-touched.ng-valid {
+  border : 1px solid #20d820;
+}
+.errors{
+  color: red;
+  position: absolute;
+  bottom: -50%;
+  left: 9%;
+}
+.form-group{
+  position: relative;
+}
