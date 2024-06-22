@@ -5,15 +5,17 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
+import {AuthGuard} from "./services/auth.guard";
 
 const routes: Routes =[
   {
     path: '',
-    redirectTo: 'dashboard',
+    redirectTo: 'co-transport',
     pathMatch: 'full',
   }, {
     path: '',
     component: AdminLayoutComponent,
+    canActivate: [AuthGuard], // Protect this route
     children: [
       {
         path: '',
@@ -29,9 +31,10 @@ const routes: Routes =[
         loadChildren: () => import('src/app/layouts/auth-layout/auth-layout.module').then(m => m.AuthLayoutModule)
       }
     ]
-  }, {
+  },
+  { path: 'co-transport', loadChildren: () => import('./layouts/transport-layout/transport.module').then(m => m.TransportModule) }, {
     path: '**',
-    redirectTo: 'dashboard'
+    redirectTo: 'co-transport'
   }
 ];
 
@@ -45,5 +48,6 @@ const routes: Routes =[
   ],
   exports: [
   ],
+  providers: [AuthGuard], // Provide the guard here
 })
 export class AppRoutingModule { }

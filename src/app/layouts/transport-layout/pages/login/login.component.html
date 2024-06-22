@@ -1,0 +1,80 @@
+<div class="bg-default">
+  <div class="header bg-gradient-danger py-7 py-lg-8">
+    <div class="container">
+      <div class="header-body text-center mb-7">
+        <div class="row justify-content-center">
+          <div class="col-lg-5 col-md-6">
+            <h1 class="text-white">Welcome!</h1>
+            <p class="text-lead text-light"><strong style="color: #1f3a68;font-weight: bold">Co-Transport</strong>: Revolutionizing Carpooling and Transport Services. </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="separator separator-bottom separator-skew zindex-100">
+      <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
+        <polygon class="fill-default" points="2560 0 2560 100 0 100"></polygon>
+      </svg>
+    </div>
+  </div>
+  <!-- Page content -->
+  <div class="container mt--8 pb-5 ">
+    <!-- Table -->
+    <div class="row justify-content-center ">
+      <div class="col-lg-6 col-md-8">
+        <div class="card bg-secondary shadow border-0">
+          <div class="card-body px-lg-5 py-lg-5">
+            <div class="text-center text-muted mb-4">
+              <small>Sign IN with credentials</small>
+            </div>
+            <form  [formGroup]="loginForm" >
+              <div class="form-group">
+                <div class="input-group input-group-alternative mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="ni ni-email-83"></i></span>
+                  </div>
+                  <input  formControlName="email"  class="form-control" placeholder="Email" type="email">
+                </div>
+                <span class="errors" *ngIf="loginForm.get('email').invalid && loginForm.get('email').touched">
+                    <small *ngIf="loginForm.get('email').errors?.required">
+                      Email is required.
+                    </small>
+                    <small *ngIf="loginForm.get('email').errors?.pattern">
+                      * Invalid Email format.
+                  </small>
+              </span>
+              </div>
+              <div class="form-group">
+                <div class="input-group input-group-alternative">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
+                  </div>
+                  <input formControlName="password" class="form-control" placeholder="Password" type="password">
+                </div>
+                <span class="errors" *ngIf="loginForm.get('password').invalid && loginForm.get('password').touched">
+                    <small *ngIf="loginForm.get('password').errors?.required">
+                      Password is required.
+                    </small>
+                    <small style="white-space: nowrap" *ngIf="loginForm.get('password').errors?.pattern">
+                      * Password > 8 characters, including Lowercase/Uppercase/Number.
+                  </small>
+              </span>
+              </div>
+              <!--              <div class="text-muted font-italic"><small>password strength: <span class="text-success font-weight-700">strong</span></small></div>-->
+              <div class="row my-4">
+                <div class="col-12">
+                  <div class="custom-control custom-control-alternative custom-checkbox">
+                      <span class="text-muted">Dont have an account yet ? <a routerLink="/co-transport/SignUp">SIGN UP !!!</a></span>
+                  </div>
+                </div>
+              </div>
+              <div class="text-center">
+                <button [disabled]="loginForm.invalid" (click)="onSubmit()" type="submit" class="btn btn-primary mt-4 pointer">Login</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
