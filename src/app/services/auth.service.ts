@@ -25,4 +25,8 @@ export class AuthService {
     localStorage.removeItem('expiresIn');
 
   }
+
+  getToken(){
+    return localStorage.getItem('token');
+  }
 }

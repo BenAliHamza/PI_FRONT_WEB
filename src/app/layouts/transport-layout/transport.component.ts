@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {ReservationService} from "../../services/reservation/reservation.service";
 
 @Component({
   selector: 'app-transport-layout',
@@ -10,6 +11,7 @@ export class TransportComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+
   }
 
 }

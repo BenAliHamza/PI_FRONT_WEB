@@ -12,7 +12,9 @@ export class UserService {
   constructor(private  http :  HttpClient) { }
 
 
-
+  getIngo(){
+    return this.http.get(this.Base + '/users/info')
+  }
   createUser(user :User):Observable<any> {
     return  this.http.post<User>(this.Base + '/users', user)
   }

@@ -1,0 +1,17 @@
+.navbar-brand {
+  h1 {
+    background: -webkit-linear-gradient(#eee, #333);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  img {
+      position: absolute;
+    top: 1rem;
+    left: 45px;
+  }
+}
+.profilelogo{
+  img {
+    width: 100%;
+  }
+}

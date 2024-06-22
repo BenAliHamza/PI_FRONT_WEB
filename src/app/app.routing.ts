@@ -6,6 +6,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
 import {AuthGuard} from "./services/auth.guard";
+import {TransportComponent} from "./layouts/transport-layout/transport.component";
 
 const routes: Routes =[
   {
@@ -15,7 +16,6 @@ const routes: Routes =[
   }, {
     path: '',
     component: AdminLayoutComponent,
-    canActivate: [AuthGuard], // Protect this route
     children: [
       {
         path: '',
@@ -32,7 +32,9 @@ const routes: Routes =[
       }
     ]
   },
-  { path: 'co-transport', loadChildren: () => import('./layouts/transport-layout/transport.module').then(m => m.TransportModule) }, {
+  { path: 'co-transport',
+    loadChildren: () => import('./layouts/transport-layout/transport.module').then(m => m.TransportModule) },
+  {
     path: '**',
     redirectTo: 'co-transport'
   }

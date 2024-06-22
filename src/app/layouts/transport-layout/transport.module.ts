@@ -11,6 +11,11 @@ import { SignUpComponent } from './pages/sign-up/sign-up.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {ToastrModule} from "ngx-toastr";
 import { LoginComponent } from './pages/login/login.component';
+import { SimpleHeaderComponent } from './nomralUserComponent/simple-header/simple-header.component';
+import { OffreComponent } from './offre/offre/offre.component';
+import {RouterModule} from "@angular/router";
+import { LandingPageComponent } from './components/landing-page/landing-page.component';
+import { CreateOffreComponent } from './offre/create-offre/create-offre.component';
 
 
 @NgModule({
@@ -21,6 +26,10 @@ import { LoginComponent } from './pages/login/login.component';
     NewSidebarComponent,
     SignUpComponent,
     LoginComponent,
+    SimpleHeaderComponent,
+    OffreComponent,
+    LandingPageComponent,
+    CreateOffreComponent,
   ],
   imports: [
     CommonModule,
@@ -30,6 +39,7 @@ import { LoginComponent } from './pages/login/login.component';
     NgbDropdownModule,
     FormsModule,
     ReactiveFormsModule,
+    RouterModule
   ]
 })
 export class TransportModule { }
