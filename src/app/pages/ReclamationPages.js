@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-// Abdelhafidh
+
 import { Container, Typography, Grid } from '@mui/material';
 
 import { Container, Typography } from '@mui/material';
@@ -13,7 +13,7 @@ const ReclamationPage = () => {
   const [reclamations, setReclamations] = useState([]);
   const [selectedReclamation, setSelectedReclamation] = useState(null);
 
-// Abdelhafidh
+
   // Simuler la récupération des données de réclamation
   useEffect(() => {
     // Remplacer par un appel API réel pour récupérer les réclamations
@@ -57,7 +57,7 @@ const ReclamationPage = () => {
     fetchReclamations();
   }, []);
 
-// Abdelhafidh
+
   const handleReclamationSubmit = (newReclamation) => {
     const newReclamationWithId = {
       ...newReclamation,
@@ -93,7 +93,7 @@ const ReclamationPage = () => {
       <Typography variant="h1" align="center" sx={{ my: 4 }}>
         Gestion des Réclamations
       </Typography>
-// Abdelhafidh
+
       <Grid container spacing={3}>
         <Grid item xs={12} md={6}>
           <ReclamationForm onSubmit={handleReclamationSubmit} />
