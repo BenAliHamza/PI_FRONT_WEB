@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Container, Typography } from '@mui/material';
 import ReclamationDisplay from '../components/ReclamationDisplay';
 import ReponseForm from '../components/ReponseForm';
+import ReponseList from '../components/ReponseList'; // Importer ReponseList
 
 const ReponsePage = () => {
   const [reclamation, setReclamation] = useState(null);
@@ -12,6 +13,7 @@ const ReponsePage = () => {
     // Replace with actual API call
     const fetchReclamation = async () => {
       const data = {
+        id: 1,
         titre: 'Example Reclamation',
         description: 'This is an example description of a reclamation.',
         createdAt: new Date(),
@@ -45,6 +47,7 @@ const ReponsePage = () => {
       {reclamation && !reclamation.response && (
         <ReponseForm onSubmit={handleReponseSubmit} />
       )}
+      {reclamation && <ReponseList reclamationId={reclamation.id} />} {/* Ajouter ReponseList */}
     </Container>
   );
 };
