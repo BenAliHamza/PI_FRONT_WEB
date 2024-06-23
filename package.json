@@ -33,6 +33,7 @@
     "bootstrap": "4.6.1",
     "chart.js": "2.9.4",
     "clipboard": "2.0.10",
+    "express": "^4.19.2",
     "ngx-clipboard": "15.0.1",
     "ngx-toastr": "14.2.2",
     "nouislider": "15.5.1",
@@ -40,6 +41,7 @@
     "react-router-dom": "^6.23.1",
     "rxjs": "~7.5.0",
     "web-animations-js": "2.3.2",
+    "ws": "^8.17.1",
     "zone.js": "~0.11.4"
   },
   "devDependencies": {
