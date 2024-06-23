@@ -1,5 +1,7 @@
 import {AfterViewInit, Component, ElementRef, HostListener, Input, OnInit, Renderer2} from '@angular/core';
 import {User} from "../../../../interfaces/user.interface";
+import {UserService} from "../../../../services/user.service";
+import {AuthService} from "../../../../services/auth.service";
 
 @Component({
   selector: 'app-simple-header',
@@ -10,6 +12,10 @@ export class SimpleHeaderComponent {
   imageMale = "assets/img/male.png";
   imageFemale = "assets/img/female.png";
   @Input() user : User ;
+  constructor(private auth: AuthService ) {
+  }
 
-
+  logout() {
+    this.auth.logout();
+  }
 }

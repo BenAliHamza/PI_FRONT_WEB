@@ -20,11 +20,19 @@
           <ul>
             <li>From : {{offre.lieu_depart.ville}} - {{ offre.lieu_depart.adresse}}</li>
             <li>To : {{offre.lieu_arrive.ville}} - {{ offre.lieu_arrive.adresse}}</li>
-            <li>by : {{ user.firstname }} {{user.lastname}}</li>
+            <li *ngIf="!!user">by : {{ user.firstname }} {{user.lastname}}
+
+            </li>
           </ul>
         </div>
         <ul>
-          <li style="--clr-tag:#d3b19a;" class="{{offre.type}}">{{offre.type}}</li>
+          <li style="--clr-tag:#d3b19a;" class="{{offre.type}}">{{offre.type}}
+            <a routerLink="/co-transport/createReservation/{{offre._id}}" >
+            <span  style="float: right;position:absolute; right: 5px">
+                <span class="btn btn-success">Reserver</span>
+              </span>
+            </a>
+          </li>
         </ul>
       </div>
     </div>

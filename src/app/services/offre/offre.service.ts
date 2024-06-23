@@ -17,4 +17,8 @@ export class OffreService {
   getAllOffre(){
     return  this.http.get(this.base);
   }
+
+  getById(id:String){
+    return  this.http.get(this.base + '/'+id);
+  }
 }
