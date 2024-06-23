@@ -20,10 +20,7 @@ const ReclamationForm = ({ onSubmit }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-   // Abdelhafidh
-   // onSubmit(reclamation);
-   // setReclamation({ titre: '', description: '' });
-
+  
     
     try {
       const response = await fetch('http://localhost:8000/api/reclamations', {
