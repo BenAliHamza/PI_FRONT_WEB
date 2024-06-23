@@ -28,7 +28,7 @@ export class CreatevehiculeComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.userService.getIngo().subscribe(user=> {
+    this.userService.getInfo().subscribe(user=> {
       this.user = user as User  ;
       this.vs.getOneById(this.user._id).subscribe(result => {
         this.userVehicule = result ;
@@ -37,11 +37,27 @@ export class CreatevehiculeComponent implements OnInit {
 
 
     this.vehiculeForm = new FormGroup({
-      proprietaire : new FormControl('', [Validators.required]),
+     // proprietaire : new FormControl('', [Validators.required]),
       marque : new FormControl('', [Validators.required]),
       model : new FormControl('', [Validators.required]),
       places : new FormControl('', [Validators.required]),
     })
   }
-   
+  submit() {
+
+    if(this.vehiculeForm.invalid)return
+
+
+    const vehicule:Vehicule = {
+    //  proprietaire : this.vehiculeForm.value.proprietaire  ,
+      marque : this.vehiculeForm.value.marque,
+      model : this.vehiculeForm.value.model,
+      places : this.vehiculeForm.value.places,
+    }
+
+    this.vs.create(vehicule)
+    .subscribe(result=> {
+      console.log(result)
+    })
+  }
 }

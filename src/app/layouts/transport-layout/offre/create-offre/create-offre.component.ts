@@ -29,10 +29,11 @@ export class CreateOffreComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.userService.getIngo().subscribe(user=> {
+    this.userService.getInfo().subscribe(user=> {
       this.user = user as User  ;
       this.vs.getOneById(this.user._id).subscribe(result => {
         this.userVehicule = result ;
+        console.log(result)
       })
     })
 
@@ -70,6 +71,7 @@ export class CreateOffreComponent implements OnInit {
       type : this.offreForm.value.type
     }
 
+    
     this.offreService.create(offre)
       .subscribe(result=> {
         console.log(result)

@@ -16,7 +16,7 @@ import { OffreComponent } from './offre/offre/offre.component';
 import {RouterModule} from "@angular/router";
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
 import { CreateOffreComponent } from './offre/create-offre/create-offre.component';
-import { CreatevehiculeComponent } from './vehicule/create-offre/create-vehicule.component';
+import { CreatevehiculeComponent } from './vehicule/create-vehicule/create-vehicule.component';
 
 
 @NgModule({

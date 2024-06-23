@@ -1,5 +1,6 @@
 export interface Vehicule {
+  _id?:string;
   marque : string ;
-  modem  : string;
+  model  : string;
   places : number ;
 }

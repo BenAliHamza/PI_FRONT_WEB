@@ -6,7 +6,7 @@ import {LoginComponent} from "./pages/login/login.component";
 import {OffreComponent} from "./offre/offre/offre.component";
 import {LandingPageComponent} from "./components/landing-page/landing-page.component";
 import {CreateOffreComponent} from "./offre/create-offre/create-offre.component";
-import { CreatevehiculeComponent } from './vehicule/create-offre/create-vehicule.component';
+import { CreatevehiculeComponent } from './vehicule/create-vehicule/create-vehicule.component';
 
 
 const routes: Routes = [
@@ -21,7 +21,7 @@ const routes: Routes = [
         path : 'createOffre' ,component :CreateOffreComponent
       },
       {
-        path : 'createVehicule' ,component :CreatevehiculeComponent
+        path : 'createvehicule' ,component :CreatevehiculeComponent
       }
     ]},
   { path : "SignUp" , component : SignUpComponent},
