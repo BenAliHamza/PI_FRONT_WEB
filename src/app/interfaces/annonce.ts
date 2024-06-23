@@ -1,6 +1,6 @@
 export  interface Address {
-  ville: string;
-  address: string;
+  ville: any;
+  address: any;
 }
 
 export  interface Annonce {
@@ -11,6 +11,4 @@ export  interface Annonce {
   heure_depart: Date;
   type: 'Co-Voiturage' | 'Livraison' | 'Taxi';
   status: 'actif' | 'brouillant' | 'archivé';
-  createdAt: Date;
-  updatedAt: Date;
 }
