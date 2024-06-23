@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import { 
+  Card, 
+  CardContent, 
   TextField, 
   Button, 
-  Paper, 
   Typography, 
   Box 
 } from '@mui/material';
 
-const ReclamationForm = () => {
+const ReclamationForm = ({ onSubmit }) => {
   const [reclamation, setReclamation] = useState({
     titre: '',
     description: ''
@@ -19,46 +20,50 @@ const ReclamationForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Here you would call your API to create the reclamation
-    console.log('Reclamation submitted:', reclamation);
+    onSubmit(reclamation);
+    setReclamation({ titre: '', description: '' });
   };
 
   return (
-    <Paper elevation={3} sx={{ p: 3, maxWidth: 500, mx: 'auto', mt: 4 }}>
-      <Typography variant="h5" gutterBottom>
-        Create Reclamation
-      </Typography>
-      <Box component="form" onSubmit={handleSubmit} sx={{ mt: 2 }}>
-        <TextField
-          fullWidth
-          label="Title"
-          name="titre"
-          value={reclamation.titre}
-          onChange={handleChange}
-          margin="normal"
-          required
-        />
-        <TextField
-          fullWidth
-          label="Description"
-          name="description"
-          value={reclamation.description}
-          onChange={handleChange}
-          margin="normal"
-          required
-          multiline
-          rows={4}
-        />
-        <Button 
-          type="submit" 
-          variant="contained" 
-          color="primary" 
-          sx={{ mt: 2 }}
-        >
-          Submit Reclamation
-        </Button>
-      </Box>
-    </Paper>
+    <Card sx={{ maxWidth: 600, mx: 'auto', mt: 4 }}>
+      <CardContent>
+        <Typography variant="h5" gutterBottom>
+          Create Reclamation
+        </Typography>
+        <Box component="form" onSubmit={handleSubmit} sx={{ mt: 2 }}>
+          <TextField
+            fullWidth
+            label="Title"
+            name="titre"
+            value={reclamation.titre}
+            onChange={handleChange}
+            margin="normal"
+            required
+            variant="outlined"
+          />
+          <TextField
+            fullWidth
+            label="Description"
+            name="description"
+            value={reclamation.description}
+            onChange={handleChange}
+            margin="normal"
+            required
+            multiline
+            rows={4}
+            variant="outlined"
+          />
+          <Button 
+            type="submit" 
+            variant="contained" 
+            color="primary" 
+            sx={{ mt: 2 }}
+          >
+            Submit Reclamation
+          </Button>
+        </Box>
+      </CardContent>
+    </Card>
   );
 };
 
