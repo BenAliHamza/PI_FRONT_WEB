@@ -27,6 +27,20 @@ export class AuthService {
   }
 
   getToken(){
-    return localStorage.getItem('token');
+    const token = localStorage.getItem('token');
+    const expiresIn = localStorage.getItem('expiresIn');
+    if (token && expiresIn) {
+      const currentTime = new Date().getTime();
+      const expiryTime = Number(expiresIn);
+
+      if (currentTime < expiryTime) {
+      } else {
+        // Token expired, remove it
+        localStorage.removeItem('token');
+        localStorage.removeItem('expiresIn');
+        location.reload();
+      }
+    }
+    return token;
   }
 }

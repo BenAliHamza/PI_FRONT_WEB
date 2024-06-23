@@ -1,8 +1,8 @@
 export interface Reservation{
   message : string,
   places : number ,
-  status: 'acceptée' | 'refusé' | 'en attente' ,
-  user :string
+  status?: 'acceptée' | 'refusé' | 'en attente' ,
+  user? :string
   offre : string
 }
 

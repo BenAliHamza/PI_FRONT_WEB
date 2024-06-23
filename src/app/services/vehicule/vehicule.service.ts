@@ -17,6 +17,9 @@ export class VehiculeService {
   getAllVehicules() {
     return this.http.get<Vehicule[]>(this.base);
   }
+  getVehiculeById(id: string) {
+    return this.http.get<Vehicule>(this.base + "/" + id);
+  }
   deleteVehicule(id : string) {
     return this.http.delete<Vehicule>(this.base + '/'+ id);
   }

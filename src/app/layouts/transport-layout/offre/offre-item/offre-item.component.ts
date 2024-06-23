@@ -18,7 +18,6 @@ export class OffreItemComponent implements OnInit {
     const id = this.offre.expediteur ;
     this.userService.getById(id).subscribe(user=> {
       this.user = user ;
-      console.log(this.user)
     })
   }
 

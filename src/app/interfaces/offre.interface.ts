@@ -10,5 +10,6 @@ interface Offre {
   heure_depart: Date;
   type: 'Co-Voiturage' | 'Livraison' | 'Taxi';
   vehicule?: string; // Assuming vehicule is a string representation of mongoose.Schema.Types.ObjectId
-  expediteur? :string
+  expediteur? :string,
+  _id? :string
 }

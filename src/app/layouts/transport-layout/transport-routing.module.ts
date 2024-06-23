@@ -7,6 +7,7 @@ import {OffreComponent} from "./offre/offre/offre.component";
 import {LandingPageComponent} from "./components/landing-page/landing-page.component";
 import {CreateOffreComponent} from "./offre/create-offre/create-offre.component";
 import { CreatevehiculeComponent } from './vehicule/create-vehicule/create-vehicule.component';
+import {CreateReservationComponent} from "./reservations/create-reservation/create-reservation.component";
 
 
 const routes: Routes = [
@@ -21,7 +22,10 @@ const routes: Routes = [
         path : 'createOffre' ,component :CreateOffreComponent
       },
       {
-        path : 'createvehicule' ,component :CreatevehiculeComponent
+        path : 'createvehicule' ,component :CreatevehiculeComponent ,
+      },
+      {
+        path : "createReservation/:id" , component :CreateReservationComponent
       }
     ]},
   { path : "SignUp" , component : SignUpComponent},
