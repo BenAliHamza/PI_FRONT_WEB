@@ -8,6 +8,7 @@ import {LandingPageComponent} from "./components/landing-page/landing-page.compo
 import {CreateOffreComponent} from "./offre/create-offre/create-offre.component";
 import { CreatevehiculeComponent } from './vehicule/create-vehicule/create-vehicule.component';
 import {CreateReservationComponent} from "./reservations/create-reservation/create-reservation.component";
+import {AnnonceCreationComponent} from "./annonce/annonce-creation/annonce-creation.component";
 
 
 const routes: Routes = [
@@ -26,6 +27,9 @@ const routes: Routes = [
       },
       {
         path : "createReservation/:id" , component :CreateReservationComponent
+      },
+      {
+        path : "createAnnonce" , component : AnnonceCreationComponent
       }
     ]},
   { path : "SignUp" , component : SignUpComponent},

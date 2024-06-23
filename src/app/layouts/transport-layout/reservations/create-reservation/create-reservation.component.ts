@@ -21,21 +21,21 @@ export class CreateReservationComponent implements OnInit {
               private reservationService :ReservationService) { }
   offre : Offre;
   reservationForm: FormGroup
-  vehicule : Vehicule
+  plaeDisponible : number ;
   ngOnInit(): void {
 
     const offreId = this.activatedR.snapshot.params['id'];
     this.offreService.getById(offreId).subscribe(offer => {
       this.offre= offer as Offre;
-      this.vs.getVehiculeById(this.offre.vehicule).subscribe(result => {
-        this.vehicule = result ;
-        console.log(this.vehicule)
+      this.offreService.getNbrPlaceDispo(this.offre._id).subscribe((result: {places : number}) => {
+        this.plaeDisponible = result.places ;
       })
     })
     this.reservationForm = new FormGroup({
       message : new FormControl('' , Validators.required),
-      places : new FormControl('' , Validators.required),
+      places : new FormControl('' , [Validators.required ]),
     })
+
   }
 
   submit() {
