@@ -1,11 +1,5 @@
 import React from 'react';
-import { 
-  Paper, 
-  Typography, 
-  Box, 
-  Divider, 
-  Chip 
-} from '@mui/material';
+import { Paper, Typography, Box, Divider, Chip } from '@mui/material';
 
 const ReclamationDisplay = ({ reclamation }) => {
   return (

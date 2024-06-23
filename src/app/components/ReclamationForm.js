@@ -18,10 +18,37 @@ const ReclamationForm = ({ onSubmit }) => {
     setReclamation({ ...reclamation, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    onSubmit(reclamation);
-    setReclamation({ titre: '', description: '' });
+   // Abdelhafidh
+   // onSubmit(reclamation);
+   // setReclamation({ titre: '', description: '' });
+
+    
+    try {
+      const response = await fetch('http://localhost:8000/api/reclamations', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(reclamation),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to create reclamation');
+      }
+
+      // Réinitialiser le formulaire après soumission réussie
+      setReclamation({
+        titre: '',
+        description: ''
+      });
+
+      console.log('Reclamation submitted successfully:', reclamation);
+    } catch (error) {
+      console.error('Error creating reclamation:', error);
+    }
+
   };
 
   return (
