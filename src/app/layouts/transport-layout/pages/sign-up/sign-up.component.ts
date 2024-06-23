@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {AbstractControl, FormControl, FormGroup, ValidatorFn, Validators} from "@angular/forms";
+import { FormControl, FormGroup, ValidatorFn, Validators} from "@angular/forms";
 import {EMAIL_REGEX, PASSWORD_REGEX, PHONE_REGEX} from "../../../../interfaces/user.interface";
 import { TUNISIA_VILLES } from './generals';
 import {UserService} from "../../../../services/user.service";
@@ -18,6 +18,8 @@ export class SignUpComponent implements OnInit {
     TUNISIA_VILLES = TUNISIA_VILLES ;
    STATUS_ARRAY = ['PENDING', 'APPROVED', 'REJECTED', 'BANNED'];
    ROLE_ARRAY = ['DEFAULT', 'ADMIN', 'TAXI'];
+    imageData: string
+
   ngOnInit(): void {
     this.userForm = new FormGroup({
       firstname: new FormControl('', [Validators.required , Validators.pattern(/^(?![\s.]+$)[a-zA-Z\s.]*$/)]),
@@ -29,7 +31,8 @@ export class SignUpComponent implements OnInit {
       image: new FormControl(''),
       role: new FormControl('DEFAULT'),
       ville: new FormControl('', Validators.required),
-      agreed : new FormControl(false, Validators.requiredTrue)
+      agreed : new FormControl(false, Validators.requiredTrue),
+      sex : new  FormControl ('male' , [Validators.required]),
     } );
     this.userForm.valueChanges.subscribe(async value => {
       console.log(value)
@@ -42,12 +45,50 @@ export class SignUpComponent implements OnInit {
   }
 
   submitForm() {
-    if(this.userForm.invalid)return
-    this.userService.createUser(this.userForm.value).subscribe((res=>{
-      if( res && res.confirmation_link) {
-        this.toaster.success(res.message , "Thank you and Welcome")
+    // if(this.userForm.invalid)return
+    // this.userService.createUser(this.userForm.value ).subscribe((res=>{
+    //   if( res && res.confirmation_link) {
+    //     this.toaster.success(res.message , "Thank you and Welcome")
+    //     console.log(res);
+    //   }
+    // }))
+    if (this.userForm.invalid) return;
+
+    const formData = new FormData();
+    Object.keys(this.userForm.controls).forEach(key => {
+      const control = this.userForm.get(key);
+      if (control.value instanceof File) {
+        formData.append(key, control.value, control.value.name);
+      } else {
+        formData.append(key, control.value);
+      }
+    });
+
+    this.userService.createUser(formData).subscribe((res => {
+      if (res && res.confirmation_link) {
+        this.toaster.success(res.message, "Thank you and Welcome");
         console.log(res);
       }
-    }))
+    }));
+  }
+
+
+  // on change file
+  onFileSelect(event: Event) {
+    const file = (event.target as HTMLInputElement).files[0];
+    this.userForm.patchValue({image: file});
+    console.log(this.userForm.value)
+
+    const allowedMimeTypes = ["image/png", "image/jpeg", "image/jpg"];
+    if (file && allowedMimeTypes.includes(file.type)) {
+      const reader = new FileReader();
+      reader.onload = () => {
+        this.imageData = reader.result as string;
+        console.log(this.imageData); // Log the base64 data to debug
+      };
+      reader.readAsDataURL(file);
+    } else {
+      console.error('Unsupported file type or no file selected.');
+    }
   }
 }

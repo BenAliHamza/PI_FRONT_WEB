@@ -20,6 +20,9 @@ import { CreatevehiculeComponent } from './vehicule/create-vehicule/create-vehic
 import { OffreItemComponent } from './offre/offre-item/offre-item.component';
 import { CreateReservationComponent } from './reservations/create-reservation/create-reservation.component';
 import { AnnonceCreationComponent } from './annonce/annonce-creation/annonce-creation.component';
+import { ProfilePageComponent } from './profile/profile-page/profile-page.component';
+import { SmallCardOffreComponent } from './components/small-card-offre/small-card-offre.component';
+import { SmallReservationCardComponent } from './components/small-reservation-card/small-reservation-card.component';
 
 
 @NgModule({
@@ -37,7 +40,10 @@ import { AnnonceCreationComponent } from './annonce/annonce-creation/annonce-cre
     CreatevehiculeComponent,
     OffreItemComponent,
     CreateReservationComponent,
-    AnnonceCreationComponent
+    AnnonceCreationComponent,
+    ProfilePageComponent,
+    SmallCardOffreComponent,
+    SmallReservationCardComponent
   ],
   imports: [
     CommonModule,

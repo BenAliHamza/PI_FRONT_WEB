@@ -9,6 +9,7 @@ import {CreateOffreComponent} from "./offre/create-offre/create-offre.component"
 import { CreatevehiculeComponent } from './vehicule/create-vehicule/create-vehicule.component';
 import {CreateReservationComponent} from "./reservations/create-reservation/create-reservation.component";
 import {AnnonceCreationComponent} from "./annonce/annonce-creation/annonce-creation.component";
+import {ProfilePageComponent} from "./profile/profile-page/profile-page.component";
 
 
 const routes: Routes = [
@@ -30,6 +31,8 @@ const routes: Routes = [
       },
       {
         path : "createAnnonce" , component : AnnonceCreationComponent
+      }, {
+        path :'profile-page' , component :ProfilePageComponent
       }
     ]},
   { path : "SignUp" , component : SignUpComponent},

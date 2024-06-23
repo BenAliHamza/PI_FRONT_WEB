@@ -17,5 +17,8 @@ export class SimpleHeaderComponent {
 
   logout() {
     this.auth.logout();
+    setTimeout(()=> {
+      location.reload();
+    }, 500)
   }
 }

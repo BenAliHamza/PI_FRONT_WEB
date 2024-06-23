@@ -15,7 +15,7 @@ export class UserService {
   getInfo(){
     return this.http.get(this.Base + '/users/info')
   }
-  createUser(user :User):Observable<any> {
+  createUser(user :FormData):Observable<any> {
     return  this.http.post<User>(this.Base + '/users', user)
   }
 
