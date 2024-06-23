@@ -17,10 +17,32 @@ const ReclamationForm = () => {
     setReclamation({ ...reclamation, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Here you would call your API to create the reclamation
-    console.log('Reclamation submitted:', reclamation);
+    
+    try {
+      const response = await fetch('http://localhost:8000/api/reclamations', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(reclamation),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to create reclamation');
+      }
+
+      // Réinitialiser le formulaire après soumission réussie
+      setReclamation({
+        titre: '',
+        description: ''
+      });
+
+      console.log('Reclamation submitted successfully:', reclamation);
+    } catch (error) {
+      console.error('Error creating reclamation:', error);
+    }
   };
 
   return (
