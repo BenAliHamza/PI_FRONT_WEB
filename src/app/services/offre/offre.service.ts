@@ -13,4 +13,8 @@ export class OffreService {
   create(offre : Offre){
    return  this.http.post(this.base , offre);
   }
+
+  getAllOffre(){
+    return  this.http.get(this.base);
+  }
 }

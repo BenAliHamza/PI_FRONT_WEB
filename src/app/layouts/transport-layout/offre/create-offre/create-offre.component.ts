@@ -48,6 +48,9 @@ export class CreateOffreComponent implements OnInit {
       vehicule : new FormControl(''),
       type: new FormControl('Co-Voiturage', [Validators.required]),
     })
+      this.offreForm.valueChanges.subscribe(a=> {
+          console.log(a)
+      })
   }
 
   submit() {
@@ -71,7 +74,7 @@ export class CreateOffreComponent implements OnInit {
       type : this.offreForm.value.type
     }
 
-    
+
     this.offreService.create(offre)
       .subscribe(result=> {
         console.log(result)

@@ -17,6 +17,7 @@ import {RouterModule} from "@angular/router";
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
 import { CreateOffreComponent } from './offre/create-offre/create-offre.component';
 import { CreatevehiculeComponent } from './vehicule/create-vehicule/create-vehicule.component';
+import { OffreItemComponent } from './offre/offre-item/offre-item.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { CreatevehiculeComponent } from './vehicule/create-vehicule/create-vehic
     OffreComponent,
     LandingPageComponent,
     CreateOffreComponent,
-    CreatevehiculeComponent
+    CreatevehiculeComponent,
+    OffreItemComponent
   ],
   imports: [
     CommonModule,

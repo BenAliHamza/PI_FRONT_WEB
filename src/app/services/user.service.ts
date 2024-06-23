@@ -18,4 +18,9 @@ export class UserService {
   createUser(user :User):Observable<any> {
     return  this.http.post<User>(this.Base + '/users', user)
   }
+
+
+  getById(id : string):Observable<User> {
+    return this.http.get<User>(this.Base + '/users/byId/' + id )
+  }
 }

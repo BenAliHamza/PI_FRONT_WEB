@@ -9,7 +9,7 @@
 
          <div *ngIf="optionsType.length" class="form-group">
            <label class="form-control-label" >Type d'offre : </label>
-           <select class="form-control">
+           <select formControlName="type"  class="form-control">
              <option *ngFor="let role of optionsType" [value]="role.value" >{{role.label}}</option>
            </select>
          </div>
