@@ -1,41 +1,18 @@
 import React from 'react';
-import ReclamationPage from './pages/ReclamationPage';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import ReclamationPage from './pages/ReclamationPage';
 import ReponsePage from './pages/ReponsePage';
 
 function App() {
   return (
-    <div className="App">
-      <ReclamationPage />
-    </div>
-  );
-}
-
-export default App;
-
-
-
-function App() {
-  return (
-    <div className="App">
-      {/* Supposons que vous ayez un ID de réclamation */}
-      <ReponsePage reclamationId="123" />
-    </div>
-  );
-}
-
-export default App;
-
-
-
-
-function App() {
-  return (
     <Router>
-      <Switch>
-        <Route path="/reponse/:reclamationId" component={ReponsePage} />
-        {/* Autres routes */}
-      </Switch>
+      <div className="App">
+        <Switch>
+          <Route exact path="/" component={ReclamationPage} />
+          <Route path="/reponse/:reclamationId" component={ReponsePage} />
+          {/* Vous pouvez ajouter d'autres routes ici */}
+        </Switch>
+      </div>
     </Router>
   );
 }
