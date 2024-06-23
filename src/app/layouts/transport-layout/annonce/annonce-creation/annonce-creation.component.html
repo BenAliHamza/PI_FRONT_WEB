@@ -1,0 +1,64 @@
+<div class="container">
+
+
+  <div style="padding-top: 100px" class="row justify-content-center">
+        <h1>Formulaire de creation d'annonce </h1>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-8">
+      <form [formGroup]="annonceForm" method="post">
+
+        <div *ngIf="optionsType.length" class="form-group">
+          <label class="form-control-label" >Type d'offre : </label>
+          <select formControlName="type"  class="form-control">
+            <option *ngFor="let role of optionsType" [value]="role.value" >{{role.label}}</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-control-label" for="title">Title : </label>
+          <input formControlName="titre" type="text" id="title" class="form-control form-control-alternative" placeholder="Title">
+        </div>
+        <div class="form-group">
+          <label class="form-control-label" >Ville départ : </label>
+          <select readonly formControlName="ville_depart" class="form-control" >
+            <option *ngFor="let op of TUNISIA_VILLES" >
+              {{op}}
+            </option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-control-label" for="AddressD">Address départ : </label>
+          <input formControlName="lieu_depart" type="text" id="AddressD" class="form-control form-control-alternative" placeholder="Address départ">
+        </div>
+        <div class="form-group">
+          <label class="form-control-label" for="heeure">Heure de  départ : </label>
+          <input formControlName="heure_depart"  type="time" id="heeure" class="form-control form-control-alternative">
+        </div>
+        <div class="form-group">
+          <label class="form-control-label" for="AddressA">Ville d'arrivée : </label>
+          <select readonly formControlName="ville_arrive" class="form-control" >
+            <option *ngFor="let op of TUNISIA_VILLES" >
+              {{op}}
+            </option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-control-label" for="AddressA">Address d'arrivée : </label>
+          <input formControlName="lieu_arrive" type="text" id="AddressA" class="form-control form-control-alternative" placeholder="Address d'arrivée">
+        </div>
+
+        <div class="form-group">
+          <button  [disabled]="annonceForm.invalid" style="width: 100%;" class="btn btn-primary"
+                   (click)="submit()"
+          >Create</button>
+          <button type="button"  [disabled]="annonceForm.invalid" style="width: 100%;margin-top: 20px" class="btn btn-dark"
+                   (click)="submit(true)"
+          >Enregistrer</button>
+        </div>
+
+
+      </form>
+
+    </div>
+  </div>
+</div>

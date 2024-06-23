@@ -19,6 +19,7 @@ import { CreateOffreComponent } from './offre/create-offre/create-offre.componen
 import { CreatevehiculeComponent } from './vehicule/create-vehicule/create-vehicule.component';
 import { OffreItemComponent } from './offre/offre-item/offre-item.component';
 import { CreateReservationComponent } from './reservations/create-reservation/create-reservation.component';
+import { AnnonceCreationComponent } from './annonce/annonce-creation/annonce-creation.component';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { CreateReservationComponent } from './reservations/create-reservation/cr
     CreateOffreComponent,
     CreatevehiculeComponent,
     OffreItemComponent,
-    CreateReservationComponent
+    CreateReservationComponent,
+    AnnonceCreationComponent
   ],
   imports: [
     CommonModule,
