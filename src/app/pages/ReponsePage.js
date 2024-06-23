@@ -5,11 +5,10 @@ import ReponseForm from '../components/ReponseForm';
 
 const ReponsePage = () => {
   const [reclamation, setReclamation] = useState(null);
-  const [response, setResponse] = useState(null);
 
-  // Simulate fetching reclamation data
+  // Simuler la récupération des données de réclamation
   useEffect(() => {
-    // Replace with actual API call
+    // Remplacer par un appel API réel
     const fetchReclamation = async () => {
       const data = {
         titre: 'Example Reclamation',
@@ -25,9 +24,8 @@ const ReponsePage = () => {
   }, []);
 
   const handleReponseSubmit = (newResponse) => {
-    // Simulate submitting the response and updating the reclamation
-    // Replace with actual API call
-    setResponse(newResponse);
+    // Simuler la soumission de la réponse et mise à jour de la réclamation
+    // Remplacer par un appel API réel
     setReclamation(prevReclamation => ({
       ...prevReclamation,
       status: 'CLOSED',
@@ -39,7 +37,7 @@ const ReponsePage = () => {
   return (
     <Container>
       <Typography variant="h1" align="center" sx={{ my: 4 }}>
-        Reponse à la Réclamation
+        Réponse à la Réclamation
       </Typography>
       {reclamation && <ReclamationDisplay reclamation={reclamation} />}
       {reclamation && !reclamation.response && (
