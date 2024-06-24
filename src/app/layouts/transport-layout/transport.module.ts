@@ -20,6 +20,18 @@ import { CreatevehiculeComponent } from './vehicule/create-vehicule/create-vehic
 import { OffreItemComponent } from './offre/offre-item/offre-item.component';
 import { CreateReservationComponent } from './reservations/create-reservation/create-reservation.component';
 import { AnnonceCreationComponent } from './annonce/annonce-creation/annonce-creation.component';
+import { ListAccessoiresComponent } from './Accessoires/list-accessoires/list-accessoires.component';
+import { UserAccessoiresComponent } from './Accessoires/user-accessoires/user-accessoires.component';
+import { AccessoireDetailsComponent } from './Accessoires/accessoire-details/accessoire-details.component';
+import { CreateAccessoireComponent } from './Accessoires/create-accessoire/create-accessoire.component';
+import { EditAccessoireComponent } from './Accessoires/edit-accessoire/edit-accessoire.component';
+import { ListCategoriesComponent } from './Categories/list-categories/list-categories.component';
+import { CreateCategoryComponent } from './Categories/create-category/create-category.component';
+import { EditCategoryComponent } from './Categories/edit-category/edit-category.component';
+import { CategoryDetailsComponent } from './Categories/category-details/category-details.component';
+import { ListCategorieFavorieComponent } from './CategorieFavorie/list-categorie-favorie/list-categorie-favorie.component';
+import { CreateCategorieFavorieComponent } from './CategorieFavorie/create-categorie-favorie/create-categorie-favorie.component';
+import { EditCategorieFavorieComponent } from './CategorieFavorie/edit-categorie-favorie/edit-categorie-favorie.component';
 
 
 @NgModule({
@@ -37,7 +49,19 @@ import { AnnonceCreationComponent } from './annonce/annonce-creation/annonce-cre
     CreatevehiculeComponent,
     OffreItemComponent,
     CreateReservationComponent,
-    AnnonceCreationComponent
+    AnnonceCreationComponent,
+    ListAccessoiresComponent,
+    UserAccessoiresComponent,
+    AccessoireDetailsComponent,
+    CreateAccessoireComponent,
+    EditAccessoireComponent,
+    ListCategoriesComponent,
+    CreateCategoryComponent,
+    EditCategoryComponent,
+    CategoryDetailsComponent,
+    ListCategorieFavorieComponent,
+    CreateCategorieFavorieComponent,
+    EditCategorieFavorieComponent
   ],
   imports: [
     CommonModule,

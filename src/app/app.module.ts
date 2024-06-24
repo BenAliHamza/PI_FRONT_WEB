@@ -8,6 +8,8 @@ import { AppComponent } from './app.component';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
 
+import { CreateAccessoireComponent } from './layouts/transport-layout/Accessoires/create-accessoire/create-accessoire.component';
+
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppRoutingModule } from './app.routing';
@@ -33,6 +35,7 @@ import {TokenInterceptorInterceptor} from "./services/token-interceptor.intercep
     AppComponent,
     AdminLayoutComponent,
     AuthLayoutComponent],
+    
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
