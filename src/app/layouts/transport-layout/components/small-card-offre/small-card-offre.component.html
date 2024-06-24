@@ -1,7 +1,7 @@
 <div class="ag-format-container">
   <div class="ag-courses_box">
-    <div class="ag-courses_item">
-      <a href="#" class="ag-courses-item_link">
+    <div *ngIf="url" class="ag-courses_item">
+      <a [routerLink]="url" class="ag-courses-item_link">
         <div class="ag-courses-item_bg {{offre.type}}"></div>
         <div class="ag-courses-item_title">
           {{offre.titre }} <br>

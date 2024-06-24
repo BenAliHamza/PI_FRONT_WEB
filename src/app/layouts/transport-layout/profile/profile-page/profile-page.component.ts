@@ -4,6 +4,8 @@ import {User} from "../../../../interfaces/user.interface";
 import {OffreService} from "../../../../services/offre/offre.service";
 import {ReservationService} from "../../../../services/reservation/reservation.service";
 import {Reservation} from "../../../../interfaces/reservation";
+import {AnnonceService} from "../../../../services/annonce/annonce.service";
+import {Annonce} from "../../../../interfaces/annonce";
 
 @Component({
   selector: 'app-profile-page',
@@ -12,10 +14,12 @@ import {Reservation} from "../../../../interfaces/reservation";
 })
 export class ProfilePageComponent implements OnInit {
 
-  constructor(private userService: UserService , private OffreService: OffreService , private reservationServoice : ReservationService) { }
+  constructor(private userService: UserService , private OffreService: OffreService , private reservationServoice : ReservationService ,
+              private  annonceSer : AnnonceService) { }
   user: User;
   offres :Offre[]=[] ;
   reservations : Reservation[]=[];
+  annonces : Annonce[]=[];
   ngOnInit(): void {
     this.userService.getInfo().subscribe(user=> {
       this.user = user as User;
@@ -27,6 +31,10 @@ export class ProfilePageComponent implements OnInit {
       .subscribe(offres=> {
         this.offres = offres  as Offre[];
       })
+    this.annonceSer.getallAnnonce().subscribe(res=>{
+      this.annonces = res;
+    })
   }
 
+  protected readonly UserService = UserService;
 }

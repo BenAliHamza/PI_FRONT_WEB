@@ -28,7 +28,7 @@
         </div>
         <div class="card-header text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4">
           <div class="d-flex justify-content-between">
-            <a href="javascript:void(0)" class="btn btn-sm btn-info mr-4">Connect</a>
+            <a href="javascript:void(0)" class="btn btn-sm btn-info mr-4">{{user.sex }}</a>
             <a href="javascript:void(0)" class="btn btn-sm btn-default float-right">Message</a>
           </div>
         </div>
@@ -58,12 +58,12 @@
             <div class="h5 font-weight-300">
               <i class="ni location_pin mr-2"></i>{{ user.ville }} - Tunisie
             </div>
-<!--            <div class="h5 mt-4">-->
-<!--              <i class="ni business_briefcase-24 mr-2"></i>Solution Manager - Creative Tim Officer-->
-<!--            </div>-->
-<!--            <div>-->
-<!--              <i class="ni education_hat mr-2"></i>University of Computer Science-->
-<!--            </div>-->
+            <div class="h5 mt-4">
+              <i class="ni business_briefcase-24 mr-2"></i>Email - {{user.email}}
+            </div>
+            <div>
+              <i class="ni education_hat mr-2"></i>Phone : {{user.phone}}
+            </div>
             <hr class="my-4" />
 <!--            <p>Ryan — the name taken by Melbourne-raised, Brooklyn-based Nick Murphy — writes, performs and records all of his own music.</p>-->
 <!--            <a href="javascript:void(0)">Show more</a>-->
@@ -112,13 +112,18 @@
           </div>
             <hr class="my-4" />
             <!-- Description -->
-            <h6 class="heading-small text-muted mb-4">About me</h6>
-            <div class="pl-lg-4">
-              <div class="form-group">
-                <label>About Me</label>
-                <textarea rows="4" class="form-control form-control-alternative" placeholder="A few words about you ...">A beautiful Dashboard for Bootstrap 4. It is Free and Open Source.</textarea>
+          <a class="heading-small text-muted mb-4" type="button" data-toggle="collapse" data-target="#collapseExample3" aria-expanded="false" aria-controls="collapseExample3">
+            Mes annonces ( {{annonces.length}} )  -       Show
+          </a>
+          <div class="collapse" id="collapseExample3">
+            <div class="card card-body">
+              <div class="row">
+                <div *ngFor="let off of annonces" class="col-4">
+                  <app-small-card-offre [isAnnonce]="true" [offre]="off"></app-small-card-offre>
+                </div>
               </div>
             </div>
+          </div>
         </div>
       </div>
     </div>

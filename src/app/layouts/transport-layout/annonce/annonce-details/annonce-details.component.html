@@ -1,0 +1,20 @@
+<div style="padding-top: 100px" class="container-fluid">
+    <div class="row justify-content-center">
+      <h1>Details de l'annonce </h1>
+    </div>
+
+    <div class="row justify-content-between">
+      <div class="col-8">
+        <app-annonce-card [annonce]="annonce" ></app-annonce-card>
+      </div>
+      <div class="col-3">
+        <h3>Manage annonce </h3>
+        <hr class="my-4" />
+          <div>
+            <button class="btn btn-dark">Modify</button>
+            <button (click)="delete()" class="btn btn-danger">Delete</button>
+          </div>
+      </div>
+    </div>
+
+</div>

@@ -10,6 +10,7 @@ import { CreatevehiculeComponent } from './vehicule/create-vehicule/create-vehic
 import {CreateReservationComponent} from "./reservations/create-reservation/create-reservation.component";
 import {AnnonceCreationComponent} from "./annonce/annonce-creation/annonce-creation.component";
 import {ProfilePageComponent} from "./profile/profile-page/profile-page.component";
+import {AnnonceDetailsComponent} from "./annonce/annonce-details/annonce-details.component";
 
 
 const routes: Routes = [
@@ -32,6 +33,9 @@ const routes: Routes = [
       {
         path : "createAnnonce" , component : AnnonceCreationComponent
       }, {
+        path : "annonce-details/:id" , component : AnnonceDetailsComponent
+      },
+      {
         path :'profile-page' , component :ProfilePageComponent
       }
     ]},

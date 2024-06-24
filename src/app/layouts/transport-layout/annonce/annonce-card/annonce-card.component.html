@@ -1,0 +1,26 @@
+<div *ngIf="annonce" class="projcard-container">
+
+  <div class="projcard projcard-{{color}}">
+    <div class="projcard-innerbox">
+      <img class="projcard-img" [src]='annonce.user_Id.image' />
+      <div class="projcard-textbox">
+        <div class="projcard-title">{{ annonce.titre }}</div>
+        <div class="projcard-subtitle">Ville :  {{annonce.lieu_depart.ville}} -{{annonce.lieu_arrive.ville}} </div>
+        <div class="projcard-bar"></div>
+        <div class="projcard-description">DETAILS :
+          <ul>
+            <li>            lieu de départ : {{annonce.lieu_depart.address}}</li>
+            <li>            lieu d'arrivé: {{annonce.lieu_arrive.address}}</li>
+            <li>            heure de départ : {{convertToReadableTime(annonce.heure_depart ) }}</li>
+          </ul>
+        </div>
+        <div class="projcard-tagbox">
+          <button style="margin-right: 10px"><a routerLink="./">{{ annonce.type }}  </a></button>
+          <button style="margin-right: 10px"><a routerLink="./">{{ annonce.status }}  </a></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
