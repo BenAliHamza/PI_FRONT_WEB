@@ -25,6 +25,14 @@ import { SmallCardOffreComponent } from './components/small-card-offre/small-car
 import { SmallReservationCardComponent } from './components/small-reservation-card/small-reservation-card.component';
 import { AnnonceDetailsComponent } from './annonce/annonce-details/annonce-details.component';
 import { AnnonceCardComponent } from './annonce/annonce-card/annonce-card.component';
+import { ContactComponent } from './contact/contact.component';
+import { ReclamationItemComponent } from './contact/reclamation-item/reclamation-item.component';
+import { ReclamationListComponent } from './contact/reclamation-list/reclamation-list.component';
+import {MatExpansionModule} from "@angular/material/expansion";
+import {MatIconModule} from "@angular/material/icon";
+import {MatInputModule} from "@angular/material/input";
+import {MatDatepickerModule} from "@angular/material/datepicker";
+import {MatButtonModule} from "@angular/material/button";
 
 
 @NgModule({
@@ -47,7 +55,10 @@ import { AnnonceCardComponent } from './annonce/annonce-card/annonce-card.compon
     SmallCardOffreComponent,
     SmallReservationCardComponent,
     AnnonceDetailsComponent,
-    AnnonceCardComponent
+    AnnonceCardComponent,
+    ContactComponent,
+    ReclamationItemComponent,
+    ReclamationListComponent
   ],
   imports: [
     CommonModule,
@@ -57,7 +68,12 @@ import { AnnonceCardComponent } from './annonce/annonce-card/annonce-card.compon
     NgbDropdownModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule
+    RouterModule,
+    MatExpansionModule,
+    MatIconModule,
+    MatInputModule,
+    MatDatepickerModule,
+    MatButtonModule
   ]
 })
 export class TransportModule { }

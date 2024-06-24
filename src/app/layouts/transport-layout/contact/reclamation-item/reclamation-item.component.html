@@ -1,0 +1,9 @@
+<div [ngStyle]="{'background' : backgroundColor}" style="margin-bottom: 100px" class="card">
+  <h5 class="card-header">Titre de la réclamation : {{ rec.titre }}</h5>
+  <div class="card-body">
+    <h5 class="card-title">Report : {{ rec.type}}    - Status : {{rec.etat}} </h5>
+    <p class="card-text">{{ rec.description }} </p>
+    <a href="#" class="btn btn-danger">Delete </a>
+    <a href="#" class="btn btn-dark">Modifier </a>
+  </div>
+</div>
