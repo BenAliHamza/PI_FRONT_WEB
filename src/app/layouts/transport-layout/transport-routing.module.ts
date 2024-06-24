@@ -13,6 +13,12 @@ import {ProfilePageComponent} from "./profile/profile-page/profile-page.componen
 import {AnnonceDetailsComponent} from "./annonce/annonce-details/annonce-details.component";
 import {ReservationDetailsComponent} from "./reservations/reservation-details/reservation-details.component";
 import {AnnonceListComponent} from "./annonce/annonce-list/annonce-list.component";
+import {ContactComponent} from "./contact/contact.component";
+import {ReclamationListComponent} from "./contact/reclamation-list/reclamation-list.component";
+import {ReservationDetailsComponent} from "./reservations/reservation-details/reservation-details.component";
+import {AnnonceListComponent} from "./annonce/annonce-list/annonce-list.component";
+import {ContactComponent} from "./contact/contact.component";
+import {ReclamationListComponent} from "./contact/reclamation-list/reclamation-list.component";
 
 
 const routes: Routes = [
@@ -42,6 +48,10 @@ const routes: Routes = [
       },
       {
         path :'profile-page' , component :ProfilePageComponent
+      }, {
+        path : "contact-us" , component : ContactComponent
+      }, {
+          path :"list-reclamations" , component :ReclamationListComponent
       }
     ]},
   { path : "SignUp" , component : SignUpComponent},

@@ -29,6 +29,18 @@ import { ReservationItemComponent } from './reservations/reservation-item/reserv
 import { ReservationDetailsComponent } from './reservations/reservation-details/reservation-details.component';
 import { AnnonceItemComponent } from './annonce/annonce-item/annonce-item.component';
 import { AnnonceListComponent } from './annonce/annonce-list/annonce-list.component';
+import { ReservationItemComponent } from './reservations/reservation-item/reservation-item.component';
+import { ReservationDetailsComponent } from './reservations/reservation-details/reservation-details.component';
+import { AnnonceItemComponent } from './annonce/annonce-item/annonce-item.component';
+import { AnnonceListComponent } from './annonce/annonce-list/annonce-list.component';
+import { ContactComponent } from './contact/contact.component';
+import { ReclamationItemComponent } from './contact/reclamation-item/reclamation-item.component';
+import { ReclamationListComponent } from './contact/reclamation-list/reclamation-list.component';
+import {MatExpansionModule} from "@angular/material/expansion";
+import {MatIconModule} from "@angular/material/icon";
+import {MatInputModule} from "@angular/material/input";
+import {MatDatepickerModule} from "@angular/material/datepicker";
+import {MatButtonModule} from "@angular/material/button";
 
 
 @NgModule({
@@ -56,6 +68,19 @@ import { AnnonceListComponent } from './annonce/annonce-list/annonce-list.compon
     ReservationDetailsComponent,
     AnnonceItemComponent,
     AnnonceListComponent
+    AnnonceCardComponent,
+    ReservationItemComponent,
+    ReservationDetailsComponent,
+    AnnonceItemComponent,
+    AnnonceListComponent
+    AnnonceCardComponent,
+    ContactComponent,
+    ReclamationItemComponent,
+    ReclamationListComponent
+    AnnonceListComponent,
+    ContactComponent,
+    ReclamationItemComponent,
+    ReclamationListComponent
   ],
   imports: [
     CommonModule,
@@ -65,7 +90,12 @@ import { AnnonceListComponent } from './annonce/annonce-list/annonce-list.compon
     NgbDropdownModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule
+    RouterModule,
+    MatExpansionModule,
+    MatIconModule,
+    MatInputModule,
+    MatDatepickerModule,
+    MatButtonModule
   ]
 })
 export class TransportModule { }
