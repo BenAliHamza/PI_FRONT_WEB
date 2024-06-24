@@ -23,7 +23,7 @@ export class ReservationService {
     return this.http.put<Reservation>(this.base,reservation);
   }
   deleteReservation(id:string){
-    return  this.http.delete<Reservation>(this.base  + id);
+    return  this.http.delete<Reservation>(this.base+'/'  + id);
   }
   getReservationByFilter(status : string){
     return this.http.get<Reservation[]>(this.base  + status);
@@ -33,6 +33,9 @@ export class ReservationService {
   }
   refuseReservation(id:string)  {
     return this.http.put<Reservation>(this.base + '/refuse/', id);
+  }
+  getById(id : string){
+    return this.http.get<Reservation>(this.base + '/' + id);
   }
 
 }
