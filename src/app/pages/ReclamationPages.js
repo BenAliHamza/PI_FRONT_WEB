@@ -57,7 +57,6 @@ const ReclamationPage = () => {
     fetchReclamations();
   }, []);
 
-
   const handleReclamationSubmit = (newReclamation) => {
     const newReclamationWithId = {
       ...newReclamation,
