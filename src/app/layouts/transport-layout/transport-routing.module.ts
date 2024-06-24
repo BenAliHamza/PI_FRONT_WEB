@@ -11,6 +11,8 @@ import {CreateReservationComponent} from "./reservations/create-reservation/crea
 import {AnnonceCreationComponent} from "./annonce/annonce-creation/annonce-creation.component";
 import {ProfilePageComponent} from "./profile/profile-page/profile-page.component";
 import {AnnonceDetailsComponent} from "./annonce/annonce-details/annonce-details.component";
+import {ReservationDetailsComponent} from "./reservations/reservation-details/reservation-details.component";
+import {AnnonceListComponent} from "./annonce/annonce-list/annonce-list.component";
 
 
 const routes: Routes = [
@@ -29,11 +31,14 @@ const routes: Routes = [
       },
       {
         path : "createReservation/:id" , component :CreateReservationComponent
-      },
+      },{
+        path :"reservationDetails/:id" , component : ReservationDetailsComponent},
       {
         path : "createAnnonce" , component : AnnonceCreationComponent
       }, {
         path : "annonce-details/:id" , component : AnnonceDetailsComponent
+      },{
+        path : "list-annonces" , component : AnnonceListComponent
       },
       {
         path :'profile-page' , component :ProfilePageComponent
