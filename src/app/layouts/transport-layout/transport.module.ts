@@ -25,6 +25,10 @@ import { SmallCardOffreComponent } from './components/small-card-offre/small-car
 import { SmallReservationCardComponent } from './components/small-reservation-card/small-reservation-card.component';
 import { AnnonceDetailsComponent } from './annonce/annonce-details/annonce-details.component';
 import { AnnonceCardComponent } from './annonce/annonce-card/annonce-card.component';
+import { ReservationItemComponent } from './reservations/reservation-item/reservation-item.component';
+import { ReservationDetailsComponent } from './reservations/reservation-details/reservation-details.component';
+import { AnnonceItemComponent } from './annonce/annonce-item/annonce-item.component';
+import { AnnonceListComponent } from './annonce/annonce-list/annonce-list.component';
 
 
 @NgModule({
@@ -47,7 +51,11 @@ import { AnnonceCardComponent } from './annonce/annonce-card/annonce-card.compon
     SmallCardOffreComponent,
     SmallReservationCardComponent,
     AnnonceDetailsComponent,
-    AnnonceCardComponent
+    AnnonceCardComponent,
+    ReservationItemComponent,
+    ReservationDetailsComponent,
+    AnnonceItemComponent,
+    AnnonceListComponent
   ],
   imports: [
     CommonModule,
