@@ -11,6 +11,8 @@ import {CreateReservationComponent} from "./reservations/create-reservation/crea
 import {AnnonceCreationComponent} from "./annonce/annonce-creation/annonce-creation.component";
 import {ProfilePageComponent} from "./profile/profile-page/profile-page.component";
 import {AnnonceDetailsComponent} from "./annonce/annonce-details/annonce-details.component";
+import {ContactComponent} from "./contact/contact.component";
+import {ReclamationListComponent} from "./contact/reclamation-list/reclamation-list.component";
 
 
 const routes: Routes = [
@@ -37,6 +39,10 @@ const routes: Routes = [
       },
       {
         path :'profile-page' , component :ProfilePageComponent
+      }, {
+        path : "contact-us" , component : ContactComponent
+      }, {
+          path :"list-reclamations" , component :ReclamationListComponent
       }
     ]},
   { path : "SignUp" , component : SignUpComponent},
