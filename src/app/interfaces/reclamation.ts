@@ -1,5 +1,7 @@
-export interface Reclamation {
-    
+// src/interfaces/reclamation.ts
+
+
+  export interface Reclamation {
     id?: string; // ID optionnel
     titre: string;
     description: string;

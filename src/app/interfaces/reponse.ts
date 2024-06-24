@@ -1,6 +1,6 @@
 // src/interfaces/reponse.ts
 
-    export interface Reponse {
+  export interface Reponse {
     id?: string; // ID optionnel
     reclamation: string; // ID de la réclamation à laquelle cette réponse appartient
     reponse: string; // Le message de la réponse
