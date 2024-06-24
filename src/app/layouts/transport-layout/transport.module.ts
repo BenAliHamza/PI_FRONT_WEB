@@ -68,6 +68,10 @@ import {MatButtonModule} from "@angular/material/button";
     ContactComponent,
     ReclamationItemComponent,
     ReclamationListComponent
+    AnnonceListComponent,
+    ContactComponent,
+    ReclamationItemComponent,
+    ReclamationListComponent
   ],
   imports: [
     CommonModule,
