@@ -9,7 +9,6 @@ import {NewSidebarComponent} from "./components/sidebar/sidebar.component";
 import {NgbCollapseModule, NgbDropdownModule} from "@ng-bootstrap/ng-bootstrap";
 import { SignUpComponent } from './pages/sign-up/sign-up.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {ToastrModule} from "ngx-toastr";
 import { LoginComponent } from './pages/login/login.component';
 import { SimpleHeaderComponent } from './nomralUserComponent/simple-header/simple-header.component';
 import { OffreComponent } from './offre/offre/offre.component';
@@ -25,13 +24,9 @@ import { SmallCardOffreComponent } from './components/small-card-offre/small-car
 import { SmallReservationCardComponent } from './components/small-reservation-card/small-reservation-card.component';
 import { AnnonceDetailsComponent } from './annonce/annonce-details/annonce-details.component';
 import { AnnonceCardComponent } from './annonce/annonce-card/annonce-card.component';
-import { ReservationItemComponent } from './reservations/reservation-item/reservation-item.component';
 import { ReservationDetailsComponent } from './reservations/reservation-details/reservation-details.component';
 import { AnnonceItemComponent } from './annonce/annonce-item/annonce-item.component';
-import { AnnonceListComponent } from './annonce/annonce-list/annonce-list.component';
 import { ReservationItemComponent } from './reservations/reservation-item/reservation-item.component';
-import { ReservationDetailsComponent } from './reservations/reservation-details/reservation-details.component';
-import { AnnonceItemComponent } from './annonce/annonce-item/annonce-item.component';
 import { AnnonceListComponent } from './annonce/annonce-list/annonce-list.component';
 import { ContactComponent } from './contact/contact.component';
 import { ReclamationItemComponent } from './contact/reclamation-item/reclamation-item.component';
@@ -67,20 +62,10 @@ import {MatButtonModule} from "@angular/material/button";
     ReservationItemComponent,
     ReservationDetailsComponent,
     AnnonceItemComponent,
-    AnnonceListComponent
-    AnnonceCardComponent,
-    ReservationItemComponent,
-    ReservationDetailsComponent,
-    AnnonceItemComponent,
-    AnnonceListComponent
-    AnnonceCardComponent,
-    ContactComponent,
-    ReclamationItemComponent,
-    ReclamationListComponent
     AnnonceListComponent,
     ContactComponent,
     ReclamationItemComponent,
-    ReclamationListComponent
+    ReclamationListComponent,
   ],
   imports: [
     CommonModule,

@@ -15,10 +15,7 @@ import {ReservationDetailsComponent} from "./reservations/reservation-details/re
 import {AnnonceListComponent} from "./annonce/annonce-list/annonce-list.component";
 import {ContactComponent} from "./contact/contact.component";
 import {ReclamationListComponent} from "./contact/reclamation-list/reclamation-list.component";
-import {ReservationDetailsComponent} from "./reservations/reservation-details/reservation-details.component";
-import {AnnonceListComponent} from "./annonce/annonce-list/annonce-list.component";
-import {ContactComponent} from "./contact/contact.component";
-import {ReclamationListComponent} from "./contact/reclamation-list/reclamation-list.component";
+
 
 
 const routes: Routes = [
