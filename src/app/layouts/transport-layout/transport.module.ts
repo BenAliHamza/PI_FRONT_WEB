@@ -41,6 +41,7 @@ import { AfterSignUpModalComponent } from './modals/after-sign-up-modal/after-si
 import { ForgotPasswordComponent } from './profile/forgot-password/forgot-password.component';
 import { ResetPassComponent } from './profile/reset-pass/reset-pass.component';
 import { EditProfileComponent } from './profile/edit-profile/edit-profile.component';
+import { ConfirmationModalComponent } from './modals/confirmation-modal/confirmation-modal.component';
 
 
 @NgModule({
@@ -75,6 +76,7 @@ import { EditProfileComponent } from './profile/edit-profile/edit-profile.compon
     ForgotPasswordComponent,
     ResetPassComponent,
     EditProfileComponent,
+    ConfirmationModalComponent,
   ],
   imports: [
     CommonModule,

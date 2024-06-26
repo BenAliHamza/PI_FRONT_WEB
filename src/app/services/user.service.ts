@@ -48,4 +48,13 @@ export class UserService {
     return this.http.put(this.Base + `/users/updateImage` , formData);
 
   }
+
+  changePassword(form : any) {
+    return this.http.put(this.Base + `/users/changePassword` , form);
+
+  }
+
+  deleteAccount(param: { id: string }) {
+    return this.http.delete(this.Base + `/users/delete/${param.id}`)
+  }
 }

@@ -76,7 +76,7 @@
               <h3 class="mb-0">My account</h3>
             </div>
             <div class="col-4 text-right">
-              <a href="/co-transport/profile-page" class="btn btn-sm btn-primary">prfile Page ?</a>
+              <a href="/co-transport/profile-page" class="btn btn-sm btn-primary">profile Page ?</a>
             </div>
           </div>
         </div>
@@ -181,46 +181,77 @@
             </div>
             <hr class="my-4" />
             <!-- Address -->
-            <h6 class="heading-small text-muted mb-4">Contact information</h6>
-            <div class="pl-lg-4">
-              <div class="row">
-                <div class="col-md-12">
-                  <div class="form-group">
-                    <label class="form-control-label" for="input-address">Address</label>
-                    <input id="input-address" class="form-control form-control-alternative" placeholder="Home Address" value="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09" type="text">
+            <h6 class="heading-small text-muted mb-4">Security Setting</h6>
+            <div class="card-body">
+              <a class="heading-small text-muted mb-4" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                Change Password
+              </a>
+              <div class="collapse" id="collapseExample">
+                <div class="card card-body">
+                  <div class="row">
+                    <form [formGroup]="passForm">
+                      <div class="form-group">
+                        <label>Insert your old password</label>
+                        <div class="input-group input-group-alternative">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
+                          </div>
+                          <input formControlName="password" class="form-control" placeholder="Old Password" type="password">
+                        </div>
+                        <span class="errors"
+                              *ngIf="passForm.get('password').invalid && passForm.get('password').touched">
+                    <small *ngIf="passForm.get('password').errors?.required">
+                      Password is required.
+                    </small>
+                    <small style="white-space: nowrap" *ngIf="passForm.get('password').errors?.pattern">
+                      * Password > 8 characters, including Lowercase/Uppercase/Number.
+                  </small>
+              </span>
+                      </div>
+                      <div class="form-group">
+                        <label>Insert your New password</label>
+                        <div class="input-group input-group-alternative">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
+                          </div>
+                          <input formControlName="password2" class="form-control" placeholder="New Password" type="password">
+                        </div>
+                        <span class="errors"
+                              *ngIf="passForm.get('password2').invalid && passForm.get('password2').touched">
+                    <small *ngIf="passForm.get('password2').errors?.required">
+                            Password is required.
+                          </small>
+                          <small style="white-space: nowrap" *ngIf="passForm.get('password2').errors?.pattern">
+                            * Password > 8 characters, including Lowercase/Uppercase/Number.
+                        </small>
+                    </span>
+                      </div>
+
+                      <div class="text-center">
+                        <button [disabled]="passForm.invalid" (click)="changePassword()" type="submit" class="btn btn-primary mt-4 pointer">Confirm your new Password</button>
+                      </div>
+                      <div>
+                      </div>
+                    </form>
                   </div>
                 </div>
               </div>
-              <div class="row">
-                <div class="col-lg-4">
-                  <div class="form-group">
-                    <label class="form-control-label" for="input-city">City</label>
-                    <input type="text" id="input-city" class="form-control form-control-alternative" placeholder="City" value="New York">
-                  </div>
-                </div>
-                <div class="col-lg-4">
-                  <div class="form-group">
-                    <label class="form-control-label" for="input-country">Country</label>
-                    <input type="text" id="input-country" class="form-control form-control-alternative" placeholder="Country" value="United States">
-                  </div>
-                </div>
-                <div class="col-lg-4">
-                  <div class="form-group">
-                    <label class="form-control-label" for="input-country">Postal code</label>
-                    <input type="number" id="input-postal-code" class="form-control form-control-alternative" placeholder="Postal code">
+              <hr class="my-4" />
+              <!-- Description -->
+              <a class="heading-small text-muted mb-4" type="button" data-toggle="collapse" data-target="#collapseExample3" aria-expanded="false" aria-controls="collapseExample3">
+                Delete Account
+              </a>
+              <div class="collapse" id="collapseExample3">
+                <div class="card card-body">
+                  <div class="row">
+                    <div (click)="deleteAccount()"  class="btn btn-danger">DELETE ACCOUNT </div>
                   </div>
                 </div>
               </div>
             </div>
+
             <hr class="my-4" />
-            <!-- Description -->
-            <h6 class="heading-small text-muted mb-4">About me</h6>
-            <div class="pl-lg-4">
-              <div class="form-group">
-                <label>About Me</label>
-                <textarea rows="4" class="form-control form-control-alternative" placeholder="A few words about you ...">A beautiful Dashboard for Bootstrap 4. It is Free and Open Source.</textarea>
-              </div>
-            </div>
+
           </form>
         </div>
       </div>

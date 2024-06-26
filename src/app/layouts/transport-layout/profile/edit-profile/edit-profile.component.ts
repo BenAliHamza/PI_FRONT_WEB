@@ -6,6 +6,8 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {NgxSpinnerService} from "ngx-spinner";
 import {TUNISIA_VILLES} from "../../pages/sign-up/generals";
 import {ToastrService} from "ngx-toastr";
+import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
+import {ConfirmationModalComponent} from "../../modals/confirmation-modal/confirmation-modal.component";
 
 @Component({
   selector: 'app-edit-profile',
@@ -17,11 +19,12 @@ export class EditProfileComponent implements OnInit {
   STATUS_ARRAY = ['PENDING', 'APPROVED', 'REJECTED', 'BANNED'];
   ROLE_ARRAY = ['DEFAULT', 'VENDEUR', 'TAXI', 'GUEST'];
 
-  constructor(private userService: UserService, private router: Router, private spinner: NgxSpinnerService, private toaster: ToastrService) {
+  constructor(private userService: UserService,private  modal :NgbModal, private router: Router, private spinner: NgxSpinnerService, private toaster: ToastrService) {
   }
 
   user: User;
   userForm: FormGroup;
+  passForm: FormGroup;
   newImage:any = '';
   imageEdited =false;
   fileImage :File ;
@@ -43,6 +46,10 @@ export class EditProfileComponent implements OnInit {
       });
       this.spinner.hide()
     })
+    this.passForm= new FormGroup({
+      password: new FormControl('', [Validators.required, Validators.pattern(PASSWORD_REGEX)]),
+      password2 :new FormControl('', [Validators.required , Validators.pattern(PASSWORD_REGEX)]) ,
+    });
 
   }
 
@@ -101,5 +108,50 @@ export class EditProfileComponent implements OnInit {
   cancel() {
     this.newImage= '';
     this.imageEdited =false;
+  }
+
+  changePassword() {
+    if(this.passForm.invalid)return ;
+    const  id = this.user._id ;
+
+    const updates = {
+      password : this.passForm.value.password ,
+      newPassword : this.passForm.value.password2,
+      id: id
+    }
+    this.spinner.show();
+    this.userService.changePassword(updates).subscribe((result: any) => {
+      setTimeout(()=>{
+        this.toaster.success(result.message);
+        this.passForm.reset();
+        location.reload()
+        this.spinner.hide()
+      },2000)
+    },err=>{
+      this.toaster.error(err.error.message)
+      this.spinner.hide()
+    })
+  }
+
+  deleteAccount() {
+    const mod  = this.modal.open(ConfirmationModalComponent , {
+      centered :true, backdropClass: 'light-blue-backdrop' , windowClass :'light-blue-backdrop2', size:'lg' ,
+    })
+    mod.componentInstance.data ="Are you sure you want to delete your Account"
+    mod.result.then(result => {
+      if(result) {
+        this.spinner.show()
+        this.userService.deleteAccount({id: this.user._id}).subscribe((result: any) => {
+          this.toaster.success(result.message) ;
+          setTimeout(()=> {
+            this.router.navigate(['/co-transport'])
+            this.spinner.hide()
+          },1000)
+        },(er)=>{
+          this.toaster.error("An error occurred while deleting account" , er.error.message);
+          this.spinner.hide()
+        })
+      }
+    })
   }
 }

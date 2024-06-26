@@ -1,0 +1,13 @@
+.container{
+  width: 500px;
+  height: 200px;
+  padding: 2rem;
+  .titles{
+       margin-bottom: 50px;
+      h3 {
+        margin-top: 2rem;
+        color: red ;
+        font-weight: bolder;
+      }
+  }
+}

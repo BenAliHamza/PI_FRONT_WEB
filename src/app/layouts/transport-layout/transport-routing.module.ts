@@ -49,6 +49,8 @@ const routes: Routes = [
       {
         path :'profile-page' , component :ProfilePageComponent
       }, {
+        path : "profile-edit" , component: EditProfileComponent
+      }, {
         path : "contact-us" , component : ContactComponent
       }, {
           path :"list-reclamations" , component :ReclamationListComponent
@@ -61,8 +63,6 @@ const routes: Routes = [
   },
   {
     path : "reset_password_confirmation/:token" , component : ResetPassComponent
-  }, {
-    path : "profile-edit" , component: EditProfileComponent
   }
 
 ] ;

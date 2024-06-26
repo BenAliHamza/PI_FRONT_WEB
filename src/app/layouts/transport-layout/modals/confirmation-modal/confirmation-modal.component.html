@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="row justify-content-center titles">
+    <h3 *ngIf="data">{{data}}</h3>
+  </div>
+  <div class="row justify-content-end">
+      <div class="col-5">
+        <button (click)="delete(true)" class="btn btn-danger">Confirm</button>
+      </div>
+    <div class="col-5">
+      <button (click)="delete(false)" class="btn btn-dark">Cancel</button>
+      </div>
+  </div>
+</div>
