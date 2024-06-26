@@ -1,4 +1,5 @@
-<div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center" style="min-height: 600px; background-image: url({{user.image}});
+<div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center" style="min-height: 600px;
+background-image: url({{user.image}});
  background-size: cover; background-position: center top;">
   <!-- Mask -->
   <span class="mask bg-gradient-danger opacity-8"></span>
@@ -8,7 +9,8 @@
       <div class="col-lg-7 col-md-10">
         <h1 class="display-2 text-white">Hello {{ user.firstname }}</h1>
         <p class="text-white mt-0 mb-5">Welcome to your profile page. Track your ride-sharing journeys, manage your trips, and connect with fellow carpoolers.</p>
-        <a routerLink="./" class="btn btn-info">Edit profile</a>
+        <a routerLink="/co-transport/profile-edit" class="btn btn-info">Edit profile</a>
+        <a *ngIf="user.role==='ADMIN'" routerLink="./" class="btn btn-info">Go to dashboard</a>
       </div>
     </div>
   </div>
@@ -29,7 +31,7 @@
         <div class="card-header text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4">
           <div class="d-flex justify-content-between">
             <a href="javascript:void(0)" class="btn btn-sm btn-info mr-4">{{user.sex }}</a>
-            <a href="javascript:void(0)" class="btn btn-sm btn-default float-right">Message</a>
+            <a href="javascript:void(0)" class="btn btn-sm btn-default float-right">{{ user.role=="DEFAULT"?"Regular user" : user.role }}</a>
           </div>
         </div>
         <div class="card-body pt-0 pt-md-4">
@@ -129,3 +131,4 @@
     </div>
   </div>
 </div>
+<ngx-spinner type="ball-scale-multiple"></ngx-spinner>

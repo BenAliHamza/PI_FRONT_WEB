@@ -15,6 +15,9 @@ import {ReservationDetailsComponent} from "./reservations/reservation-details/re
 import {AnnonceListComponent} from "./annonce/annonce-list/annonce-list.component";
 import {ContactComponent} from "./contact/contact.component";
 import {ReclamationListComponent} from "./contact/reclamation-list/reclamation-list.component";
+import {ForgotPasswordComponent} from "./profile/forgot-password/forgot-password.component";
+import {ResetPassComponent} from "./profile/reset-pass/reset-pass.component";
+import {EditProfileComponent} from "./profile/edit-profile/edit-profile.component";
 
 
 
@@ -52,7 +55,15 @@ const routes: Routes = [
       }
     ]},
   { path : "SignUp" , component : SignUpComponent},
-  { path : "login" , component : LoginComponent}
+  { path : "login" , component : LoginComponent},
+  {
+    path :"resetPassword" , component : ForgotPasswordComponent
+  },
+  {
+    path : "reset_password_confirmation/:token" , component : ResetPassComponent
+  }, {
+    path : "profile-edit" , component: EditProfileComponent
+  }
 
 ] ;
 

@@ -36,6 +36,11 @@ import {MatIconModule} from "@angular/material/icon";
 import {MatInputModule} from "@angular/material/input";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatButtonModule} from "@angular/material/button";
+import {NgxSpinnerModule} from "ngx-spinner";
+import { AfterSignUpModalComponent } from './modals/after-sign-up-modal/after-sign-up-modal.component';
+import { ForgotPasswordComponent } from './profile/forgot-password/forgot-password.component';
+import { ResetPassComponent } from './profile/reset-pass/reset-pass.component';
+import { EditProfileComponent } from './profile/edit-profile/edit-profile.component';
 
 
 @NgModule({
@@ -66,6 +71,10 @@ import {MatButtonModule} from "@angular/material/button";
     ContactComponent,
     ReclamationItemComponent,
     ReclamationListComponent,
+    AfterSignUpModalComponent,
+    ForgotPasswordComponent,
+    ResetPassComponent,
+    EditProfileComponent,
   ],
   imports: [
     CommonModule,
@@ -80,7 +89,8 @@ import {MatButtonModule} from "@angular/material/button";
     MatIconModule,
     MatInputModule,
     MatDatepickerModule,
-    MatButtonModule
+    MatButtonModule,
+    NgxSpinnerModule
   ]
 })
 export class TransportModule { }

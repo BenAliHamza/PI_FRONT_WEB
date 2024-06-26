@@ -5,6 +5,9 @@ import { TUNISIA_VILLES } from './generals';
 import {UserService} from "../../../../services/user.service";
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {ToastrService} from "ngx-toastr";
+import {LoginComponent} from "../login/login.component";
+import {AfterSignUpModalComponent} from "../../modals/after-sign-up-modal/after-sign-up-modal.component";
+import {NgxSpinner, NgxSpinnerService} from "ngx-spinner";
 
 @Component({
   selector: 'app-sign-up',
@@ -13,15 +16,15 @@ import {ToastrService} from "ngx-toastr";
 })
 export class SignUpComponent implements OnInit {
 
-  constructor( private  userService: UserService , private  modal : NgbModal , private toaster : ToastrService) { }
+  constructor( private  userService: UserService  , private toaster : ToastrService , private  ngmodel :NgbModal , private spinner :NgxSpinnerService) { }
   userForm: FormGroup;
     TUNISIA_VILLES = TUNISIA_VILLES ;
    STATUS_ARRAY = ['PENDING', 'APPROVED', 'REJECTED', 'BANNED'];
-   ROLE_ARRAY = ['DEFAULT', 'ADMIN', 'TAXI'];
+   ROLE_ARRAY = ['DEFAULT', 'VENDEUR', 'TAXI','GUEST'];
     imageData: string
 
   ngOnInit(): void {
-    this.userForm = new FormGroup({
+      this.userForm = new FormGroup({
       firstname: new FormControl('', [Validators.required , Validators.pattern(/^(?![\s.]+$)[a-zA-Z\s.]*$/)]),
       lastname: new FormControl('', [Validators.required , Validators.pattern(/^(?![\s.]+$)[a-zA-Z\s.]*$/)]),
       email: new FormControl('', [Validators.required, Validators.pattern(EMAIL_REGEX)]),
@@ -30,7 +33,7 @@ export class SignUpComponent implements OnInit {
       phone: new FormControl('' , [Validators.required , Validators.pattern(PHONE_REGEX) ]),
       image: new FormControl(''),
       role: new FormControl('DEFAULT'),
-      ville: new FormControl('', Validators.required),
+      ville: new FormControl('Tunis', Validators.required),
       agreed : new FormControl(false, Validators.requiredTrue),
       sex : new  FormControl ('male' , [Validators.required]),
     } );
@@ -45,13 +48,6 @@ export class SignUpComponent implements OnInit {
   }
 
   submitForm() {
-    // if(this.userForm.invalid)return
-    // this.userService.createUser(this.userForm.value ).subscribe((res=>{
-    //   if( res && res.confirmation_link) {
-    //     this.toaster.success(res.message , "Thank you and Welcome")
-    //     console.log(res);
-    //   }
-    // }))
     if (this.userForm.invalid) return;
 
     const formData = new FormData();
@@ -63,13 +59,23 @@ export class SignUpComponent implements OnInit {
         formData.append(key, control.value);
       }
     });
-
+    this.spinner.show().then() ;
     this.userService.createUser(formData).subscribe((res => {
+      void this.spinner.hide()
       if (res && res.confirmation_link) {
-        this.toaster.success(res.message, "Thank you and Welcome");
-        console.log(res);
+        const t = this.ngmodel.open(AfterSignUpModalComponent , {
+          centered :true, backdropClass: 'light-blue-backdrop' , windowClass :'light-blue-backdrop2', size:'lg' ,
+        })
+        t.componentInstance.data = { name : this.userForm.value.firstname ,link : res.confirmation_link}
       }
-    }));
+    }),(e)=>{
+      this.spinner.hide()
+     if(e.error.message ==="User email already exists"){
+       this.toaster.error("User email already exists");
+     }else {
+       this.toaster.error(e.message)
+     }
+    });
   }
 
 

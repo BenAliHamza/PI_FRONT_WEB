@@ -4,6 +4,7 @@ import {User} from "../../interfaces/user.interface";
 import {VehiculeService} from "../../services/vehicule/vehicule.service";
 import {UserService} from "../../services/user.service";
 import {OffreService} from "../../services/offre/offre.service";
+import {NgxSpinnerService} from "ngx-spinner";
 
 @Component({
   selector: 'app-transport-layout',
@@ -12,7 +13,7 @@ import {OffreService} from "../../services/offre/offre.service";
 })
 export class TransportComponent implements OnInit {
 
-  constructor(private vs: VehiculeService, private userService: UserService, private offreService: OffreService) {
+  constructor(private spinner: NgxSpinnerService, private userService: UserService, private offreService: OffreService) {
   }
   user:User ;
 

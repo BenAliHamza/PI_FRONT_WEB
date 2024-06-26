@@ -6,6 +6,8 @@ import {ReservationService} from "../../../../services/reservation/reservation.s
 import {Reservation} from "../../../../interfaces/reservation";
 import {AnnonceService} from "../../../../services/annonce/annonce.service";
 import {Annonce} from "../../../../interfaces/annonce";
+import {forkJoin} from "rxjs";
+import {NgxSpinnerService} from "ngx-spinner";
 
 @Component({
   selector: 'app-profile-page',
@@ -15,26 +17,26 @@ import {Annonce} from "../../../../interfaces/annonce";
 export class ProfilePageComponent implements OnInit {
 
   constructor(private userService: UserService , private OffreService: OffreService , private reservationServoice : ReservationService ,
-              private  annonceSer : AnnonceService) { }
+              private  annonceSer : AnnonceService , private  spinner : NgxSpinnerService) { }
   user: User;
   offres :Offre[]=[] ;
   reservations : Reservation[]=[];
   annonces : Annonce[]=[];
   ngOnInit(): void {
-    this.userService.getInfo().subscribe(user=> {
-      this.user = user as User;
-    })
-    this.reservationServoice.getUserReservation().subscribe(reservation=> {
-      this.reservations = reservation ;
-    })
-    this.OffreService.getAllOffre()
-      .subscribe(offres=> {
-        this.offres = offres  as Offre[];
-      })
-    this.annonceSer.getallAnnonce().subscribe(res=>{
-      this.annonces = res;
-    })
+    this.spinner.show()
+    forkJoin({
+      user: this.userService.getInfo(),
+      reservation: this.reservationServoice.getUserReservation(),
+      offres: this.OffreService.getAllOffre(),
+      annonces: this.annonceSer.getallAnnonce()
+    }).subscribe(results => {
+      this.user = results.user as User;
+      this.reservations = results.reservation;
+      this.offres = results.offres as Offre[];
+      this.annonces = results.annonces;
+      this.spinner.hide()
+    });
+
   }
 
-  protected readonly UserService = UserService;
 }

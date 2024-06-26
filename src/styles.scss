@@ -4,3 +4,10 @@
 .pointer {
   cursor: pointer;
 }
+.light-blue-backdrop {
+  background-color: rgb(58, 152, 220) !important;
+  pointer-events: none;
+}
+//.light-blue-backdrop2 {
+//  z-index: 500 !important;
+//}
