@@ -31,11 +31,13 @@ export class ListProductComponent implements OnInit {
     this.spinner.show()
     forkJoin({
       categorie : this.categoriesService.getCategories(),
-      accessoires : this.accService.getll()
+      accessoires : this.accService.getll(),
+      user : this.userService.getInfo()
     }).subscribe({
-      next: ({ categorie, accessoires }) => {
+      next: ({ categorie, accessoires,user }) => {
         this.category = categorie ;
         this.products = accessoires as any;
+        this.user  =user
         this.spinner.hide()
 
       },

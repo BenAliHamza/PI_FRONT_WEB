@@ -35,7 +35,7 @@ export class CreateAccessoryComponent implements OnInit {
         titre : new  FormControl('', [Validators.required]),
         prix  : new FormControl('', [Validators.required, Validators.min(0)]),
         categorie : new FormControl(this.category[0]._id, [Validators.required]),
-        // image : new FormControl('', [Validators.required]), // salim ken t7eb tkamalha
+        image : new FormControl('', [Validators.required]), // salim ken t7eb tkamalha
       })
 
 

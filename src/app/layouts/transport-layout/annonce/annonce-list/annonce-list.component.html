@@ -1,13 +1,30 @@
 <div style="padding-top: 100px;" class="container">
 
   <div class="row justify-content-center">
-    <h1>Liste des annonces </h1>
+    <h1>Liste des annonces </h1>   <a style="margin-left: auto" *ngIf="user" routerLink="/co-transport/createAnnonce" class="btn btn-dark">Create annonce</a>
+    <a style="margin-left: auto" *ngIf="!user" routerLink="/co-transport/login" class="btn btn-dark">Login to Create annonce</a>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-sm-4">
+      <label for="typeSelect">Filter by Type:</label>
+      <select id="typeSelect" class="form-control" [(ngModel)]="selectedType" (change)="filterAnnonces()">
+        <option value="">All</option>
+        <option value="Co-Voiturage">Co-Voiturage</option>
+        <option value="Livraison">Livraison</option>
+        <option value="Taxi">Taxi</option>
+      </select>
+    </div>
   </div>
 
+  <div *ngIf="filteredAnnonces && filteredAnnonces.length" class="row justify-content-center">
+   <div *ngFor="let item of filteredAnnonces" class="col-sm-4">
+     <a routerLink="/co-transport/annonce-details/{{item._id}}">
+       <app-annonce-item [annonce]="item"></app-annonce-item>
+     </a>
 
-  <div class="row justify-content-center">
-   <div *ngFor="let item of annonces" class="col-sm-4">
-     <app-annonce-item [annonce]="item"></app-annonce-item>
    </div>
   </div>
+  <h2 *ngIf="!filteredAnnonces.length">
+    Pas d'annonces pour le moment
+  </h2>
 </div>
