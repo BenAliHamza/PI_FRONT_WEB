@@ -9,7 +9,7 @@
       <form [formGroup]="annonceForm" method="post">
 
         <div *ngIf="optionsType.length" class="form-group">
-          <label class="form-control-label" >Type d'offre : </label>
+          <label class="form-control-label" >Type d'annonce : </label>
           <select formControlName="type"  class="form-control">
             <option *ngFor="let role of optionsType" [value]="role.value" >{{role.label}}</option>
           </select>
@@ -62,3 +62,4 @@
     </div>
   </div>
 </div>
+<ngx-spinner type="ball-scale-multiple"></ngx-spinner>
