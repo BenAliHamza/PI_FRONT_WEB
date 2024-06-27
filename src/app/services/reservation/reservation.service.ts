@@ -15,7 +15,9 @@ export class ReservationService {
     const headers = new HttpHeaders({'Authorization': `Bearer ${this.authService.getToken()}`});
     return this.http.post<Reservation>(this.base,reservation);
   }
-
+  getall(){
+    return this.http.get<Reservation[]>(this.base);
+  }
   getUserReservation() {
     return this.http.get<Reservation[]>(this.base );
   }

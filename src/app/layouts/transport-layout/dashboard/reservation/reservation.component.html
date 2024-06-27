@@ -1,38 +1,31 @@
 <div style="padding: 1rem" class="container">
   <div class="row">
-    <h1 class="title">List of all annonces</h1>
+    <h1 class="title">List of all reservations</h1>
   </div>
 
   <div class="row mb-3">
     <div class="col">
-      <select class="form-control" [(ngModel)]="selectedType" (change)="filterAnnonces()">
-        <option value="">All Types</option>
-        <option *ngFor="let option of optionsType" [value]="option.value">{{ option.label }}</option>
-      </select>
-    </div>
-    <div class="col">
-      <select class="form-control" [(ngModel)]="selectedStatus" (change)="filterAnnonces()">
+      <select class="form-control" [(ngModel)]="selectedStatus" (change)="filterReservations()">
         <option value="">All Status</option>
-        <option *ngFor="let status of arraystatus" [value]="status">{{ status }}</option>
+        <option *ngFor="let status of statusOptions" [value]="status">{{ status }}</option>
       </select>
     </div>
   </div>
 
-  <div *ngIf="paginatedAnnonces.length > 0; else noAnnonces" class="row justify-content-center">
-    <div *ngFor="let annonce of paginatedAnnonces" class="col-sm-4">
+  <div *ngIf="paginatedReservations.length > 0; else noReservations" class="row justify-content-center">
+    <div *ngFor="let reservation of paginatedReservations" class="col-sm-4">
       <!-- Your card component placeholder -->
-
-      <a routerLink="/co-transport/admin/annonce-details/{{annonce._id}}">
-        <app-small-card-offre [isAnnonce]="true" [offre]="annonce"></app-small-card-offre>
+      <a routerLink="/co-transport/admin/reservationDetails/{{reservation._id}}">
+        <app-small-reservation-card [res]="reservation"></app-small-reservation-card>
 
       </a>
     </div>
   </div>
 
-  <ng-template #noAnnonces>
+  <ng-template #noReservations>
     <div class="row">
       <div class="col">
-        <p>No annonces found.</p>
+        <p>No reservations found.</p>
       </div>
     </div>
   </ng-template>

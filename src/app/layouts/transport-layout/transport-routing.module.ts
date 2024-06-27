@@ -28,6 +28,7 @@ import {DashboardComponent} from "./dashboard/dashboard.component";
 import {UsersComponent} from "./dashboard/users/users.component";
 import {AdminGuard} from "../../services/admin.guard";
 import {AnnoncesComponent} from "./dashboard/annonces/annonces.component";
+import {ReservationComponent} from "./dashboard/reservation/reservation.component";
 
 
 
@@ -96,7 +97,13 @@ const routes: Routes = [
         path :'userCard/:id' , component : UsercardComponent,
       },{
         path:  "annonces" , component: AnnoncesComponent
-      }
+      },{
+        path:  "reservations" , component: ReservationComponent
+      },{
+        path :"reservationDetails/:id" , component : ReservationDetailsComponent},
+      {
+        path : "annonce-details/:id" , component : AnnonceDetailsComponent
+      },
     ]
   }
 ] ;

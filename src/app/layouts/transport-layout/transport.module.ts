@@ -56,6 +56,7 @@ import { UsersComponent } from './dashboard/users/users.component';
 import { SmallCardUserComponent } from './dashboard/small-card-user/small-card-user.component';
 import {AdminGuard} from "../../services/admin.guard";
 import { AnnoncesComponent } from './dashboard/annonces/annonces.component';
+import { ReservationComponent } from './dashboard/reservation/reservation.component';
 
 
 @NgModule({
@@ -101,6 +102,7 @@ import { AnnoncesComponent } from './dashboard/annonces/annonces.component';
     UsersComponent,
     SmallCardUserComponent,
     AnnoncesComponent,
+    ReservationComponent,
   ],
   imports: [
     CommonModule,
