@@ -27,9 +27,10 @@ export class AnnonceCreationComponent implements OnInit {
     { value: 'Livraison', label: 'Livraison' },
     { value: 'Taxi', label: 'Taxi' }
   ];
+  arraystatus = ['actif', 'brouillant', 'archivé']
+
   userVehicule : Vehicule[]= [];
 
-  arraystatus = ['actif', 'brouillant', 'archivé']
 
   constructor(private  vs :VehiculeService , private  userService : UserService , private  annonceS : AnnonceService , private toastr : ToastrService
     ,private  router :Router , private  spinner : NgxSpinnerService
