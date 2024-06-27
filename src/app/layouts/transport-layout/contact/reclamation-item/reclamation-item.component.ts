@@ -12,6 +12,7 @@ export class ReclamationItemComponent implements OnInit, AfterViewInit {
   @Input() count!: number;
   backgroundColor =''
    types = ["Paiement", "Retard", "PanneApplication"];
+  @Input() isAdmin = false ;
 
   constructor() { }
 

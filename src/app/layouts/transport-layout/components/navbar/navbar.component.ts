@@ -4,7 +4,7 @@ import { Location, LocationStrategy, PathLocationStrategy } from '@angular/commo
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-navbar',
+  selector: 'app-navbarr',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss']
 })

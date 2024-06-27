@@ -1,4 +1,5 @@
 export  interface Reclamation  {
+  _id?: string;
   expediteur: any;
   titre: any;
   description?: any;

@@ -48,6 +48,13 @@ import { AccosoryItemComponent } from './store/accosory-item/accosory-item.compo
 import { AccoryDetailsComponent } from './store/accory-details/accory-details.component';
 import {MatCardModule} from "@angular/material/card";
 import { ListProductComponent } from './store/list-product/list-product.component';
+import { ReclamationDetailsComponent } from './contact/reclamation-details/reclamation-details.component';
+import { UsercardComponent } from './profile/usercard/usercard.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import {ComponentsModule} from "../../components/components.module";
+import { UsersComponent } from './dashboard/users/users.component';
+import { SmallCardUserComponent } from './dashboard/small-card-user/small-card-user.component';
+import {AdminGuard} from "../../services/admin.guard";
 
 
 @NgModule({
@@ -87,6 +94,11 @@ import { ListProductComponent } from './store/list-product/list-product.componen
     AccosoryItemComponent,
     AccoryDetailsComponent,
     ListProductComponent,
+    ReclamationDetailsComponent,
+    UsercardComponent,
+    DashboardComponent,
+    UsersComponent,
+    SmallCardUserComponent,
   ],
   imports: [
     CommonModule,
@@ -103,8 +115,9 @@ import { ListProductComponent } from './store/list-product/list-product.componen
     MatDatepickerModule,
     MatButtonModule,
     NgxSpinnerModule,
-    MatCardModule
+    MatCardModule,
+    ComponentsModule
   ],
-  providers : [AuthGuard]
+  providers : [AuthGuard, AdminGuard]
 })
 export class TransportModule { }

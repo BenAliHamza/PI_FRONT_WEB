@@ -11,7 +11,7 @@ import {AuthService} from "../../../../services/auth.service";
 export class SimpleHeaderComponent {
   imageMale = "assets/img/male.png";
   imageFemale = "assets/img/female.png";
-  @Input() user : User ;
+  @Input() user : User =null ;
   constructor(private auth: AuthService ) {
   }
 

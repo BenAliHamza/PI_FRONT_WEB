@@ -20,7 +20,7 @@ export class ReservationService {
     return this.http.get<Reservation[]>(this.base );
   }
   updateReservation(reservation :Reservation) {
-    return this.http.put<Reservation>(this.base,reservation);
+    return this.http.put<Reservation>(this.base+'/'+ reservation._id,reservation);
   }
   deleteReservation(id:string){
     return  this.http.delete<Reservation>(this.base+'/'  + id);

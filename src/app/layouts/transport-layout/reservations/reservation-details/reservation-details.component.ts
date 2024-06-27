@@ -3,6 +3,10 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {OffreService} from "../../../../services/offre/offre.service";
 import {ReservationService} from "../../../../services/reservation/reservation.service";
 import {Reservation} from "../../../../interfaces/reservation";
+import {UserService} from "../../../../services/user.service";
+import {ToastrService} from "ngx-toastr";
+import {NgxSpinnerService} from "ngx-spinner";
+import {User} from "../../../../interfaces/user.interface";
 
 @Component({
   selector: 'app-reservation-details',
@@ -12,16 +16,21 @@ import {Reservation} from "../../../../interfaces/reservation";
 export class ReservationDetailsComponent implements OnInit {
 
   constructor(private ac : ActivatedRoute, private offService :OffreService,
-              private router : Router, private reservationService : ReservationService) { }
+              private router : Router, private reservationService : ReservationService ,
+              private  userService : UserService ,private toastr : ToastrService, private spinner :NgxSpinnerService) { }
   reservation : Reservation;
   offre : Offre ;
+  user:User;
+  isEditMode= false ;
   ngOnInit(): void {
     const id = this.ac.snapshot.params['id'];
+    this.spinner.show()
     this.reservationService.getById(id).subscribe(
       resu =>{
         this.reservation = resu ;
         this.offService.getById(this.reservation.offre).subscribe(offre=> {
           this.offre= offre;
+          this.spinner.hide()
         })
       }
     )

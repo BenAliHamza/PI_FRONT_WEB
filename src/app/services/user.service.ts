@@ -3,16 +3,21 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {environment} from "../../environments/environment";
 import {User} from "../interfaces/user.interface";
 import {catchError, Observable, of, tap} from "rxjs";
+import {AuthService} from "./auth.service";
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
   Base = environment.BASE;
-  constructor(private  http :  HttpClient) { }
+  constructor(private  http :  HttpClient , private auth : AuthService) { }
   private  isAdmin = false ;
 
   getInfo(){
+    const connected = this.auth.getToken()
+    if(!connected){
+      return of(null)
+    }
     return this.http.get(this.Base + '/users/info').pipe(tap((user:User)=> {
       this.isAdmin = user.role ==='ADMIN'
     }))
@@ -56,5 +61,9 @@ export class UserService {
 
   deleteAccount(param: { id: string }) {
     return this.http.delete(this.Base + `/users/delete/${param.id}`)
+  }
+
+  getall() {
+    return this.http.get(this.Base + '/users/getallAdminUsers');
   }
 }

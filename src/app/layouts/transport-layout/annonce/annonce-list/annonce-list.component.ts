@@ -4,6 +4,7 @@ import {Annonce} from "../../../../interfaces/annonce";
 import {UserService} from "../../../../services/user.service";
 import {Router} from "@angular/router";
 import {User} from "../../../../interfaces/user.interface";
+import {NgxSpinnerService} from "ngx-spinner";
 
 @Component({
   selector: 'app-annonce-list',
@@ -12,16 +13,17 @@ import {User} from "../../../../interfaces/user.interface";
 })
 export class AnnonceListComponent implements OnInit {
 
-  constructor(private annoncesService :AnnonceService , private userService :UserService, private router : Router)   { }
+  constructor(private annoncesService :AnnonceService , private userService :UserService, private router : Router , private spinner : NgxSpinnerService)   { }
   annonces : Annonce[]=[]
   user: User
   filteredAnnonces: Annonce[] = [];
   selectedType: string = '';
   ngOnInit(): void {
+    this.spinner.show()
     this.annoncesService.getallAnnonce().subscribe(res=> {
       this.annonces = res;
       this.filterAnnonces(); // Apply filter initially
-
+      this.spinner.hide()
     })
     this.userService.getInfo().subscribe(res=>{
       this.user = res ;

@@ -6,6 +6,8 @@ import {VehiculeService} from "../../../../services/vehicule/vehicule.service";
 import {Vehicule} from "../../../../interfaces/vehicule.interface";
 import {ReservationService} from "../../../../services/reservation/reservation.service";
 import {Reservation} from "../../../../interfaces/reservation";
+import {ToastrService} from "ngx-toastr";
+import {NgxSpinnerService} from "ngx-spinner";
 
 @Component({
   selector: 'app-create-reservation',
@@ -18,7 +20,8 @@ export class CreateReservationComponent implements OnInit {
               private activatedR :ActivatedRoute,
               private offreService :OffreService ,
               private vs :VehiculeService,
-              private reservationService :ReservationService) { }
+              private reservationService :ReservationService ,
+              private  toas: ToastrService , private spinner: NgxSpinnerService) { }
   offre : Offre;
   reservationForm: FormGroup
   plaeDisponible : number ;
@@ -46,8 +49,11 @@ export class CreateReservationComponent implements OnInit {
       places : +this.reservationForm.value.places ,
       offre : this.offre._id
     }
+    this.spinner.show()
     this.reservationService.create(data).subscribe(result=> {
-      console.log(result);
+      this.spinner.hide();
+     this.toas.success('Reservation created successfully.');
+     this.router.navigate(['/co-transport/reservationDetails/'+result._id]);
     })
   }
 }

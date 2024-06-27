@@ -1,5 +1,6 @@
 import {AfterViewInit, Component, Input, OnInit} from '@angular/core';
 import {Annonce} from "../../../../interfaces/annonce";
+import {NgxSpinnerService} from "ngx-spinner";
 
 @Component({
   selector: 'app-annonce-card',
@@ -9,7 +10,7 @@ import {Annonce} from "../../../../interfaces/annonce";
 export class AnnonceCardComponent implements OnInit, AfterViewInit {
   @Input() annonce: Annonce;
   color: string='red';
-  constructor() { }
+  constructor(private spinner :NgxSpinnerService) { }
 
   ngOnInit(): void {
   }

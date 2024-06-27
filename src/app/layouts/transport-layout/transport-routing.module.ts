@@ -22,6 +22,11 @@ import {CreateAccessoryComponent} from "./store/create-accessory/create-accessor
 import {AuthGuard} from "../../services/auth.guard";
 import {AccoryDetailsComponent} from "./store/accory-details/accory-details.component";
 import {ListProductComponent} from "./store/list-product/list-product.component";
+import {ReclamationDetailsComponent} from "./contact/reclamation-details/reclamation-details.component";
+import {UsercardComponent} from "./profile/usercard/usercard.component";
+import {DashboardComponent} from "./dashboard/dashboard.component";
+import {UsersComponent} from "./dashboard/users/users.component";
+import {AdminGuard} from "../../services/admin.guard";
 
 
 
@@ -64,6 +69,10 @@ const routes: Routes = [
         path : "accossorieDetails/:id" , component  : AccoryDetailsComponent
       },{
     path :"products" , component :ListProductComponent
+      }, {
+        path :'details-reclamation/:id' , component : ReclamationDetailsComponent
+      },{
+        path : "userCard/:id", component : UsercardComponent
       }
     ]},
   { path : "SignUp" , component : SignUpComponent},
@@ -74,7 +83,19 @@ const routes: Routes = [
   {
     path : "reset_password_confirmation/:token" , component : ResetPassComponent
   }
-
+  , {
+    path :"admin" , canActivate : [AdminGuard] , component  : DashboardComponent, children : [
+      {
+        path:  "" , pathMatch: "full" , redirectTo : '',
+      },
+      {
+        path: "users" , component : UsersComponent,
+      },
+      {
+        path :'userCard/:id' , component : UsercardComponent,
+      }
+    ]
+  }
 ] ;
 
 @NgModule({

@@ -1,4 +1,4 @@
-<div class="card">
+<div class="card" style="max-width: 420px !important;">
 <!--  <button class="dismiss" type="button">×</button>-->
   <div class="header">
 <!--    <div class="image">-->
@@ -9,9 +9,29 @@
       <p class="message">{{ reservation.message }}</p>
       <p class="message">Places reservées : {{ reservation.places}}</p>
     </div>
-    <div class="actions">
-      <button class="history" type="button">Modify</button>
+    <div *ngIf="!iseditMode" class="actions">
+      <button  (click)="startUpdate()" class="history" type="button">Modify</button>
       <button (click)="delete()" style="background: red;color: white" class="track" type="button">Delete</button>
+    </div>
+    <div  *ngIf="iseditMode" >
+      <form [formGroup]="reservationForm" style="padding-top: 100px">
+
+        <div class="form-group">
+          <label class="form-control-label" for="title">Message : </label>
+          <textarea formControlName="message" resize="none" id="title" rows="4" class="form-control form-control-alternative" placeholder="A few words about you or a message ..."></textarea>
+        </div>
+        <div class="form-group">
+          <h4 *ngIf="plaeDisponible">Nombre de place disponible :  {{plaeDisponible}} places</h4>
+          <label class="form-control-label" for="Places">Places : </label>
+          <input formControlName="places"  type="number"  id="Places" rows="4" class="form-control form-control-alternative" >
+        </div>
+
+        <div style="width: 100%">
+          <button  (click)="submit()" [disabled]="reservationForm.invalid" class="btn btn-primary">update reservation !</button>
+          <button (click)="cancel()"  class="btn btn-danger">Cancel !</button>
+        </div>
+
+      </form>
     </div>
   </div>
 </div>

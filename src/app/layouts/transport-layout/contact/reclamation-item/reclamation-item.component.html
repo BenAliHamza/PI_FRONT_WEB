@@ -4,6 +4,7 @@
     <h5 class="card-title">Report : {{ rec.type}}    - Status : {{rec.etat}} </h5>
     <p class="card-text">{{ rec.description }} </p>
     <a href="#" class="btn btn-danger">Delete </a>
-    <a href="#" class="btn btn-dark">Modifier </a>
+    <a routerLink="/co-transport/details-reclamation/{{rec._id}}" class="btn btn-dark">{{ isAdmin ? "Respond" :"Update" }} </a>
   </div>
 </div>
+<ngx-spinner type="ball-scale-multiple"></ngx-spinner>
