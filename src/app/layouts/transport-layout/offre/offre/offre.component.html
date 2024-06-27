@@ -1,67 +1,10 @@
 <div class="container">
-  <br> <br>
-  <br> <br>
-  <br> <br>
-  <br> <br>
-  <br> <br><br> <br>
-  <br> <br>
-  <br> <br>
-  <br> <br>
-  <br> <br>
   <div class="row justify-content-center">
     <h1>Les  offres et services </h1>
-  </div>
-  <div class="input-group mb-3">
-    <input type="text" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="button-addon2">
-    <div class="input-group-append">
-      <select class="custom-select" id="inputGroupSelect04" aria-label="Example select with button addon">
-        <option selected>Choose...</option>
-        <option value="1">Option 1</option>
-        <option value="2">Option 2</option>
-        <option value="3">Option 3</option>
-      </select>
-      <button class="btn btn-outline-secondary" type="button" id="button-addon2">Search</button>
-    </div>
   </div>
 <div class="row justify-content-center" style="width: 100%">
     <div *ngFor="let off of offreList" class="col-sm-4">
         <app-offre-item [offre]="off" ></app-offre-item>
     </div>
-  </div>
-</div>
-<div class="bg-light border-right" id="sidebar-wrapper">
-  <div class="sidebar-heading">Filters</div>
-  <div class="list-group list-group-flush">
-    <a href="#" class="list-group-item list-group-item-action bg-light">
-      <div class="form-group">
-        <label for="category">Category</label>
-        <select class="form-control" id="category" [(ngModel)]="selectedCategory">
-          <option value="">All Categories</option>
-          <option value="category1">Category 1</option>
-          <option value="category2">Category 2</option>
-          <option value="category3">Category 3</option>
-        </select>
-      </div>
-    </a>
-    <a href="#" class="list-group-item list-group-item-action bg-light">
-      <div class="form-group">
-        <label for="priceRange">Price Range</label>
-        <input type="range" class="form-control-range" id="priceRange" [(ngModel)]="priceRange" min="0" max="1000">
-        <span>{{ priceRange }}</span>
-      </div>
-    </a>
-    <a href="#" class="list-group-item list-group-item-action bg-light">
-      <div class="form-group">
-        <label for="rating">Rating</label>
-        <select class="form-control" id="rating" [(ngModel)]="selectedRating">
-          <option value="">All Ratings</option>
-          <option value="1">1 Star</option>
-          <option value="2">2 Stars</option>
-          <option value="3">3 Stars</option>
-          <option value="4">4 Stars</option>
-          <option value="5">5 Stars</option>
-        </select>
-      </div>
-    </a>
   </div>
 </div>
