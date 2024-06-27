@@ -1,0 +1,51 @@
+<div style="padding: 1rem" class="container">
+  <div class="row">
+    <h1 class="title">List of all annonces</h1>
+  </div>
+
+  <div class="row mb-3">
+    <div class="col">
+      <select class="form-control" [(ngModel)]="selectedType" (change)="filterAnnonces()">
+        <option value="">All Types</option>
+        <option *ngFor="let option of optionsType" [value]="option.value">{{ option.label }}</option>
+      </select>
+    </div>
+    <div class="col">
+      <select class="form-control" [(ngModel)]="selectedStatus" (change)="filterAnnonces()">
+        <option value="">All Status</option>
+        <option *ngFor="let status of arraystatus" [value]="status">{{ status }}</option>
+      </select>
+    </div>
+  </div>
+
+  <div *ngIf="paginatedAnnonces.length > 0; else noAnnonces" class="row justify-content-center">
+    <div *ngFor="let annonce of paginatedAnnonces" class="col-sm-4">
+      <!-- Your card component placeholder -->
+      <app-small-card-offre [isAnnonce]="true" [offre]="annonce"></app-small-card-offre>
+    </div>
+  </div>
+
+  <ng-template #noAnnonces>
+    <div class="row">
+      <div class="col">
+        <p>No annonces found.</p>
+      </div>
+    </div>
+  </ng-template>
+
+  <nav *ngIf="totalPages > 1" aria-label="Page navigation example">
+    <ul class="pagination">
+      <li class="page-item" [class.disabled]="currentPage === 1">
+        <a class="page-link" (click)="changePage(currentPage - 1)">Previous</a>
+      </li>
+      <li class="page-item" *ngFor="let page of pages" [class.active]="page === currentPage">
+        <a class="page-link" (click)="changePage(page)">{{ page }}</a>
+      </li>
+      <li class="page-item" [class.disabled]="currentPage === totalPages || totalPages === 0">
+        <a class="page-link" (click)="changePage(currentPage + 1)">Next</a>
+      </li>
+    </ul>
+  </nav>
+</div>
+
+<ngx-spinner type="ball-scale-multiple"></ngx-spinner>

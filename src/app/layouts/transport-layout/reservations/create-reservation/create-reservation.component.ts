@@ -3,7 +3,6 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {OffreService} from "../../../../services/offre/offre.service";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {VehiculeService} from "../../../../services/vehicule/vehicule.service";
-import {Vehicule} from "../../../../interfaces/vehicule.interface";
 import {ReservationService} from "../../../../services/reservation/reservation.service";
 import {Reservation} from "../../../../interfaces/reservation";
 import {ToastrService} from "ngx-toastr";
@@ -54,6 +53,9 @@ export class CreateReservationComponent implements OnInit {
       this.spinner.hide();
      this.toas.success('Reservation created successfully.');
      this.router.navigate(['/co-transport/reservationDetails/'+result._id]);
+    },(err)=>{
+    this.spinner.hide();
+    this.toas.error(err.error .error ,"RESERVATION FAILED !!")
     })
   }
 }

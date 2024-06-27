@@ -27,6 +27,7 @@ import {UsercardComponent} from "./profile/usercard/usercard.component";
 import {DashboardComponent} from "./dashboard/dashboard.component";
 import {UsersComponent} from "./dashboard/users/users.component";
 import {AdminGuard} from "../../services/admin.guard";
+import {AnnoncesComponent} from "./dashboard/annonces/annonces.component";
 
 
 
@@ -93,6 +94,8 @@ const routes: Routes = [
       },
       {
         path :'userCard/:id' , component : UsercardComponent,
+      },{
+        path:  "annonces" , component: AnnoncesComponent
       }
     ]
   }
