@@ -18,6 +18,10 @@ import {ReclamationListComponent} from "./contact/reclamation-list/reclamation-l
 import {ForgotPasswordComponent} from "./profile/forgot-password/forgot-password.component";
 import {ResetPassComponent} from "./profile/reset-pass/reset-pass.component";
 import {EditProfileComponent} from "./profile/edit-profile/edit-profile.component";
+import {CreateAccessoryComponent} from "./store/create-accessory/create-accessory.component";
+import {AuthGuard} from "../../services/auth.guard";
+import {AccoryDetailsComponent} from "./store/accory-details/accory-details.component";
+import {ListProductComponent} from "./store/list-product/list-product.component";
 
 
 
@@ -54,6 +58,12 @@ const routes: Routes = [
         path : "contact-us" , component : ContactComponent
       }, {
           path :"list-reclamations" , component :ReclamationListComponent
+      }, {
+        path :"create-product" , canActivate: [AuthGuard] ,  component : CreateAccessoryComponent
+      } , {
+        path : "accossorieDetails/:id" , component  : AccoryDetailsComponent
+      },{
+    path :"products" , component :ListProductComponent
       }
     ]},
   { path : "SignUp" , component : SignUpComponent},

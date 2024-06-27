@@ -42,6 +42,12 @@ import { ForgotPasswordComponent } from './profile/forgot-password/forgot-passwo
 import { ResetPassComponent } from './profile/reset-pass/reset-pass.component';
 import { EditProfileComponent } from './profile/edit-profile/edit-profile.component';
 import { ConfirmationModalComponent } from './modals/confirmation-modal/confirmation-modal.component';
+import { CreateAccessoryComponent } from './store/create-accessory/create-accessory.component';
+import {AuthGuard} from "../../services/auth.guard";
+import { AccosoryItemComponent } from './store/accosory-item/accosory-item.component';
+import { AccoryDetailsComponent } from './store/accory-details/accory-details.component';
+import {MatCardModule} from "@angular/material/card";
+import { ListProductComponent } from './store/list-product/list-product.component';
 
 
 @NgModule({
@@ -77,6 +83,10 @@ import { ConfirmationModalComponent } from './modals/confirmation-modal/confirma
     ResetPassComponent,
     EditProfileComponent,
     ConfirmationModalComponent,
+    CreateAccessoryComponent,
+    AccosoryItemComponent,
+    AccoryDetailsComponent,
+    ListProductComponent,
   ],
   imports: [
     CommonModule,
@@ -92,7 +102,9 @@ import { ConfirmationModalComponent } from './modals/confirmation-modal/confirma
     MatInputModule,
     MatDatepickerModule,
     MatButtonModule,
-    NgxSpinnerModule
-  ]
+    NgxSpinnerModule,
+    MatCardModule
+  ],
+  providers : [AuthGuard]
 })
 export class TransportModule { }

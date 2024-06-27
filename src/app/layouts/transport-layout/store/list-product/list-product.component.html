@@ -1,0 +1,14 @@
+<div style="padding-top: 150px; " class="container">
+  <div style="margin-bottom: 50px" class="row">
+    <h1 style="color: #1da1f2"> List des toutes les produits </h1>
+  </div>
+  <div class="row justify-content-center filters">
+    <div *ngFor="let item of products" style="margin-bottom: 10px"  class="col-4">
+      <app-accosory-item [accesory]="item" [isList]="true" ></app-accosory-item>
+    </div>
+  </div>
+
+</div>
+
+
+<ngx-spinner type="ball-scale-multiple"></ngx-spinner>
