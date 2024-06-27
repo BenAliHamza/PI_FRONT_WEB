@@ -15,4 +15,15 @@ export class CategoriesService {
   getCategories():Observable<ICategory[]> {
     return this.http.get<ICategory[]>(this.base);
   }
+  createCategory(cat : ICategory) {
+    return this.http.post<ICategory>(this.base , cat);
+  }
+
+  updateCategory(updatedCategory: ICategory) {
+    return this.http.patch<ICategory>(this.base +'/'+ updatedCategory._id, updatedCategory);
+  }
+
+  delete(_id: string) {
+    return this.http.delete<ICategory>(this.base +'/'+ _id);
+  }
 }

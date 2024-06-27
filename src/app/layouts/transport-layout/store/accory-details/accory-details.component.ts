@@ -61,7 +61,7 @@ export class AccoryDetailsComponent implements OnInit {
     });
   }
   checkOwnership(product : AccesoryInterface){
-    return product.expediteur._id == this.user._id
+    return product.expediteur._id == this.user._id || this.user.role ==='ADMIN'
   }
 
   handleAction(state: boolean) {

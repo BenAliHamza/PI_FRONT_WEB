@@ -29,6 +29,9 @@ import {UsersComponent} from "./dashboard/users/users.component";
 import {AdminGuard} from "../../services/admin.guard";
 import {AnnoncesComponent} from "./dashboard/annonces/annonces.component";
 import {ReservationComponent} from "./dashboard/reservation/reservation.component";
+import {ProduitsComponent} from "./dashboard/produits/produits.component";
+import {CategoriesComponent} from "./dashboard/categories/categories.component";
+import {CreateCatComponent} from "./dashboard/create-cat/create-cat.component";
 
 
 
@@ -103,7 +106,15 @@ const routes: Routes = [
         path :"reservationDetails/:id" , component : ReservationDetailsComponent},
       {
         path : "annonce-details/:id" , component : AnnonceDetailsComponent
-      },
+      },{
+         path : "produits" , component : ProduitsComponent
+      },{
+        path : "accossorieDetails/:id" , component  : AccoryDetailsComponent
+      },{
+        path : "categories"  , component :CategoriesComponent
+      },{
+        path : "createCategorie"  , component :CreateCatComponent
+      }
     ]
   }
 ] ;

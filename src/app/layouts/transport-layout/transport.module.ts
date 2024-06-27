@@ -57,6 +57,9 @@ import { SmallCardUserComponent } from './dashboard/small-card-user/small-card-u
 import {AdminGuard} from "../../services/admin.guard";
 import { AnnoncesComponent } from './dashboard/annonces/annonces.component';
 import { ReservationComponent } from './dashboard/reservation/reservation.component';
+import { ProduitsComponent } from './dashboard/produits/produits.component';
+import { CategoriesComponent } from './dashboard/categories/categories.component';
+import { CreateCatComponent } from './dashboard/create-cat/create-cat.component';
 
 
 @NgModule({
@@ -103,6 +106,9 @@ import { ReservationComponent } from './dashboard/reservation/reservation.compon
     SmallCardUserComponent,
     AnnoncesComponent,
     ReservationComponent,
+    ProduitsComponent,
+    CategoriesComponent,
+    CreateCatComponent,
   ],
   imports: [
     CommonModule,
