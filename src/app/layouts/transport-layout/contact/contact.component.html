@@ -1,36 +1,37 @@
-<div  style="background: grey;padding-top: 150px;cursor: pointer" class="wrapper">
+<div class="contact-wrapper">
+  <div style="    margin-left: auto;
+    margin-right: auto;" class="container">
     <div class="row justify-content-center">
-      <!--ring div starts here-->
-      <div class="ring">
-        <i style="--clr:#00ff0a;"></i>
-        <i style="--clr:#ff0057;"></i>
-        <i style="--clr:#fffd44;"></i>
-        <div class="login">
-          <h2>You want to report something ? </h2>
-          <form [formGroup]="form">
-            <div style="margin-bottom: 20px" class="inputBx">
-              <input formControlName="titre" class="form-control" type="text" placeholder="Titre">
-            </div>
-            <select  formControlName="type"  class="form-control">
-              <option *ngFor="let role of type" [value]="role" >{{role}}</option>
-            </select>
-            <div style="margin-bottom: 20px"  class="inputBx">
-              <h4 style="color: white">Message : </h4>
-              <textarea formControlName="description" class="form-control" type="submit" resize="none" rows="4" placeholder="Leave a message here . . ."></textarea>
-            </div>
-            <div class="inputBx">
-              <button style="width: 100%;height: 50px;cursor:pointer;" [disabled]="form.invalid"  (click)="submit()" type="button"  class="btn btn-danger">Submit</button>
-            </div>
-            <div class="links">
-              <a routerLink="/co-transport/profile-page">My profile</a>
-              <a routerLink="/co-transport/list-reclamations">My reclamations</a>
-            </div>
-          </form>
-
+      <div class="col-sm-8">
+        <div class="contact-header text-center">
+          <h1>Contact Us</h1>
+          <p>If you have any issues or concerns, please let us know by filling out the form below. We are here to help!</p>
         </div>
+        <form [formGroup]="form" class="contact-form">
+          <div class="form-group">
+            <label for="titre">Title</label>
+            <input formControlName="titre" id="titre" class="form-control" type="text" placeholder="Enter the title">
+          </div>
+          <div class="form-group">
+            <label for="type">Type</label>
+            <select formControlName="type" id="type" class="form-control">
+              <option *ngFor="let role of type" [value]="role">{{role}}</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="description">Message</label>
+            <textarea formControlName="description" id="description" class="form-control" rows="4" placeholder="Leave a message here..."></textarea>
+          </div>
+          <div class="form-group text-center">
+            <button [disabled]="form.invalid" (click)="submit()" type="button" class="btn btn-primary btn-block">Submit</button>
+          </div>
+          <div class="form-links text-center">
+            <a routerLink="/co-transport/profile-page">My profile</a> |
+            <a routerLink="/co-transport/list-reclamations">My reclamations</a>
+          </div>
+        </form>
       </div>
-      <!--ring div ends here-->
     </div>
-
+  </div>
 </div>
 <ngx-spinner type="ball-scale-multiple"></ngx-spinner>

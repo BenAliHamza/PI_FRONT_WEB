@@ -1,0 +1,113 @@
+<div class="container mt-4">
+  <div class="row">
+    <div class="col">
+      <h1 class="title">Reclamations</h1>
+      <span style="float: right">
+      </span>
+      <p class="lead">Manage all reclamations. Use the search bar to quickly find a specific reclamation.</p>
+    </div>
+  </div>
+
+  <div class="row mb-4">
+    <div class="col-md-3">
+      <label for="searchFilter">Search Reclamations</label>
+      <input type="text" class="form-control" id="searchFilter" [(ngModel)]="searchText" (input)="filterReclamations()" placeholder="Search by title">
+    </div>
+    <div class="col-md-3">
+      <label for="typeFilter">Filter by Type</label>
+      <select class="form-control" id="typeFilter" [(ngModel)]="selectedType" (change)="filterReclamations()">
+        <option value="">All Types</option>
+        <option *ngFor="let type of types" [value]="type">{{ type }}</option>
+      </select>
+    </div>
+    <div class="col-md-3">
+      <label for="etatFilter">Filter by Etat</label>
+      <select class="form-control" id="etatFilter" [(ngModel)]="selectedEtat" (change)="filterReclamations()">
+        <option value="">All Etats</option>
+        <option *ngFor="let etat of etats" [value]="etat">{{ etat }}</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-8">
+      <div *ngIf="paginatedReclamations.length > 0" class="row">
+        <div *ngFor="let reclamation of paginatedReclamations" class="col-md-6 mb-4">
+          <div class="card h-100" (click)="onReclamationClick(reclamation)">
+            <div class="card-body">
+              <h5 class="card-title">{{ reclamation.titre }}</h5>
+              <p class="card-text">{{ reclamation.description }}</p>
+              <p class="card-text"><strong>Type:</strong> {{ reclamation.type }}</p>
+              <p class="card-text"><strong>Etat:</strong> {{ reclamation.etat }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="paginatedReclamations.length === 0" class="row">
+        <div class="col">
+          <p>No reclamations found</p>
+        </div>
+      </div>
+      <nav *ngIf="totalPages > 1" aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+          <li class="page-item" [class.disabled]="currentPage === 1">
+            <a class="page-link" (click)="changePage(currentPage - 1)">Prev</a>
+          </li>
+          <li class="page-item" *ngFor="let page of pages" [class.active]="page === currentPage">
+            <a class="page-link" (click)="changePage(page)">{{ page }}</a>
+          </li>
+          <li class="page-item" [class.disabled]="currentPage === totalPages">
+            <a class="page-link" (click)="changePage(currentPage + 1)">Next</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="col-md-4">
+      <div *ngIf="selectedReclamation">
+        <h3>Edit Reclamation</h3>
+        <form [formGroup]="reclamationForm" (ngSubmit)="onSubmit()">
+          <div class="form-group">
+            <label for="reclamationTitle">Title</label>
+            <input type="text" id="reclamationTitle" class="form-control" formControlName="titre">
+            <div *ngIf="reclamationForm.controls.titre.invalid && reclamationForm.controls.titre.touched" class="text-danger">
+              Title is required
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="reclamationDescription">Description</label>
+            <textarea id="reclamationDescription" class="form-control" formControlName="description"></textarea>
+            <div *ngIf="reclamationForm.controls.description.invalid && reclamationForm.controls.description.touched" class="text-danger">
+              Description is required
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="reclamationType">Type</label>
+            <select id="reclamationType" class="form-control" formControlName="type">
+              <option *ngFor="let type of types" [value]="type">{{ type }}</option>
+            </select>
+            <div *ngIf="reclamationForm.controls.type.invalid && reclamationForm.controls.type.touched" class="text-danger">
+              Type is required
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary" [disabled]="reclamationForm.invalid">Update</button>
+          <button type="button" class="btn btn-secondary ml-2" (click)="onCancel()">Cancel</button>
+          <button type="button" class="btn btn-danger ml-2" (click)="onDelete()">Delete</button>
+        </form>
+
+        <h3 class="mt-4">Respond to Reclamation</h3>
+        <form [formGroup]="responseForm" (ngSubmit)="onRespond()">
+          <div class="form-group">
+            <label for="reclamationResponse">Response</label>
+            <textarea id="reclamationResponse" class="form-control" formControlName="reponse"></textarea>
+            <div *ngIf="responseForm.controls.reponse.invalid && responseForm.controls.reponse.touched" class="text-danger">
+              Response is required
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary" [disabled]="responseForm.invalid">Send Response</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<ngx-spinner type="ball-scale-multiple"></ngx-spinner>

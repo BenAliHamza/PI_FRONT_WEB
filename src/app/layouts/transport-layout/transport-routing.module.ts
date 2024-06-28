@@ -33,6 +33,7 @@ import {ProduitsComponent} from "./dashboard/produits/produits.component";
 import {CategoriesComponent} from "./dashboard/categories/categories.component";
 import {CreateCatComponent} from "./dashboard/create-cat/create-cat.component";
 import {AdminUserCreateComponent} from "./dashboard/create-by-admin/create-by-admin.component";
+import {ReclamationComponent} from "./dashboard/reclamation/reclamation.component";
 
 
 
@@ -117,6 +118,8 @@ const routes: Routes = [
         path : "createCategorie"  , component :CreateCatComponent
       },{
         path : "createUser" , component :AdminUserCreateComponent
+      },{
+        path:  "reclamations" , component:  ReclamationComponent
       }
     ]
   }

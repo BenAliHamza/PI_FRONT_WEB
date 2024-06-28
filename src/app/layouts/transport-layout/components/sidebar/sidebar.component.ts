@@ -14,7 +14,7 @@ export const ROUTES: RouteInfo[] = [
     { path: '/co-transport/admin/reservations', title: 'Reservations',  icon:'ni-single-02 text-yellow', class: '' },
     { path: '/co-transport/admin/produits', title: 'Produits',  icon:'ni-shop shop', class: '' },
     { path: '/co-transport/admin/categories', title: 'Categories',  icon:'ni-tv-2 text-danger', class: '' },
-    { path: '/transport', title: 'Reclamations',  icon:'ni-bullet-list-67 text-red', class: '' },
+    { path: '/co-transport/admin/reclamations', title: 'Reclamations',  icon:'ni-bullet-list-67 text-red', class: '' },
     { path: '/transport', title: 'My profile',  icon:'ni-key-25 text-info', class: '' },
 ];
 
