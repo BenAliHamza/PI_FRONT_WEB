@@ -1,0 +1,142 @@
+<div class="container mt-4">
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+      <div class="card bg-secondary shadow border-0">
+        <div class="card-body px-lg-5 py-lg-5">
+          <div class="text-center text-muted mb-4">
+            <h2>Create User</h2>
+          </div>
+          <form [formGroup]="userForm" (ngSubmit)="submitForm()">
+            <div class="form-group">
+              <div class="input-group input-group-alternative mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="ni ni-circle-08"></i></span>
+                </div>
+                <input formControlName="firstname" class="form-control" placeholder="First Name" type="text">
+              </div>
+              <span class="errors" *ngIf="userForm?.get('firstname').invalid && userForm?.get('firstname').touched">
+                <small *ngIf="userForm?.get('firstname').errors?.required">* First Name is required.</small>
+                <small *ngIf="userForm?.get('firstname').errors?.pattern">* First Name should only contain letters and may include spaces.</small>
+              </span>
+            </div>
+            <div class="form-group">
+              <div class="input-group input-group-alternative mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="ni ni-hat-3"></i></span>
+                </div>
+                <input formControlName="lastname" class="form-control" placeholder="Last Name" type="text">
+              </div>
+              <span class="errors" *ngIf="userForm?.get('lastname').invalid && userForm?.get('lastname').touched">
+                <small *ngIf="userForm?.get('lastname').errors?.required">* Last Name is required.</small>
+                <small *ngIf="userForm?.get('lastname').errors?.pattern">* Last Name should only contain letters and may include spaces.</small>
+              </span>
+            </div>
+            <div class="form-group">
+              <div class="input-group input-group-alternative mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="ni ni-email-83"></i></span>
+                </div>
+                <input formControlName="email" class="form-control" placeholder="Email" type="email">
+              </div>
+              <span class="errors" *ngIf="userForm.get('email').invalid && userForm.get('email').touched">
+                <small *ngIf="userForm.get('email').errors?.required">* Email is required.</small>
+                <small *ngIf="userForm.get('email').errors?.pattern">* Invalid Email format.</small>
+              </span>
+            </div>
+            <div class="form-group">
+              <div class="input-group input-group-alternative mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
+                </div>
+                <input formControlName="password" class="form-control" placeholder="Password" type="password">
+              </div>
+              <span class="errors" *ngIf="userForm.get('password').invalid && userForm.get('password').touched">
+                <small *ngIf="userForm.get('password').errors?.required">* Password is required.</small>
+                <small *ngIf="userForm.get('password').errors?.pattern">* Password > 8 characters, including Lowercase/Uppercase/Number.</small>
+              </span>
+            </div>
+            <div class="form-group">
+              <div class="input-group input-group-alternative mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
+                </div>
+                <input formControlName="password2" class="form-control" placeholder="Password confirmation" type="password">
+              </div>
+              <span class="errors" *ngIf="userForm.get('password2').invalid && userForm.get('password2').touched">
+                <small *ngIf="userForm.get('password2').errors?.required">* Confirmation of password is required.</small>
+                <small *ngIf="userForm.get('password2').errors?.NotEqual">* The password does not match.</small>
+              </span>
+            </div>
+            <div class="form-group">
+              <div class="input-group input-group-alternative mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="ni ni-mobile-button"></i></span>
+                </div>
+                <input formControlName="phone" class="form-control" placeholder="Phone number" type="text">
+              </div>
+              <span class="errors" *ngIf="userForm.get('phone').invalid && userForm.get('phone').touched">
+                <small *ngIf="userForm.get('phone').errors?.required">* Phone number is required.</small>
+                <small *ngIf="userForm.get('phone').errors?.pattern">* The phone number is invalid.</small>
+              </span>
+            </div>
+            <div class="form-group">
+              <div class="input-group input-group-alternative mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="ni ni-pin-3"></i></span>
+                </div>
+                <select formControlName="ville" class="form-control">
+                  <option [value]="op" *ngFor="let op of TUNISIA_VILLES">{{ op }}</option>
+                </select>
+              </div>
+              <span class="errors" *ngIf="userForm.get('ville').invalid && userForm.get('ville').touched">
+                <small *ngIf="userForm.get('ville').errors?.required">* City is required.</small>
+              </span>
+            </div>
+            <div class="form-group">
+              <div class="input-group input-group-alternative mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="ni ni-circle-08"></i></span>
+                </div>
+                <select formControlName="role" class="form-control">
+                  <option [value]="op" *ngFor="let op of ROLE_ARRAY">{{ op }}</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="custom-file">
+                <input (change)="onFileSelect($event)" type="file" class="custom-file-input" id="validatedCustomFile" required>
+                <label class="custom-file-label" for="validatedCustomFile">Choose file...</label>
+                <div class="invalid-feedback">Example invalid custom file feedback</div>
+              </div>
+            </div>
+            <div *ngIf="imageData">
+              <img [src]="imageData" alt="" width="100%" />
+            </div>
+            <div class="custom-control custom-control-alternative custom-radio mb-3">
+              <input formControlName="sex" value="female" name="custom-radio-1" class="custom-control-input" id="customRadio1" type="radio">
+              <label class="custom-control-label" for="customRadio1">Female</label>
+            </div>
+            <div class="custom-control custom-control-alternative custom-radio mb-3">
+              <input formControlName="sex" value="male" name="custom-radio-1" class="custom-control-input" id="customRadio2" checked="" type="radio">
+              <label class="custom-control-label" for="customRadio2">Male</label>
+            </div>
+            <div class="row my-4">
+              <div class="col-12">
+                <div class="custom-control custom-control-alternative custom-checkbox">
+                  <input formControlName="agreed" class="custom-control-input" id="customCheckRegister" type="checkbox">
+                  <label class="custom-control-label" for="customCheckRegister">
+                    <span class="text-muted">I agree with the <a routerLink="./">Privacy Policy</a></span>
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div class="text-center">
+              <button [disabled]="userForm.invalid" type="submit" class="btn btn-primary mt-4 pointer">Create User</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <ngx-spinner type="ball-scale-multiple"></ngx-spinner>
+</div>

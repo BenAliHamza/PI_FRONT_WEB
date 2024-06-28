@@ -11,7 +11,6 @@ import { User } from "../../../../interfaces/user.interface";
   styleUrls: ['./users.component.scss']
 })
 export class UsersComponent implements OnInit {
-
   users: User[] = [];
   filteredUsers: User[] = [];
   paginatedUsers: User[] = [];
@@ -23,9 +22,10 @@ export class UsersComponent implements OnInit {
   selectedSex: string = '';
   selectedRole: string = '';
   selectedStatus: string = '';
+  searchText: string = '';
 
   STATUS_ARRAY = ['PENDING', 'APPROVED', 'REJECTED', 'BANNED'];
-  ROLE_ARRAY = ['DEFAULT', 'VENDEUR', 'TAXI', 'GUEST','ADMIN'];
+  ROLE_ARRAY = ['DEFAULT', 'VENDEUR', 'TAXI', 'GUEST', 'ADMIN'];
   sexs = ['male', 'female'];
 
   constructor(
@@ -36,13 +36,14 @@ export class UsersComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.spinner.show()
+    this.spinner.show();
     this.userService.getall().subscribe((response: any) => {
       this.users = response.users;
       this.filterUsers();
-      this.spinner.hide()
+      this.spinner.hide();
     }, err => {
       console.log(err);
+      this.spinner.hide();
     });
   }
 
@@ -67,7 +68,8 @@ export class UsersComponent implements OnInit {
     this.filteredUsers = this.users.filter(user => {
       return (!this.selectedSex || user.sex === this.selectedSex) &&
         (!this.selectedRole || user.role === this.selectedRole) &&
-        (!this.selectedStatus || user.status === this.selectedStatus);
+        (!this.selectedStatus || user.status === this.selectedStatus) &&
+        (!this.searchText || user.firstname.toLowerCase().includes(this.searchText.toLowerCase()));
     });
     this.totalPages = Math.ceil(this.filteredUsers.length / this.itemsPerPage);
     this.pages = Array.from({ length: this.totalPages }, (_, i) => i + 1);

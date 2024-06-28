@@ -2,10 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ICategory } from "../../../../interfaces/categories.interface";
 import { ToastrService } from "ngx-toastr";
-import { Router } from "@angular/router";
 import { NgxSpinnerService } from "ngx-spinner";
 import { CategoriesService } from "../../../../services/categories/categories.service";
-import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-categories',
@@ -18,15 +16,12 @@ export class CategoriesComponent implements OnInit {
   selectedCategory: ICategory | null = null;
   searchText: string = '';
   categoryForm: FormGroup;
-  private base = 'api/categories'; // Your base API URL
 
   constructor(
     private fb: FormBuilder,
     private toaster: ToastrService,
-    private router: Router,
     private spinner: NgxSpinnerService,
     private categoriesService: CategoriesService,
-    private http: HttpClient
   ) {
     this.categoryForm = this.fb.group({
       nom: ['', Validators.required],

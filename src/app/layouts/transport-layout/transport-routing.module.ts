@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { TransportComponent } from './transport.component';
-import {SignUpComponent} from "./pages/sign-up/sign-up.component";
+import { SignUpComponent} from "./pages/sign-up/sign-up.component";
 import {LoginComponent} from "./pages/login/login.component";
 import {OffreComponent} from "./offre/offre/offre.component";
 import {LandingPageComponent} from "./components/landing-page/landing-page.component";
@@ -32,6 +32,7 @@ import {ReservationComponent} from "./dashboard/reservation/reservation.componen
 import {ProduitsComponent} from "./dashboard/produits/produits.component";
 import {CategoriesComponent} from "./dashboard/categories/categories.component";
 import {CreateCatComponent} from "./dashboard/create-cat/create-cat.component";
+import {AdminUserCreateComponent} from "./dashboard/create-by-admin/create-by-admin.component";
 
 
 
@@ -114,6 +115,8 @@ const routes: Routes = [
         path : "categories"  , component :CategoriesComponent
       },{
         path : "createCategorie"  , component :CreateCatComponent
+      },{
+        path : "createUser" , component :AdminUserCreateComponent
       }
     ]
   }

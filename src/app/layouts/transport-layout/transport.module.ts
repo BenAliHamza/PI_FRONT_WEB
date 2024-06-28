@@ -60,6 +60,7 @@ import { ReservationComponent } from './dashboard/reservation/reservation.compon
 import { ProduitsComponent } from './dashboard/produits/produits.component';
 import { CategoriesComponent } from './dashboard/categories/categories.component';
 import { CreateCatComponent } from './dashboard/create-cat/create-cat.component';
+import {AdminUserCreateComponent} from "./dashboard/create-by-admin/create-by-admin.component";
 
 
 @NgModule({
@@ -108,7 +109,7 @@ import { CreateCatComponent } from './dashboard/create-cat/create-cat.component'
     ReservationComponent,
     ProduitsComponent,
     CategoriesComponent,
-    CreateCatComponent,
+    CreateCatComponent,AdminUserCreateComponent
   ],
   imports: [
     CommonModule,
