@@ -21,13 +21,13 @@
     <div *ngIf="isowner && isModif" class="col-5">
       <form [formGroup]="form">
         <div *ngIf="category.length" class="form-group">
-          <label class="form-control-label" >Type d'offre : </label>
+          <label class="form-control-label" >Type d'categorie : </label>
           <select formControlName="categorie"  class="form-control">
             <option *ngFor="let cat of category" [value]="cat._id" >{{cat.nom}}</option>
           </select>
         </div>
         <div class="form-group">
-          <label class="form-control-label" for="accesoire">Nom de l'accesoire </label>
+          <label class="form-control-label" for="accesoire">Nom du produit </label>
           <input formControlName="titre"  type="text"  id="accesoire" class="form-control form-control-alternative" >
         </div>
         <div class="form-group">
@@ -38,7 +38,7 @@
           <label class="form-control-label" for="Prix">Prix :  </label>
           <input formControlName="prix"  type="number"  id="Prix" class="form-control form-control-alternative" >
         </div>
-<!--        Salim hetha code el image -->
+<!--       code el image -->
 <!--        <div class="form-group">-->
 <!--          <div class="custom-file pointer">-->
 <!--            <input (change)="onFileSelect($event)"  type="file" class="custom-file-input" id="validatedCustomFile" required>-->
@@ -46,6 +46,15 @@
 <!--            <div class="invalid-feedback">Example invalid custom file feedback</div>-->
 <!--          </div>-->
 <!--        </div>-->
+          <div class="form-group">
+            <label class="form-control-label" for="etat">Etat :</label>
+            <select formControlName="etat" id="etat" class="form-control form-control-alternative">
+              <option value="">Select Etat</option>
+              <option value="Vendue">Vendue</option>
+              <option value="Disponible">Disponible</option>
+            </select>
+          </div>
+
         <div class="form-group">
           <button (click)="updateproduct()" [disabled]="form.invalid" class="btn btn-primary">Update</button>
           <button (click)="deleteProduct()" style="margin-left: 20px" class="btn btn-danger">delete </button>
