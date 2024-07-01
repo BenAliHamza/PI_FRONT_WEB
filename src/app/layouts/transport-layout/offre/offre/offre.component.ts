@@ -23,12 +23,12 @@ export class OffreComponent implements OnInit {
   user : User ; userVehicule : Vehicule[]= [];offreForm: FormGroup;
   offreList : Offre []=[] ;
 
-  
+
   ngOnInit(): void {
     this.offreService.getAllOffre().subscribe(offres => {
       this.offreList = offres  as Offre[];
       this.offreList.reverse()
-     
+
       this.userService.getInfo().subscribe(user=> {
         this.user = user as User  ;
         this.vs.getOneById(this.user._id).subscribe(result => {
@@ -56,6 +56,11 @@ export class OffreComponent implements OnInit {
       this.offreForm.valueChanges.subscribe(a=> {
           console.log(a)
       })
+  }
+
+
+  filter(){
+    console.log("Filter")
   }
 submit() {
   if(this.offreForm.invalid)return
