@@ -1,0 +1,67 @@
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Open modal for @mdo</button>
+
+
+<div class="container">
+  <div class="row justify-content-center">
+    <h1>Les  offres et services </h1>
+  </div>
+<div class="row justify-content-center" style="width: 100%">
+    <div *ngFor="let vehicule of userVehicule" class="col-sm-4">
+        <app-vehicule-item [vehicule]="vehicule" ></app-vehicule-item>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="vehiculeForm" method="post">
+
+          <div class="form-group">
+            <label class="form-control-label" for="marque">marque : </label>
+            <input formControlName="marque"  type="text" id="marque" class="form-control form-control-alternative">
+          </div>
+          <div class="form-group">
+            <label class="form-control-label" for="model">model : </label>
+            <input formControlName="model" type="text" id="model" class="form-control form-control-alternative" placeholder="model">
+          </div>
+          <div class="form-group">
+            <label class="form-control-label" for="places">places : </label>
+            <input formControlName="places" type="number" id="places" class="form-control form-control-alternative" placeholder="places">
+          </div>
+ 
+ 
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button  [disabled]="vehiculeForm.invalid" class="btn btn-primary"
+            (click)="submit()">Send message</button>
+          </div>
+ 
+        </form>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+
