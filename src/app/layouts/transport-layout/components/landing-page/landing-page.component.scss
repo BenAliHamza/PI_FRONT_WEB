@@ -2,8 +2,19 @@
   padding: 0;
   margin: 0;
   font-family: 'Arial, sans-serif';
-  background: linear-gradient(to right, #f8f9fa, #e9ecef);
-  color: #343a40;
+  background: #343a40; /* Dark background */
+  color: white;
+}
+
+
+.hero-section.darken {
+  background-color: #343a40; /* Dark background */
+}
+
+.hero-content {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.5s ease;
 }
 
 .hero-section {
@@ -17,25 +28,11 @@
   margin-top: 70px;
   position: relative;
   overflow: hidden;
+  transition: background-color 0.3s ease; /* Optional smooth transition */
 }
 
-.hero-content {
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeInUp 1s forwards;
-}
-
-.hero-section h1 {
-  font-size: 3em;
-  margin-bottom: 10px;
-  color: #0dcd0e; /* Green */
-  animation: fadeIn 1s forwards;
-}
-
-.hero-section p {
-  font-size: 1.2em;
-  color: #0dcd0e; /* Green */
-  animation: fadeIn 1s forwards;
+.hero-section.scrolled {
+  background-color: #333; /* Change background color when scrolled */
 }
 
 .section {
@@ -119,13 +116,19 @@
   animation: fadeInUp 1s forwards;
 }
 
-.offers-wrapper, .annonces-wrapper, .products-wrapper, .users-wrapper {
+.offers-wrapper,
+.annonces-wrapper,
+.products-wrapper,
+.users-wrapper {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
 }
 
-.offer-card, .annonce-card, .product-card, .user-card {
+.offer-card,
+.annonce-card,
+.product-card,
+.user-card {
   background: white;
   border-radius: 10px;
   margin: 10px;
@@ -137,17 +140,26 @@
   transform: translateY(20px);
 }
 
-.offer-card:hover, .annonce-card:hover, .product-card:hover, .user-card:hover {
+.offer-card:hover,
+.annonce-card:hover,
+.product-card:hover,
+.user-card:hover {
   transform: translateY(-10px);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
-.offer-card.fade-in, .annonce-card.fade-in, .product-card.fade-in, .user-card.fade-in {
+.offer-card.fade-in,
+.annonce-card.fade-in,
+.product-card.fade-in,
+.user-card.fade-in {
   opacity: 1;
   transform: translateY(0);
 }
 
-.offer-card.slide-in, .annonce-card.slide-in, .product-card.slide-in, .user-card.slide-in {
+.offer-card.slide-in,
+.annonce-card.slide-in,
+.product-card.slide-in,
+.user-card.slide-in {
   transform: translateX(0);
 }
 

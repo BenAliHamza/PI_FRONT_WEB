@@ -1,4 +1,4 @@
-import {Component, OnInit, ElementRef, ViewChild, AfterViewInit, Renderer2} from '@angular/core';
+import {Component, OnInit, ElementRef, Renderer2, ViewChild, AfterViewInit} from '@angular/core';
 import { Annonce } from "../../../../interfaces/annonce";
 import { AccesoryInterface } from "../../../../interfaces/accesory.interface";
 import { OffreService } from "../../../../services/offre/offre.service";
@@ -9,18 +9,19 @@ import { AnnonceService } from "../../../../services/annonce/annonce.service";
 import { UserService } from "../../../../services/user.service";
 import { AccesoryService } from "../../../../services/accesoires/accesory.service";
 import { User } from "../../../../interfaces/user.interface";
-import { forkJoin } from "rxjs";
+import {count, delay, forkJoin, window} from "rxjs";
 
 @Component({
   selector: 'app-landing-page',
   templateUrl: './landing-page.component.html',
   styleUrls: ['./landing-page.component.scss']
 })
-export class LandingPageComponent implements OnInit, AfterViewInit {
+export class LandingPageComponent implements OnInit {
   offres: Offre[] = [];
   annonces: Annonce[] = [];
   products: AccesoryInterface[] = [];
   users: User[] = [];
+
   constructor(
     private offreService: OffreService,
     private router: Router,
@@ -29,8 +30,8 @@ export class LandingPageComponent implements OnInit, AfterViewInit {
     private annonceService: AnnonceService,
     private userService: UserService,
     private productService: AccesoryService,
-    private  renderer :Renderer2 ,
-    private  el :ElementRef
+    private renderer: Renderer2,
+    private el: ElementRef
   ) {}
 
   ngOnInit(): void {
@@ -42,13 +43,12 @@ export class LandingPageComponent implements OnInit, AfterViewInit {
       this.offreService.getAllOffre()
     ]).subscribe({
       next: ([products, users, annonces, offres]) => {
-        this.offres = this.getRandomItems(offres as any, 5);
+        this.offres = this.getRandomItems(offres as Offre[], 5);
         // @ts-ignore
-        this.users = this.getRandomItems(users.users as any, 5);
-        this.products = this.getRandomItems(products as any, 5);
-        this.annonces = this.getRandomItems(annonces as any, 5);
+        this.users = this.getRandomItems(users.users as User[], 5);
+        this.products = this.getRandomItems(products as AccesoryInterface[], 5);
+        this.annonces = this.getRandomItems(annonces as Annonce[], 5);
         this.spinner.hide();
-
       },
       error: (error) => {
         console.error(error);
@@ -57,17 +57,16 @@ export class LandingPageComponent implements OnInit, AfterViewInit {
       }
     });
   }
-
-  ngAfterViewInit(): void {
-
+  afterV
+  animateSections(section: string): void {
+    const c = this.el.nativeElement.querySelector('.' + section);
+    if (c) {
+      this.renderer.addClass(c, 'animate-in');
+    }
   }
 
-   animateSections(section :string): void {
-      const c = this.el.nativeElement.querySelector('.'+section) ;
-      this.renderer.addClass(c, 'animate-in')
-  }
 
-  protected animateCards(selector: string, animationClass: string): void {
+  animateCards(selector: string, animationClass: string): void {
     const cards = this.el.nativeElement.querySelectorAll(selector);
     const delay = 100;
 
