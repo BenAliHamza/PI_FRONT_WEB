@@ -1,13 +1,20 @@
 <div class="reclamations-wrapper">
   <div class="container-fluid">
     <div class="row justify-content-center">
-      <div class="col-10 text-center reclamations-header">
-        <h1>My Reclamations</h1>
-        <p>Here you can view and manage all your submitted reclamations. Use the filter below to sort by type.</p>
+      <div *ngIf="reclamations" class="col-10 text-center reclamations-header">
+        <h1>My Reclamations ( {{reclamations.length}} )  </h1>
+        <p>Here you can view and manage all your submitted reclamations. Use the filters below to sort by type or title.</p>
       </div>
     </div>
     <div class="row justify-content-center mb-4">
       <div class="col-8">
+        <input
+          type="text"
+          class="form-control mb-3"
+          placeholder="Search by title"
+          [(ngModel)]="searchTitle"
+          (input)="onSearchTitleChange()"
+        />
         <select class="form-control" [(ngModel)]="selectedType" (change)="onTypeChange()">
           <option value="">All</option>
           <option *ngFor="let type of types" [value]="type">{{ type }}</option>
@@ -17,7 +24,8 @@
     <div class="row justify-content-center">
       <div *ngIf="filteredReclamations.length" class="col-8 reclamations-list">
         <app-reclamation-item
-          [isAdmin]="isAmin"
+
+          (update)="changes()"
           *ngFor="let rec of filteredReclamations; let i = index"
           [rec]="rec"
           [count]="i">

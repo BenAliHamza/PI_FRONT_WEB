@@ -5,6 +5,9 @@
 
   <div class="row mb-3">
     <div class="col">
+      <input type="text" class="form-control" placeholder="Search by title" [(ngModel)]="searchTitle" (input)="filterAnnonces()" />
+    </div>
+    <div class="col">
       <select class="form-control" [(ngModel)]="selectedType" (change)="filterAnnonces()">
         <option value="">All Types</option>
         <option *ngFor="let option of optionsType" [value]="option.value">{{ option.label }}</option>
@@ -20,11 +23,8 @@
 
   <div *ngIf="paginatedAnnonces.length > 0; else noAnnonces" class="row justify-content-center">
     <div *ngFor="let annonce of paginatedAnnonces" class="col-sm-4">
-      <!-- Your card component placeholder -->
-
       <a routerLink="/co-transport/admin/annonce-details/{{annonce._id}}">
         <app-small-card-offre [isAnnonce]="true" [offre]="annonce"></app-small-card-offre>
-
       </a>
     </div>
   </div>

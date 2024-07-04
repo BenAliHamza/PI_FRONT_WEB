@@ -6,7 +6,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { ReclamationService } from '../../../../services/reclamations/reclamation.service';
 import { ConfirmationModalComponent } from '../../modals/confirmation-modal/confirmation-modal.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import {ReponseService} from "../../../../services/reponse.service";
+import { ReponseService } from '../../../../services/reponse.service';
 
 @Component({
   selector: 'app-reclamation',
@@ -32,6 +32,8 @@ export class ReclamationComponent implements OnInit {
   reclamationForm: FormGroup;
   responseForm: FormGroup;
   selectedReclamation: Reclamation | null = null;
+  selectedReclamationResponse: any | null = null;
+  isEditingResponse: boolean = false;
 
   constructor(
     private fb: FormBuilder,
@@ -39,7 +41,7 @@ export class ReclamationComponent implements OnInit {
     private spinner: NgxSpinnerService,
     private reclamationService: ReclamationService,
     private modal: NgbModal,
-    private response:ReponseService
+    private responseService: ReponseService
   ) {
     this.reclamationForm = this.fb.group({
       titre: ['', Validators.required],
@@ -92,6 +94,7 @@ export class ReclamationComponent implements OnInit {
     this.totalPages = Math.ceil(this.filteredReclamations.length / this.itemsPerPage);
     this.pages = Array.from({ length: this.totalPages }, (_, i) => i + 1);
     this.changePage(1);
+    this.onCancel()
   }
 
   onReclamationClick(reclamation: Reclamation): void {
@@ -101,11 +104,21 @@ export class ReclamationComponent implements OnInit {
       description: reclamation.description,
       type: reclamation.type
     });
+
+    // Check if there is a response for the selected reclamation
+    this.responseService.getReponseByReclamationId(reclamation._id!).subscribe(res => {
+      this.selectedReclamationResponse = res;
+    }, err => {
+      this.selectedReclamationResponse = null;
+    });
   }
 
   onCancel(): void {
     this.selectedReclamation = null;
+    this.selectedReclamationResponse = null;
+    this.isEditingResponse = false;
     this.reclamationForm.reset();
+    this.responseForm.reset();
   }
 
   onSubmit(): void {
@@ -153,14 +166,12 @@ export class ReclamationComponent implements OnInit {
   onRespond(): void {
     if (this.responseForm.valid && this.selectedReclamation) {
       this.spinner.show();
-      console.log(this.selectedReclamation)
-
       const response = {
         reclamation: this.selectedReclamation._id,
         expediteur: this.selectedReclamation.expediteur._id,
         reponse: this.responseForm.value.reponse
       };
-      this.response.createReponse(response).subscribe(res => {
+      this.responseService.createReponse(response).subscribe(res => {
         this.toastr.success('Response sent successfully');
         this.spinner.hide();
         this.onCancel();
@@ -171,6 +182,58 @@ export class ReclamationComponent implements OnInit {
       });
     } else {
       this.toastr.error('Please fill in all required fields');
+    }
+  }
+
+  onUpdateResponseClick(): void {
+    if (this.selectedReclamationResponse) {
+      this.isEditingResponse = true;
+      this.responseForm.patchValue({
+        reponse: this.selectedReclamationResponse.reponse
+      });
+    }
+  }
+
+  onUpdateResponse(): void {
+    if (this.responseForm.valid && this.selectedReclamation && this.selectedReclamationResponse) {
+      this.spinner.show();
+      const updatedResponse = {
+        ...this.selectedReclamationResponse,
+        reponse: this.responseForm.value.reponse
+      };
+      this.responseService.updateReponse(this.selectedReclamationResponse._id, updatedResponse).subscribe(res => {
+        this.toastr.success('Response updated successfully');
+        this.spinner.hide();
+        this.onCancel();
+        this.loadReclamations();
+      }, err => {
+        this.toastr.error('Failed to update response');
+        this.spinner.hide();
+      });
+    } else {
+      this.toastr.error('Please fill in all required fields');
+    }
+  }
+
+  onDeleteResponse(): void {
+    if (this.selectedReclamationResponse) {
+      const mod = this.modal.open(ConfirmationModalComponent, {
+        centered: true, backdropClass: 'light-blue-backdrop', windowClass: 'light-blue-backdrop2', size: 'lg',
+      });
+      mod.componentInstance.data = "Are you sure you want to delete this response?";
+      mod.result.then(res => {
+        if (res) {
+          this.spinner.show();
+          this.responseService.deleteReponse(this.selectedReclamationResponse._id).subscribe(res => {
+            this.toastr.success("Response has been deleted");
+            this.selectedReclamationResponse = null;
+            this.spinner.hide();
+          }, err => {
+            this.toastr.error('Failed to delete response');
+            this.spinner.hide();
+          });
+        }
+      });
     }
   }
 }

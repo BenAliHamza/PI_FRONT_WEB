@@ -1,4 +1,4 @@
-<div class="card" style="width: 18rem;">
+<div *ngIf="user" class="card" style="width: 18rem;">
   <img class="card-img-top" [src]="user.image" alt="Card image cap">
   <div class="card-body">
     <h5 class="card-title">{{user.firstname}} - {{user.lastname}}</h5>

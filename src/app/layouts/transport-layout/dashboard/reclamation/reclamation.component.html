@@ -38,7 +38,9 @@
               <h5 class="card-title">{{ reclamation.titre }}</h5>
               <p class="card-text">{{ reclamation.description }}</p>
               <p class="card-text"><strong>Type:</strong> {{ reclamation.type }}</p>
-              <p class="card-text"><strong>Etat:</strong> {{ reclamation.etat }}</p>
+              <p class="card-text" [ngClass]="{'text-danger': reclamation.etat === 'En attente', 'text-success': reclamation.etat === 'Traiter'}">
+                <strong>Etat:</strong> {{ reclamation.etat }}
+              </p>
             </div>
           </div>
         </div>
@@ -65,6 +67,27 @@
 
     <div class="col-md-4">
       <div *ngIf="selectedReclamation">
+
+        <div *ngIf="selectedReclamationResponse && !isEditingResponse">
+          <h3>Response</h3>
+          <p>{{ selectedReclamationResponse.reponse }}</p>
+          <button type="button" class="btn btn-primary" (click)="onUpdateResponseClick()">Update</button>
+          <button type="button" class="btn btn-danger" (click)="onDeleteResponse()">Delete</button>
+          <button type="button" class="btn btn-secondary ml-2" (click)="onCancel()">Cancel</button>
+        </div>
+
+        <h3 class="mt-4" *ngIf="!selectedReclamationResponse || isEditingResponse">Respond to Reclamation</h3>
+        <form [formGroup]="responseForm" (ngSubmit)="isEditingResponse ? onUpdateResponse() : onRespond()" *ngIf="!selectedReclamationResponse || isEditingResponse">
+          <div class="form-group">
+            <label for="reclamationResponse">Response</label>
+            <textarea id="reclamationResponse" class="form-control" formControlName="reponse"></textarea>
+            <div *ngIf="responseForm.controls.reponse.invalid && responseForm.controls.reponse.touched" class="text-danger">
+              Response is required
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary" [disabled]="responseForm.invalid">{{ isEditingResponse ? 'Update Response' : 'Send Response' }}</button>
+        </form>
+
         <h3>Edit Reclamation</h3>
         <form [formGroup]="reclamationForm" (ngSubmit)="onSubmit()">
           <div class="form-group">
@@ -95,17 +118,6 @@
           <button type="button" class="btn btn-danger ml-2" (click)="onDelete()">Delete</button>
         </form>
 
-        <h3 class="mt-4">Respond to Reclamation</h3>
-        <form [formGroup]="responseForm" (ngSubmit)="onRespond()">
-          <div class="form-group">
-            <label for="reclamationResponse">Response</label>
-            <textarea id="reclamationResponse" class="form-control" formControlName="reponse"></textarea>
-            <div *ngIf="responseForm.controls.reponse.invalid && responseForm.controls.reponse.touched" class="text-danger">
-              Response is required
-            </div>
-          </div>
-          <button type="submit" class="btn btn-primary" [disabled]="responseForm.invalid">Send Response</button>
-        </form>
       </div>
     </div>
   </div>
