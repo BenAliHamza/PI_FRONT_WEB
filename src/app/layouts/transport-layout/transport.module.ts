@@ -63,6 +63,7 @@ import { CreateCatComponent } from './dashboard/create-cat/create-cat.component'
 import {AdminUserCreateComponent} from "./dashboard/create-by-admin/create-by-admin.component";
 import { ReclamationComponent } from './dashboard/reclamation/reclamation.component';
 import { ResponsesComponent } from './dashboard/responses/responses.component';
+import {AppearDirective} from "../../services/appear";
 
 
 @NgModule({
@@ -113,24 +114,25 @@ import { ResponsesComponent } from './dashboard/responses/responses.component';
     CategoriesComponent,
     CreateCatComponent,AdminUserCreateComponent, ReclamationComponent, ResponsesComponent
   ],
-  imports: [
-    CommonModule,
-    TransportRoutingModule,
-    DatePipe,
-    NgbCollapseModule,
-    NgbDropdownModule,
-    FormsModule,
-    ReactiveFormsModule,
-    RouterModule,
-    MatExpansionModule,
-    MatIconModule,
-    MatInputModule,
-    MatDatepickerModule,
-    MatButtonModule,
-    NgxSpinnerModule,
-    MatCardModule,
-    ComponentsModule
-  ],
+    imports: [
+        CommonModule,
+        TransportRoutingModule,
+        DatePipe,
+        NgbCollapseModule,
+        NgbDropdownModule,
+        FormsModule,
+        ReactiveFormsModule,
+        RouterModule,
+        MatExpansionModule,
+        MatIconModule,
+        MatInputModule,
+        MatDatepickerModule,
+        MatButtonModule,
+        NgxSpinnerModule,
+        MatCardModule,
+        ComponentsModule,
+        AppearDirective
+    ],
   providers : [AuthGuard, AdminGuard]
 })
 export class TransportModule { }

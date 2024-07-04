@@ -1,13 +1,16 @@
 <div class="landing-container">
   <section class="hero-section">
-    <h1>Welcome to Co-Transport & Carpooling</h1>
-    <p>Your reliable partner for shared journeys and deliveries.</p>
+    <div class="hero-content">
+      <h1>Welcome to Co-Transport & Carpooling</h1>
+      <p>Your reliable partner for shared journeys and deliveries.</p>
+    </div>
   </section>
 
-  <section class="section offers-section">
+  <section (appear)="animateSections('offers-section')" class="section offers-section" style="background-color: #f0f0f0;">
     <h2>Featured Offers</h2>
+    <p>Discover our featured offers tailored for your commuting needs. Find the best rides at affordable prices.</p>
     <div class="offers-wrapper">
-      <div *ngFor="let offer of offres" class="offer-card">
+      <div (appear)="animateCards('.offer-card', 'fade-in');animateCards('.offer-card', 'slide-in')" *ngFor="let offer of offres" class="offer-card">
         <h3>{{ offer.titre }}</h3>
         <p>From: {{ offer.lieu_depart.ville }} to {{ offer.lieu_arrive.ville }}</p>
         <p>Type: {{ offer.type }}</p>
@@ -16,10 +19,11 @@
     </div>
   </section>
 
-  <section class="section annonces-section">
+  <section (appear)="animateSections('annonces-section')" class="section annonces-section" style="background-color: #e6f7ff;">
     <h2>Latest Annonces</h2>
+    <p>Stay updated with the latest announcements regarding carpooling schedules and opportunities.</p>
     <div class="annonces-wrapper">
-      <div *ngFor="let annonce of annonces" class="annonce-card">
+      <div (appear)="animateCards('.annonce-card', 'fade-in');animateCards('.annonce-card', 'slide-in')" *ngFor="let annonce of annonces" class="annonce-card">
         <h3>{{ annonce.titre }}</h3>
         <p>From: {{ annonce.lieu_depart.ville }} to {{ annonce.lieu_arrive.ville }}</p>
         <p>Status: {{ annonce.status }}</p>
@@ -28,10 +32,11 @@
     </div>
   </section>
 
-  <section class="section products-section">
+  <section (appear)="animateSections('products-section')" class="section products-section" style="background-color: #fff0f5;">
     <h2>Popular Products</h2>
+    <p>Explore our popular products designed to enhance your travel experience and convenience.</p>
     <div class="products-wrapper">
-      <div *ngFor="let product of products" class="product-card">
+      <div (appear)="animateCards('.product-card', 'fade-in');animateCards('.product-card', 'slide-in')" *ngFor="let product of products" class="product-card">
         <h3>{{ product.titre }}</h3>
         <p>{{ product.description }}</p>
         <p>Price: {{ product.prix | currency }}</p>
@@ -39,10 +44,11 @@
     </div>
   </section>
 
-  <section class="section users-section">
+  <section (appear)="animateSections('users-section')" class="section users-section" style="background-color: #f5f5f5;">
     <h2>Our Top Users</h2>
+    <p>Meet our top users who actively contribute to making carpooling a sustainable and accessible option.</p>
     <div class="users-wrapper">
-      <div *ngFor="let user of users" class="user-card">
+      <div (appear)="animateCards('.user-card', 'fade-in');animateCards('.user-card', 'slide-in')" *ngFor="let user of users" class="user-card">
         <h3>{{ user.firstname }} {{ user.lastname }}</h3>
         <p>Email: {{ user.email }}</p>
         <p>Role: {{ user.role }}</p>
