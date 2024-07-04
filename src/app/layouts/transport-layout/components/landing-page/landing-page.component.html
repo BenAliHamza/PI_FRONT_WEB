@@ -1,0 +1,52 @@
+<div class="landing-container">
+  <section class="hero-section">
+    <h1>Welcome to Co-Transport & Carpooling</h1>
+    <p>Your reliable partner for shared journeys and deliveries.</p>
+  </section>
+
+  <section class="section offers-section">
+    <h2>Featured Offers</h2>
+    <div class="offers-wrapper">
+      <div *ngFor="let offer of offres" class="offer-card">
+        <h3>{{ offer.titre }}</h3>
+        <p>From: {{ offer.lieu_depart.ville }} to {{ offer.lieu_arrive.ville }}</p>
+        <p>Type: {{ offer.type }}</p>
+        <p>Departure: {{ offer.heure_depart | date }}</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section annonces-section">
+    <h2>Latest Annonces</h2>
+    <div class="annonces-wrapper">
+      <div *ngFor="let annonce of annonces" class="annonce-card">
+        <h3>{{ annonce.titre }}</h3>
+        <p>From: {{ annonce.lieu_depart.ville }} to {{ annonce.lieu_arrive.ville }}</p>
+        <p>Status: {{ annonce.status }}</p>
+        <p>Departure: {{ annonce.heure_depart | date }}</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section products-section">
+    <h2>Popular Products</h2>
+    <div class="products-wrapper">
+      <div *ngFor="let product of products" class="product-card">
+        <h3>{{ product.titre }}</h3>
+        <p>{{ product.description }}</p>
+        <p>Price: {{ product.prix | currency }}</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section users-section">
+    <h2>Our Top Users</h2>
+    <div class="users-wrapper">
+      <div *ngFor="let user of users" class="user-card">
+        <h3>{{ user.firstname }} {{ user.lastname }}</h3>
+        <p>Email: {{ user.email }}</p>
+        <p>Role: {{ user.role }}</p>
+      </div>
+    </div>
+  </section>
+</div>

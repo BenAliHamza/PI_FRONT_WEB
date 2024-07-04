@@ -1,0 +1,93 @@
+.landing-container {
+  padding: 0;
+  margin: 0;
+  font-family: 'Arial, sans-serif';
+  background: linear-gradient(to right, #f8f9fa, #e9ecef);
+  color: #343a40;
+}
+
+.hero-section {
+  text-align: center;
+  padding: 50px 0;
+  background-image: url("/assets/bg2.png");
+  background-size: contain;
+  color: white;
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7);
+  height: 600px;
+  margin-top: 70px;
+}
+
+.hero-section h1 {
+  font-size: 3em;
+  margin-bottom: 10px;
+  animation: fadeInDown 1s ease-in-out;
+}
+
+.hero-section p {
+  font-size: 1.2em;
+  animation: fadeInUp 1s ease-in-out;
+  color: #0dcd0e;
+}
+
+.section {
+  padding: 40px 0;
+  text-align: center;
+}
+
+.section h2 {
+  font-size: 2.5em;
+  margin-bottom: 20px;
+  animation: fadeIn 1s ease-in-out;
+}
+
+.offers-wrapper, .annonces-wrapper, .products-wrapper, .users-wrapper {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.offer-card, .annonce-card, .product-card, .user-card {
+  background: white;
+  border-radius: 10px;
+  margin: 10px;
+  padding: 20px;
+  width: 250px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.offer-card:hover, .annonce-card:hover, .product-card:hover, .user-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
