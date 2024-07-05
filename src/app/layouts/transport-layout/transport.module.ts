@@ -59,6 +59,13 @@ import { VehiculeComponent } from './vehicule/vehicule/vehicule.component';
 import { VehiculeItemComponent } from './vehicule/vehicule-item/vehicule-item.component';
 import { MonOffreItemComponent } from './offre copy/mon-offre-item/mon-offre-item.component';
 import { MesOffreComponent } from './offre copy/mesOffres/mes-offre.component';
+import { ProduitsComponent } from './dashboard/produits/produits.component';
+import { CategoriesComponent } from './dashboard/categories/categories.component';
+import { CreateCatComponent } from './dashboard/create-cat/create-cat.component';
+import {AdminUserCreateComponent} from "./dashboard/create-by-admin/create-by-admin.component";
+import { ReclamationComponent } from './dashboard/reclamation/reclamation.component';
+import { ResponsesComponent } from './dashboard/responses/responses.component';
+import {AppearDirective} from "../../services/appear";
 
 
 @NgModule({
@@ -108,25 +115,29 @@ import { MesOffreComponent } from './offre copy/mesOffres/mes-offre.component';
     SmallCardUserComponent,
     AnnoncesComponent,
     ReservationComponent,
+    ProduitsComponent,
+    CategoriesComponent,
+    CreateCatComponent,AdminUserCreateComponent, ReclamationComponent, ResponsesComponent
   ],
-  imports: [
-    CommonModule,
-    TransportRoutingModule,
-    DatePipe,
-    NgbCollapseModule,
-    NgbDropdownModule,
-    FormsModule,
-    ReactiveFormsModule,
-    RouterModule,
-    MatExpansionModule,
-    MatIconModule,
-    MatInputModule,
-    MatDatepickerModule,
-    MatButtonModule,
-    NgxSpinnerModule,
-    MatCardModule,
-    ComponentsModule
-  ],
+    imports: [
+        CommonModule,
+        TransportRoutingModule,
+        DatePipe,
+        NgbCollapseModule,
+        NgbDropdownModule,
+        FormsModule,
+        ReactiveFormsModule,
+        RouterModule,
+        MatExpansionModule,
+        MatIconModule,
+        MatInputModule,
+        MatDatepickerModule,
+        MatButtonModule,
+        NgxSpinnerModule,
+        MatCardModule,
+        ComponentsModule,
+        AppearDirective
+    ],
   providers : [AuthGuard, AdminGuard]
 })
 export class TransportModule { }

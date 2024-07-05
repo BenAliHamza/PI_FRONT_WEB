@@ -1,0 +1,31 @@
+.container {
+  padding: 1rem;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.lead {
+  font-size: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+.form-control {
+  margin-bottom: 1rem;
+}
+
+.pagination {
+  margin-top: 1rem;
+}
+
+.page-item.active .page-link {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.page-link {
+  cursor: pointer;
+}

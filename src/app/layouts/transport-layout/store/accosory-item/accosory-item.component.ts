@@ -9,9 +9,11 @@ import {AccesoryInterface} from "../../../../interfaces/accesory.interface";
 export class AccosoryItemComponent implements OnInit {
   @Input() accesory : AccesoryInterface;
   @Input() isOwner =false ;
+  @Input() isDashboard =false ;
   isModifActivated = false ;
   @Output() updateAccesory = new EventEmitter<boolean>();
   @Input()isList?: boolean=false;
+  genericImage= "assets/default.webp";
   constructor() { }
 
   ngOnInit(): void {

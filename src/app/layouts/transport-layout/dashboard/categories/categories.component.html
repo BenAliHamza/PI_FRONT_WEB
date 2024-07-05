@@ -1,0 +1,63 @@
+<div class="container mt-4">
+  <div class="row">
+    <div class="col">
+      <h1 class="title">Categories</h1> <span style="float: right">
+
+      <a routerLink="/co-transport/admin/createCategorie" class="btn btn-dark">Create  </a>
+    </span>
+      <p class="lead">Explore our wide range of product categories. Use the search bar to quickly find what you're looking for.</p>
+    </div>
+  </div>
+
+  <div class="row mb-4">
+    <div class="col-md-6">
+      <label for="searchFilter">Search Categories</label>
+      <input type="text" class="form-control" id="searchFilter" [(ngModel)]="searchText" (input)="filterCategories()" placeholder="Search by category name">
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-8">
+      <div *ngIf="filteredCategories.length > 0" class="row">
+        <div *ngFor="let category of filteredCategories" class="col-md-6 mb-4">
+          <div class="card h-100" (click)="onCategoryClick(category)">
+            <div class="card-body">
+              <h5 class="card-title">{{ category.nom }}</h5>
+              <p class="card-text">{{ category.description }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="filteredCategories.length === 0" class="row">
+        <div class="col">
+          <p>No categories found</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div *ngIf="selectedCategory">
+        <h3>Edit Category</h3>
+        <form [formGroup]="categoryForm" (ngSubmit)="onSubmit()">
+          <div class="form-group">
+            <label for="categoryName">Nom</label>
+            <input type="text" id="categoryName" class="form-control" formControlName="nom">
+            <div *ngIf="categoryForm.controls.nom.invalid && categoryForm.controls.nom.touched" class="text-danger">
+              Nom is required
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="categoryDescription">Description</label>
+            <textarea id="categoryDescription" class="form-control" formControlName="description"></textarea>
+            <div *ngIf="categoryForm.controls.description.invalid && categoryForm.controls.description.touched" class="text-danger">
+              Description is required
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary" [disabled]="categoryForm.invalid">Update</button>
+          <button type="button" class="btn btn-secondary ml-2" (click)="onCancel()">Cancel</button>
+          <button type="button" class="btn btn-danger ml-2" (click)="delete()">Delete</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<ngx-spinner type="ball-scale-multiple"></ngx-spinner>

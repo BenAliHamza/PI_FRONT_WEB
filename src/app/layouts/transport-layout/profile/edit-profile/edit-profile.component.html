@@ -1,4 +1,4 @@
-<div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center" style="min-height: 600px;
+<div *ngIf="user" class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center" style="min-height: 600px;
  background-image: url({{user.image}}); background-size: cover; background-position: center top;">
   <!-- Mask -->
   <span class="mask bg-gradient-danger opacity-8"></span>
@@ -76,7 +76,7 @@
               <h3 class="mb-0">My account</h3>
             </div>
             <div class="col-4 text-right">
-              <a href="/co-transport/profile-page" class="btn btn-sm btn-primary">profile Page ?</a>
+              <a routerLink="/co-transport/profile-page" class="btn btn-sm btn-primary">profile Page ?</a>
             </div>
           </div>
         </div>

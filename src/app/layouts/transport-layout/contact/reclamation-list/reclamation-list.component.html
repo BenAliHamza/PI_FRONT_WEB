@@ -1,22 +1,40 @@
-<div style="padding-top: 150px;background: rgba(250,181,20,0.75)" class="container-fluid">
-  <div class="row justify-content-center">
-    <h1>La list de mes réclmations </h1>
-  </div>
-  <div style="margin-bottom: 20px" class="row justify-content-center">
-    <div class="col-8">
-      <select class="form-control" [(ngModel)]="selectedType" (change)="onTypeChange()">
-        <option value="">All</option>
-        <option *ngFor="let type of types" [value]="type">{{ type }}</option>
-      </select>
+<div class="reclamations-wrapper">
+  <div class="container-fluid">
+    <div class="row justify-content-center">
+      <div *ngIf="reclamations" class="col-10 text-center reclamations-header">
+        <h1>My Reclamations ( {{reclamations.length}} )  </h1>
+        <p>Here you can view and manage all your submitted reclamations. Use the filters below to sort by type or title.</p>
+      </div>
     </div>
-  </div>
-  <div  style="min-height: 800px" class="row justify-content-center">
-    <div *ngIf="filteredReclamations.length" class="col-8">
-      <app-reclamation-item [isAdmin]="isAmin" *ngFor="let rec of filteredReclamations ; let i = index"  [rec]="rec" [count]="i"></app-reclamation-item>
+    <div class="row justify-content-center mb-4">
+      <div class="col-8">
+        <input
+          type="text"
+          class="form-control mb-3"
+          placeholder="Search by title"
+          [(ngModel)]="searchTitle"
+          (input)="onSearchTitleChange()"
+        />
+        <select class="form-control" [(ngModel)]="selectedType" (change)="onTypeChange()">
+          <option value="">All</option>
+          <option *ngFor="let type of types" [value]="type">{{ type }}</option>
+        </select>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div *ngIf="filteredReclamations.length" class="col-8 reclamations-list">
+        <app-reclamation-item
 
-    </div>
-    <div *ngIf="!filteredReclamations.length">
-          No reclamation available
+          (update)="changes()"
+          *ngFor="let rec of filteredReclamations; let i = index"
+          [rec]="rec"
+          [count]="i">
+        </app-reclamation-item>
+      </div>
+      <div *ngIf="!filteredReclamations.length" class="col-8 text-center no-reclamations">
+        <p>No reclamations available</p>
+      </div>
     </div>
   </div>
 </div>
+<ngx-spinner type="ball-scale-multiple"></ngx-spinner>

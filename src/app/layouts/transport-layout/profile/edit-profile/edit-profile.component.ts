@@ -28,6 +28,7 @@ export class EditProfileComponent implements OnInit {
   newImage:any = '';
   imageEdited =false;
   fileImage :File ;
+  collapse =  false;
 
   ngOnInit(): void {
     this.spinner.show()
@@ -97,6 +98,7 @@ export class EditProfileComponent implements OnInit {
         this.toaster.success(result.message)
         this.userService.getInfo().subscribe(user => {
           this.user = user as User;
+          this.cancel()
         })
         this.spinner.hide()
       },(err)=>{
@@ -124,7 +126,7 @@ export class EditProfileComponent implements OnInit {
       setTimeout(()=>{
         this.toaster.success(result.message);
         this.passForm.reset();
-        location.reload()
+        this.reloadComponent()
         this.spinner.hide()
       },2000)
     },err=>{
@@ -153,5 +155,11 @@ export class EditProfileComponent implements OnInit {
         })
       }
     })
+  }
+  reloadComponent(): void {
+    const currentUrl = this.router.url;
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      this.router.navigate([currentUrl]);
+    });
   }
 }

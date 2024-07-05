@@ -10,7 +10,7 @@ import {NgxSpinnerService} from "ngx-spinner";
 export class AnnonceCardComponent implements OnInit, AfterViewInit {
   @Input() annonce: Annonce;
   color: string='red';
-  constructor(private spinner :NgxSpinnerService) { }
+  constructor() { }
 
   ngOnInit(): void {
   }

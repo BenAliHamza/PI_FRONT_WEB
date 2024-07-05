@@ -50,6 +50,7 @@ export class AccoryDetailsComponent implements OnInit {
           titre : new  FormControl(this.product.titre, [Validators.required]),
           prix  : new FormControl(this.product.prix, [Validators.required, Validators.min(0)]),
           categorie : new FormControl(this.product.categorie._id ,  [Validators.required]),
+          etat : new FormControl(this.product.etat ,  [Validators.required]),
           image : new FormControl(this.product.image, [Validators.required]),
         })
       },
@@ -61,7 +62,7 @@ export class AccoryDetailsComponent implements OnInit {
     });
   }
   checkOwnership(product : AccesoryInterface){
-    return product.expediteur._id == this.user._id
+    return product.expediteur._id == this.user._id || this.user.role ==='ADMIN'
   }
 
   handleAction(state: boolean) {

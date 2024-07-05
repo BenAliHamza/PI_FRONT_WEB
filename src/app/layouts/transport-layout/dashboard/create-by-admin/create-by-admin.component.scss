@@ -1,0 +1,41 @@
+.container {
+  padding: 1rem;
+}
+
+.card {
+  border: none;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.input-group-text {
+  background-color: #f7f7f7;
+}
+
+.errors {
+  color: red;
+  position: absolute;
+  bottom: -50%;
+  left: 9%;
+}
+
+.form-group {
+  position: relative;
+}
+
+.text-muted {
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.text-center button {
+  margin-top: 20px;
+}
+
+.custom-file-label::after {
+  content: "Browse";
+}
+
+.pointer {
+  cursor: pointer;
+}

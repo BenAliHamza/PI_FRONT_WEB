@@ -1,7 +1,7 @@
 <div style="padding-top: 100px; max-width: 95%;" class="container">
   <div class="row justify-content-around">
     <div class="col-5">
-      <div class="card">
+      <div *ngIf="user" class="card">
         <header class="card-personal-header" [style.background-image]="'url(' + user.image + ')'" style="height: 430px; background-size: cover; background-repeat: no-repeat; background-position: center;">
           <button class="card-personal-add">
             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user-plus" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.75" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -12,9 +12,9 @@
             </svg>
           </button>
           <h1 class="card-personal-name">{{ user.firstname }} - {{ user.lastname }}</h1>
-          <a href="/" class="card-personal-link">{{ user.email }}</a>
+          <a routerLink="/" class="card-personal-link">{{ user.email }}</a>
           <p class="card-personal-description">
-            Role: {{ user.role }}
+            Role: {{ user.role }} -  Sex : {{user.sex  | uppercase}}
           </p>
         </header>
         <section class="card-personal-info">

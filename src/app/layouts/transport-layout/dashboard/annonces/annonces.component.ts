@@ -30,6 +30,7 @@ export class AnnoncesComponent implements OnInit {
 
   selectedType: string = '';
   selectedStatus: string = '';
+  searchTitle: string = ''; // Add searchTitle property
 
   constructor(
     private annonceService: AnnonceService,
@@ -71,7 +72,8 @@ export class AnnoncesComponent implements OnInit {
   filterAnnonces(): void {
     this.filteredAnnonces = this.annonces.filter(annonce => {
       return (!this.selectedType || annonce.type === this.selectedType) &&
-        (!this.selectedStatus || annonce.status === this.selectedStatus);
+        (!this.selectedStatus || annonce.status === this.selectedStatus) &&
+        (!this.searchTitle || annonce.titre.toLowerCase().includes(this.searchTitle.toLowerCase()));
     });
     this.totalPages = Math.ceil(this.filteredAnnonces.length / this.itemsPerPage);
     this.pages = Array.from({ length: this.totalPages }, (_, i) => i + 1);

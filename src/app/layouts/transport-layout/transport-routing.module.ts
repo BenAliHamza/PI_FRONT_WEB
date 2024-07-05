@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { TransportComponent } from './transport.component';
-import {SignUpComponent} from "./pages/sign-up/sign-up.component";
+import { SignUpComponent} from "./pages/sign-up/sign-up.component";
 import {LoginComponent} from "./pages/login/login.component";
 import {OffreComponent} from "./offre/offre/offre.component";
 import {LandingPageComponent} from "./components/landing-page/landing-page.component";
@@ -29,6 +29,11 @@ import {AnnoncesComponent} from "./dashboard/annonces/annonces.component";
 import {ReservationComponent} from "./dashboard/reservation/reservation.component";
 import { VehiculeComponent } from './vehicule/vehicule/vehicule.component';
 import { MesOffreComponent } from './offre copy/mesOffres/mes-offre.component';
+import {ProduitsComponent} from "./dashboard/produits/produits.component";
+import {CategoriesComponent} from "./dashboard/categories/categories.component";
+import {CreateCatComponent} from "./dashboard/create-cat/create-cat.component";
+import {AdminUserCreateComponent} from "./dashboard/create-by-admin/create-by-admin.component";
+import {ReclamationComponent} from "./dashboard/reclamation/reclamation.component";
 
 
 
@@ -103,7 +108,19 @@ const routes: Routes = [
         path :"reservationDetails/:id" , component : ReservationDetailsComponent},
       {
         path : "annonce-details/:id" , component : AnnonceDetailsComponent
-      },
+      },{
+         path : "produits" , component : ProduitsComponent
+      },{
+        path : "accossorieDetails/:id" , component  : AccoryDetailsComponent
+      },{
+        path : "categories"  , component :CategoriesComponent
+      },{
+        path : "createCategorie"  , component :CreateCatComponent
+      },{
+        path : "createUser" , component :AdminUserCreateComponent
+      },{
+        path:  "reclamations" , component:  ReclamationComponent
+      }
     ]
   }
 ] ;
