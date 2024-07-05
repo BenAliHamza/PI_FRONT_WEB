@@ -70,6 +70,9 @@
               <div class="text-center">
                 <button [disabled]="loginForm.invalid" (click)="onSubmit()" type="submit" class="btn btn-primary mt-4 pointer">Login</button>
               </div>
+              <div>
+                <small class="pointer">forgot password ? <a routerLink="/co-transport/resetPassword" style="color: #1f3a68">Click here</a> </small>
+              </div>
             </form>
           </div>
         </div>
@@ -78,3 +81,4 @@
   </div>
 
 </div>
+<ngx-spinner type="ball-scale-multiple"></ngx-spinner>

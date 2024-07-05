@@ -8,12 +8,14 @@ declare interface RouteInfo {
     class: string;
 }
 export const ROUTES: RouteInfo[] = [
-    { path: '/co-transport', title: 'Dashboard',  icon: 'ni-tv-2 text-primary', class: '' },
-    { path: '/icons', title: 'Offres',  icon:'ni-planet text-blue', class: '' },
-    { path: '/maps', title: 'Demandes',  icon:'ni-pin-3 text-orange', class: '' },
-    { path: '/user-profile', title: 'Store',  icon:'ni-single-02 text-yellow', class: '' },
-    { path: '/tables', title: 'Reclamations',  icon:'ni-bullet-list-67 text-red', class: '' },
-    { path: '/login', title: 'Nous',  icon:'ni-key-25 text-info', class: '' },
+    { path: '/co-transport/admin/', title: 'Dashboard',  icon: 'ni-tv-2 text-primary', class: '' },
+    { path: '/co-transport/admin/users', title: 'Users',  icon:'ni-planet text-blue', class: '' },
+    { path: '/co-transport/admin/annonces', title: 'Annonces',  icon:'ni-pin-3 text-orange', class: '' },
+    { path: '/co-transport/admin/reservations', title: 'Reservations',  icon:'ni-single-02 text-yellow', class: '' },
+    { path: '/co-transport/admin/produits', title: 'Produits',  icon:'ni-shop shop', class: '' },
+    { path: '/co-transport/admin/categories', title: 'Categories',  icon:'ni-tv-2 text-danger', class: '' },
+    { path: '/co-transport/admin/reclamations', title: 'Reclamations',  icon:'ni-bullet-list-67 text-red', class: '' },
+    { path: '/co-transport/profile-page', title: 'My profile',  icon:'ni-key-25 text-info', class: '' },
 ];
 
 @Component({

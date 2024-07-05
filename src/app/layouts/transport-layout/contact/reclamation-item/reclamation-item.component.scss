@@ -1,3 +1,21 @@
 .mat-form-field + .mat-form-field {
   margin-left: 8px;
 }
+.response {
+  h2 {
+    color: green;
+    font-weight: bold;
+  }
+}
+.form-group {
+  label{
+    font-weight: bold;
+    color: #205cc3;
+    letter-spacing: 2px;
+    font-size: 20px;
+  }
+}
+input ,select , textarea{
+  color: black;
+  font-weight: bolder;
+}

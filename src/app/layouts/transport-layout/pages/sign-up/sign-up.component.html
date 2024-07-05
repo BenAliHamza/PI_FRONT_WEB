@@ -78,6 +78,19 @@
               <div class="form-group">
                 <div class="input-group input-group-alternative">
                   <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="ni ni-circle-08"></i></span>
+                  </div>
+                  <select readonly formControlName="role" class="form-control" >
+                    <option [value]="op" *ngFor="let op of ROLE_ARRAY" >
+                      {{op}}
+                    </option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="input-group input-group-alternative">
+                  <div class="input-group-prepend">
                     <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
                   </div>
                   <input formControlName="password" class="form-control" placeholder="Password" type="password">
@@ -149,6 +162,9 @@
                 </div>
 
               </div>
+              <div *ngIf="imageData">
+                <img [src]="imageData" alt="" width="100%" />
+              </div>
               <div class="custom-control custom-control-alternative custom-radio mb-3">
                 <input formControlName="sex" value="female" name="custom-radio-1" class="custom-control-input" id="customRadio1" type="radio">
                 <label class="custom-control-label" for="customRadio1">Female</label>
@@ -157,9 +173,7 @@
                 <input formControlName="sex" value="male" name="custom-radio-1" class="custom-control-input" id="customRadio2" checked="" type="radio">
                 <label class="custom-control-label" for="customRadio2">Male</label>
               </div>
-              <div *ngIf="imageData">
-                <img [src]="imageData" alt="" width="100%" />
-              </div>
+
               <!--              <div class="text-muted font-italic"><small>password strength: <span class="text-success font-weight-700">strong</span></small></div>-->
               <div class="row my-4">
                 <div class="col-12">
@@ -174,6 +188,7 @@
               <div class="text-center">
                 <button [disabled]="userForm.invalid" (click)="submitForm()" type="submit" class="btn btn-primary mt-4 pointer">Create account</button>
               </div>
+              <small> <a style="color: darkgreen" routerLink="/co-transport/login">Login page </a></small>
             </form>
           </div>
         </div>
@@ -182,3 +197,4 @@
   </div>
 
 </div>
+<ngx-spinner type="ball-scale-multiple"></ngx-spinner>

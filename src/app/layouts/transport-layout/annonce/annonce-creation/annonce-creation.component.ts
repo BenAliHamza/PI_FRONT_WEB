@@ -8,6 +8,9 @@ import {OffreService} from "../../../../services/offre/offre.service";
 import {TUNISIA_VILLES} from "../../pages/sign-up/generals";
 import {Address, Annonce} from "../../../../interfaces/annonce";
 import {AnnonceService} from "../../../../services/annonce/annonce.service";
+import {ToastrService} from "ngx-toastr";
+import {Router} from "@angular/router";
+import {NgxSpinnerService} from "ngx-spinner";
 
 @Component({
   selector: 'app-annonce-creation',
@@ -24,11 +27,14 @@ export class AnnonceCreationComponent implements OnInit {
     { value: 'Livraison', label: 'Livraison' },
     { value: 'Taxi', label: 'Taxi' }
   ];
+  arraystatus = ['actif', 'brouillant', 'archivé']
+
   userVehicule : Vehicule[]= [];
 
 
-
-  constructor(private  vs :VehiculeService , private  userService : UserService , private  annonceS : AnnonceService) { }
+  constructor(private  vs :VehiculeService , private  userService : UserService , private  annonceS : AnnonceService , private toastr : ToastrService
+    ,private  router :Router , private  spinner : NgxSpinnerService
+  ) { }
 
 
 
@@ -62,8 +68,8 @@ export class AnnonceCreationComponent implements OnInit {
       address : this.annonceForm.value.lieu_depart,
     }
     const locationA:Address = {
-      ville : this.annonceForm.value.lieu_arrive,
-      address: this.annonceForm.value.ville_arrive
+      ville : this.annonceForm.value.ville_arrive,
+      address: this.annonceForm.value.lieu_arrive
     }
 
     const annonce:Annonce = {
@@ -75,8 +81,11 @@ export class AnnonceCreationComponent implements OnInit {
       status : copy? 'brouillant':'actif',
       user_Id : this.user._id
     }
+    this.spinner.show()
     this.annonceS.create(annonce).subscribe(a => {
-      console.log(a)
+      this.spinner.hide();
+      this.toastr.success("Annonce creation successfully created!");
+      this.router.navigate(['/co-transport/annonce-details/'+a._id])
     })
   }
 

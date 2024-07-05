@@ -1,0 +1,47 @@
+.container {
+  padding: 1rem;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.lead {
+  font-size: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+.card {
+  border: 1px solid #ddd;
+  border-radius: 0.5rem;
+  transition: transform 0.2s;
+  cursor: pointer;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.card-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.card-text {
+  font-size: 1rem;
+}
+
+#searchFilter, #typeFilter, #etatFilter {
+  font-size: 1rem;
+  padding: 0.5rem;
+}
+
+.text-danger {
+  font-size: 0.875rem;
+}
+
+.pagination {
+  margin-top: 20px;
+}

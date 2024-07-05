@@ -1,7 +1,21 @@
 <div class="ag-format-container">
   <div class="ag-courses_box">
     <div *ngIf="url" class="ag-courses_item">
-      <a [routerLink]="url" class="ag-courses-item_link">
+      <a *ngIf="!isAnnonce" [routerLink]="url" class="ag-courses-item_link">
+        <div class="ag-courses-item_bg {{offre.type}}"></div>
+        <div class="ag-courses-item_title">
+          {{offre.titre }} <br>
+          {{offre.lieu_depart.ville}} - {{offre.lieu_arrive.ville}}
+        </div>
+
+        <div class="ag-courses-item_date-box">
+          Type:
+          <span class="ag-courses-item_date">
+            {{ offre.type }}
+          </span>
+        </div>
+      </a>
+      <a *ngIf="isAnnonce" class="ag-courses-item_link">
         <div class="ag-courses-item_bg {{offre.type}}"></div>
         <div class="ag-courses-item_title">
           {{offre.titre }} <br>
@@ -16,7 +30,5 @@
         </div>
       </a>
     </div>
-
-
   </div>
 </div>

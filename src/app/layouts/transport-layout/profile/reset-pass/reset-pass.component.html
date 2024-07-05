@@ -1,0 +1,84 @@
+<div class="bg-default">
+  <div style="    height: 400px;" class="header bg-gradient-danger py-7 py-lg-8">
+    <div class="container">
+      <div class="header-body text-center mb-7">
+        <div class="row justify-content-center">
+          <div class="col-lg-5 col-md-6">
+            <h1 class="text-white">Let us Help you recover your Account !</h1>
+            <p class="text-lead text-light"><strong style="color: #1f3a68;font-weight: bold">Co-Transport</strong>: Revolutionizing Carpooling and Transport Services. </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="separator separator-bottom separator-skew zindex-100">
+      <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
+        <polygon class="fill-default" points="2560 0 2560 100 0 100"></polygon>
+      </svg>
+    </div>
+  </div>
+  <!-- Page content -->
+  <div style="    height: 480px;" class="container mt--8 pb-5 ">
+    <!-- Table -->
+    <div class="row justify-content-center ">
+      <div class="col-lg-6 col-md-8">
+        <div class="card bg-secondary shadow border-0">
+          <div *ngIf="!redirect"  class="card-body px-lg-5 py-lg-5">
+            <div class="text-center text-muted mb-4">
+              <small>Provide a new Password </small>
+            </div>
+            <form  [formGroup]="userForm" >
+              <div class="form-group">
+                <div class="input-group input-group-alternative">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
+                  </div>
+                  <input formControlName="password" class="form-control" placeholder="Password" type="password">
+                </div>
+                <span class="errors" *ngIf="userForm.get('password').invalid && userForm.get('password').touched">
+                    <small *ngIf="userForm.get('password').errors?.required">
+                      Password is required.
+                    </small>
+                    <small style="white-space: nowrap" *ngIf="userForm.get('password').errors?.pattern">
+                      * Password > 8 characters, including Lowercase/Uppercase/Number.
+                  </small>
+              </span>
+              </div>
+              <div class="form-group">
+                <div class="input-group input-group-alternative">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
+                  </div>
+                  <input formControlName="password2" class="form-control" placeholder="Password confirmation" type="password">
+                </div>
+                <span class="errors" *ngIf="userForm.get('password2').invalid && userForm.get('password2').touched">
+                    <small *ngIf="userForm.get('password2').errors?.required">
+                      Confirmation de password is required.
+                    </small>
+                    <small style="white-space: nowrap" *ngIf="userForm.get('password2').errors?.NotEqual &&userForm.get('password2').value ">
+                      * The password does not match
+                  </small>
+              </span>
+              </div>
+
+              <div class="text-center">
+                <button [disabled]="userForm.invalid" (click)="onSubmit()" type="submit" class="btn btn-primary mt-4 pointer">Confirm your new Password</button>
+              </div>
+              <div>
+                <small> go back to  <a routerLink="/co-transport/login" style="color: darkred">login page.</a></small>
+              </div>
+            </form>
+          </div>
+          <div *ngIf="redirect"  class="card-body px-lg-5 py-lg-5">
+            <div class="text-center text-muted mb-4">
+              <h1 style="color:green">Thank you ... you will be redirected soon </h1>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+<ngx-spinner type="ball-scale-multiple"></ngx-spinner>

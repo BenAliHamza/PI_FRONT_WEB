@@ -1,0 +1,62 @@
+<div class="container mt-4">
+  <div class="row">
+    <div class="col text-center">
+      <h1 class="title">User Management</h1> <a routerLink="/co-transport/admin/createUser" class="btn btn-dark" style="float: right">createUser</a>
+      <p class="lead">Admin panel to manage user accounts, roles, and statuses.</p>
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <div class="col-md-3">
+      <input type="text" class="form-control" [(ngModel)]="searchText" (input)="filterUsers()" placeholder="Search by name">
+    </div>
+    <div class="col-md-3">
+      <select class="form-control" [(ngModel)]="selectedSex" (change)="filterUsers()">
+        <option value="">All Sex</option>
+        <option *ngFor="let sex of sexs" [value]="sex">{{ sex }}</option>
+      </select>
+    </div>
+    <div class="col-md-3">
+      <select class="form-control" [(ngModel)]="selectedRole" (change)="filterUsers()">
+        <option value="">All Roles</option>
+        <option *ngFor="let role of ROLE_ARRAY" [value]="role">{{ role }}</option>
+      </select>
+    </div>
+    <div class="col-md-3">
+      <select class="form-control" [(ngModel)]="selectedStatus" (change)="filterUsers()">
+        <option value="">All Status</option>
+        <option *ngFor="let status of STATUS_ARRAY" [value]="status">{{ status }}</option>
+      </select>
+    </div>
+  </div>
+
+  <div *ngIf="paginatedUsers.length > 0; else noUsers" class="row justify-content-center">
+    <div style="margin-bottom: 20px" *ngFor="let user of paginatedUsers" class="col-sm-4">
+      <app-small-card-user [user]="user"></app-small-card-user>
+    </div>
+  </div>
+
+  <ng-template #noUsers>
+    <div class="row">
+      <div class="col text-center">
+        <p>No users found.</p>
+      </div>
+    </div>
+  </ng-template>
+
+  <nav *ngIf="totalPages > 1" aria-label="Page navigation example">
+    <ul class="pagination justify-content-center">
+      <li class="page-item" [class.disabled]="currentPage === 1">
+        <a class="page-link" (click)="changePage(currentPage - 1)">Prev</a>
+      </li>
+      <li class="page-item" *ngFor="let page of pages" [class.active]="page === currentPage">
+        <a class="page-link" (click)="changePage(page)">{{ page }}</a>
+      </li>
+      <li class="page-item" [class.disabled]="currentPage === totalPages">
+        <a class="page-link" (click)="changePage(currentPage + 1)">Next</a>
+      </li>
+    </ul>
+  </nav>
+</div>
+
+<ngx-spinner type="ball-scale-multiple"></ngx-spinner>

@@ -15,6 +15,7 @@ import { ComponentsModule } from './components/components.module';
 import {TransportModule} from "./layouts/transport-layout/transport.module";
 import {ToastrModule} from "ngx-toastr";
 import {TokenInterceptorInterceptor} from "./services/token-interceptor.interceptor";
+import {NgxSpinnerModule} from "ngx-spinner";
 
 
 @NgModule({
@@ -27,12 +28,18 @@ import {TokenInterceptorInterceptor} from "./services/token-interceptor.intercep
     RouterModule,
     AppRoutingModule,
     TransportModule ,
-    ToastrModule.forRoot(), // ToastrModule added
+    NgxSpinnerModule,
+    ToastrModule.forRoot({
+      timeOut: 10000,
+      positionClass: 'toast-bottom-right',
+      preventDuplicates: true,
+    }), // ToastrModule added
   ],
   declarations: [
     AppComponent,
     AdminLayoutComponent,
     AuthLayoutComponent],
+
   providers: [
     {
       provide: HTTP_INTERCEPTORS,

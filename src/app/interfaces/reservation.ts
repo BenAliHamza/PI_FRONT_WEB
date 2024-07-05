@@ -3,7 +3,8 @@ export interface Reservation{
   places : number ,
   status?: 'acceptée' | 'refusé' | 'en attente' ,
   user? :string
-  offre : string
+  offre : string,
+  _id?: string
 }
 
 

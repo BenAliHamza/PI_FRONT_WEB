@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../../../environments/environment";
+import {Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +19,7 @@ export class OffreService {
     return  this.http.get(this.base);
   }
 
-  getById(id:String){
+  getById(id:String):Observable<any>{
     return  this.http.get(this.base + '/'+id);
   }
   getNbrPlaceDispo(id :string) {

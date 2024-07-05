@@ -1,5 +1,6 @@
 import {AfterViewInit, Component, Input, OnInit} from '@angular/core';
 import {Annonce} from "../../../../interfaces/annonce";
+import {NgxSpinnerService} from "ngx-spinner";
 
 @Component({
   selector: 'app-annonce-card',

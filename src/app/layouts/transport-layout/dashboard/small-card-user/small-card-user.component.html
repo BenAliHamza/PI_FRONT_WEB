@@ -1,0 +1,8 @@
+<div *ngIf="user" class="card" style="width: 18rem;">
+  <img class="card-img-top" [src]="user.image" alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title">{{user.firstname}} - {{user.lastname}}</h5>
+    <p class="card-text"> Status {{user.status}}</p>
+    <a routerLink="/co-transport/admin/userCard/{{user._id}}" class="btn btn-primary">Manage</a>
+  </div>
+</div>

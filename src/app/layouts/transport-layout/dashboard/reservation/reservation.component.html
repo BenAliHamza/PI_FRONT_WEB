@@ -1,0 +1,48 @@
+<div style="padding: 1rem" class="container">
+  <div class="row">
+    <h1 class="title">List of all reservations</h1>
+  </div>
+
+  <div class="row mb-3">
+    <div class="col">
+      <select class="form-control" [(ngModel)]="selectedStatus" (change)="filterReservations()">
+        <option value="">All Status</option>
+        <option *ngFor="let status of statusOptions" [value]="status">{{ status }}</option>
+      </select>
+    </div>
+  </div>
+
+  <div *ngIf="paginatedReservations.length > 0; else noReservations" class="row justify-content-center">
+    <div *ngFor="let reservation of paginatedReservations" class="col-sm-4">
+      <!-- Your card component placeholder -->
+      <a routerLink="/co-transport/admin/reservationDetails/{{reservation._id}}">
+        <app-small-reservation-card [res]="reservation"></app-small-reservation-card>
+
+      </a>
+    </div>
+  </div>
+
+  <ng-template #noReservations>
+    <div class="row">
+      <div class="col">
+        <p>No reservations found.</p>
+      </div>
+    </div>
+  </ng-template>
+
+  <nav *ngIf="totalPages > 1" aria-label="Page navigation example">
+    <ul class="pagination">
+      <li class="page-item" [class.disabled]="currentPage === 1">
+        <a class="page-link" (click)="changePage(currentPage - 1)">Previous</a>
+      </li>
+      <li class="page-item" *ngFor="let page of pages" [class.active]="page === currentPage">
+        <a class="page-link" (click)="changePage(page)">{{ page }}</a>
+      </li>
+      <li class="page-item" [class.disabled]="currentPage === totalPages || totalPages === 0">
+        <a class="page-link" (click)="changePage(currentPage + 1)">Next</a>
+      </li>
+    </ul>
+  </nav>
+</div>
+
+<ngx-spinner type="ball-scale-multiple"></ngx-spinner>

@@ -1,0 +1,47 @@
+<div style="padding-top: 100px; max-width: 95%;" class="container">
+  <div class="row justify-content-around">
+    <div class="col-5">
+      <div *ngIf="user" class="card">
+        <header class="card-personal-header" [style.background-image]="'url(' + user.image + ')'" style="height: 430px; background-size: cover; background-repeat: no-repeat; background-position: center;">
+          <button class="card-personal-add">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user-plus" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.75" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+              <circle cx="9" cy="7" r="4"></circle>
+              <path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2"></path>
+              <path d="M16 11h6m-3 -3v6"></path>
+            </svg>
+          </button>
+          <h1 class="card-personal-name">{{ user.firstname }} - {{ user.lastname }}</h1>
+          <a routerLink="/" class="card-personal-link">{{ user.email }}</a>
+          <p class="card-personal-description">
+            Role: {{ user.role }} -  Sex : {{user.sex  | uppercase}}
+          </p>
+        </header>
+        <section class="card-personal-info">
+          <a href="/"><span>ville</span> {{ user.ville }}</a>
+          <a href="/"><span>phone</span> {{ user.phone }}</a>
+        </section>
+      </div>
+    </div>
+
+    <div class="col-4">
+      <div *ngIf="isAdmin" class="row justify-content-end">
+        <div class="col-12 mb-2">
+          <button (click)="delete()" style="width: 100%; min-height: 50px; margin-left: 50px" class="btn btn-danger">Delete</button>
+        </div>
+        <div class="col-12 mb-2">
+          <button (click)="ban(user.status==='BANNED')" style="width: 100%; min-height: 50px; margin-left: 50px" class="btn btn-dark">{{ user.status==='BANNED'? "UNBANNE" : "BANNE USER" }}</button>
+        </div>
+        <div class="col-12 mb-2">
+          <button (click)="approve()" *ngIf="user.status=='PENDING'" style="width: 100%; min-height: 50px; margin-left: 50px" class="btn btn-primary">Approve</button>
+        </div>
+        <div class="col-12 mb-2">
+          <button (click)="reject()" *ngIf="user.status=='PENDING'" style="width: 100%; min-height: 50px; margin-left: 50px" class="btn btn-danger">Reject</button>
+        </div>
+        <div class="col-12 mb-2">
+          <button (click)="approve(true)" *ngIf="user.status=='REJECTED'" style="width: 100%; min-height: 50px; margin-left: 50px" class="btn btn-danger">RESTORE</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

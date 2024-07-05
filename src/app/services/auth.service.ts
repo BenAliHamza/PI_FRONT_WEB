@@ -23,6 +23,7 @@ export class AuthService {
     // You might also want to clear other user-related data from localStorage
     localStorage.removeItem('user');
     localStorage.removeItem('expiresIn');
+    location.reload()
 
   }
 

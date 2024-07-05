@@ -1,0 +1,58 @@
+<div style="padding-top: 150px;" class="container">
+  <div style="margin-bottom: 50px" class="row">
+    <h1 style="color: #1da1f2">List des toutes les produits</h1>
+    <a *ngIf="user" style="float:right;margin-left: auto" class="btn btn-dark" routerLink="/co-transport/create-product">Create</a>
+  </div>
+
+  <div style="margin-bottom: 20px" class="row">
+    <div class="col-sm-4">
+      <label for="searchFilter">Search by Titre</label>
+      <input type="text" class="form-control" id="searchFilter" [(ngModel)]="searchText" (input)="filterProduits()" placeholder="Search by title">
+    </div>
+    <div class="col-sm-4">
+      <label for="categoryFilter">Filter by Category</label>
+      <select class="form-control" id="categoryFilter" [(ngModel)]="selectedCategory" (change)="filterProduits()">
+        <option value="">All</option>
+        <option *ngFor="let category of categories" [value]="category.nom">{{ category.nom }}</option>
+      </select>
+    </div>
+    <div class="col-sm-4">
+      <label for="etatFilter">Filter by Etat</label>
+      <select class="form-control" id="etatFilter" [(ngModel)]="selectedEtat" (change)="filterProduits()">
+        <option value="">All</option>
+        <option *ngFor="let etat of etats" [value]="etat">{{ etat }}</option>
+      </select>
+    </div>
+    <div class="col-sm-4">
+      <div class="btn-group">
+        <button type="button" class="btn btn-outline-secondary" [class.active]="sortByPrice === 'asc'" (click)="toggleSortOrder()">Price Asc</button>
+        <button type="button" class="btn btn-outline-secondary" [class.active]="sortByPrice === 'desc'" (click)="toggleSortOrder()">Price Desc</button>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="paginatedProduits.length > 0" class="row justify-content-center">
+    <div *ngFor="let item of paginatedProduits" style="margin-bottom: 10px" class="col-4">
+      <app-accosory-item [accesory]="item" [isList]="true"></app-accosory-item>
+    </div>
+  </div>
+  <div *ngIf="paginatedProduits.length === 0" class="row justify-content-center">
+    <p>No produits found</p>
+  </div>
+
+  <nav *ngIf="totalPages < 1" aria-label="Page navigation example">
+    <ul class="pagination">
+      <li class="page-item" [class.disabled]="currentPage === 1">
+        <button class="page-link" (click)="changePage(currentPage - 1)">Previous</button>
+      </li>
+      <li class="page-item" *ngFor="let page of pages" [class.active]="page === currentPage">
+        <button class="page-link" (click)="changePage(page)">{{ page }}</button>
+      </li>
+      <li class="page-item" [class.disabled]="currentPage === totalPages">
+        <button class="page-link" (click)="changePage(currentPage + 1)">Next</button>
+      </li>
+    </ul>
+  </nav>
+</div>
+
+<ngx-spinner type="ball-scale-multiple"></ngx-spinner>
