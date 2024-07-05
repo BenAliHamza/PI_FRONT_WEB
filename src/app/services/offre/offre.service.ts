@@ -25,4 +25,5 @@ export class OffreService {
   getNbrPlaceDispo(id :string) {
     return  this.http.get(this.base + '/'+id + '/placesDisponible');
   }
+
 }

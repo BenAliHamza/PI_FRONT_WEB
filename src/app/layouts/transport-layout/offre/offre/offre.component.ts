@@ -20,7 +20,7 @@ export class OffreComponent implements OnInit {
     { value: 'Livraison', label: 'Livraison' },
     { value: 'Taxi', label: 'Taxi' }
   ];
-  user : User ; userVehicule : Vehicule[]= [];offreForm: FormGroup;
+  user : User ; userVehicule : Vehicule[]= [];offreForm: FormGroup;filterForm:FormGroup;
   offreList : Offre []=[] ;
 
 
@@ -42,7 +42,11 @@ export class OffreComponent implements OnInit {
     })
     })
 
-
+    this.filterForm = new FormGroup({
+      livraison: new FormControl(),
+      taxi: new FormControl(),
+      covoiturage: new FormControl()
+    })
   this.offreForm = new FormGroup({
       titre : new FormControl('', [Validators.required]),
       lieu_depart : new FormControl('', [Validators.required]),
@@ -56,11 +60,21 @@ export class OffreComponent implements OnInit {
       this.offreForm.valueChanges.subscribe(a=> {
           console.log(a)
       })
+
+      this.filterForm.valueChanges.subscribe(a => {
+        console.log(a)
+      })
   }
 
 
   filter(){
-    console.log("Filter")
+    var filter:OffreFilter = {
+      taxi : this.filterForm.value.taxi,
+      covoiturage: this.filterForm.value.covoiturage,
+      livraison: this.filterForm.value.livraison
+    }
+
+    console.log(filter);
   }
 submit() {
   if(this.offreForm.invalid)return
