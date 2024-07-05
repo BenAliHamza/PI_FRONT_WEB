@@ -9,11 +9,11 @@ import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-offre',
-  templateUrl: './offre.component.html',
-  styleUrls: ['./offre.component.css']
+  selector: 'app-mes-offre',
+  templateUrl: './mes-offre.component.html',
+  styleUrls: ['./mes-offre.component.css']
 })
-export class OffreComponent implements OnInit {
+export class MesOffreComponent implements OnInit {
 
   constructor(private offreService: OffreService , private userService: UserService, private vs: VehiculeService , private router: Router , private toastr : ToastrService) { }
 
@@ -27,7 +27,7 @@ export class OffreComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.offreService.getAllOffre().subscribe(offres => {
+    this.offreService.consulter().subscribe(offres => {
       this.offreList = offres  as Offre[];
       this.offreList.reverse()
 
@@ -45,8 +45,9 @@ export class OffreComponent implements OnInit {
     })
 
     this.filterForm = new FormGroup({
-      type: new FormControl(),
-      titre: new FormControl()
+      livraison: new FormControl(),
+      taxi: new FormControl(),
+      covoiturage: new FormControl()
     })
   this.offreForm = new FormGroup({
       titre : new FormControl('', [Validators.required]),
@@ -63,22 +64,19 @@ export class OffreComponent implements OnInit {
       })
 
       this.filterForm.valueChanges.subscribe(a => {
-        this.filter()
+        console.log(a)
       })
   }
 
 
   filter(){
-    var filter:OffreFilter = {
-      type : this.filterForm.value.type,
-      titre : this.filterForm.value.titre
-    }
-    console.log(filter)
-    this.offreService.getOffreWithFilter(filter).subscribe(offres => {
-      console.log(offres);
-      this.offreList = offres  as Offre[];
-      this.offreList.reverse()
-        })
+    // var filter:OffreFilter = {
+    //   taxi : this.filterForm.value.taxi,
+    //   covoiturage: this.filterForm.value.covoiturage,
+    //   livraison: this.filterForm.value.livraison
+    // }
+
+    console.log("");
   }
 submit() {
   if(this.offreForm.invalid)return

@@ -28,6 +28,7 @@ import {AdminGuard} from "../../services/admin.guard";
 import {AnnoncesComponent} from "./dashboard/annonces/annonces.component";
 import {ReservationComponent} from "./dashboard/reservation/reservation.component";
 import { VehiculeComponent } from './vehicule/vehicule/vehicule.component';
+import { MesOffreComponent } from './offre copy/mesOffres/mes-offre.component';
 
 
 
@@ -38,6 +39,9 @@ const routes: Routes = [
       },
       {
         path : 'offre' ,component :OffreComponent
+      },
+      {
+        path : 'mesoffres' ,component :MesOffreComponent
       },
       {
         path : 'vehicule' ,component :VehiculeComponent ,

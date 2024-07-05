@@ -1,5 +1,4 @@
 interface OffreFilter {
-livraison: boolean,
-taxi : boolean,
-covoiturage:boolean
+type?: string,
+titre?: string
 }

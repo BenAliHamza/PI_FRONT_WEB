@@ -57,10 +57,14 @@ import { AnnoncesComponent } from './dashboard/annonces/annonces.component';
 import { ReservationComponent } from './dashboard/reservation/reservation.component';
 import { VehiculeComponent } from './vehicule/vehicule/vehicule.component';
 import { VehiculeItemComponent } from './vehicule/vehicule-item/vehicule-item.component';
+import { MonOffreItemComponent } from './offre copy/mon-offre-item/mon-offre-item.component';
+import { MesOffreComponent } from './offre copy/mesOffres/mes-offre.component';
 
 
 @NgModule({
   declarations: [
+    MonOffreItemComponent,
+    MesOffreComponent,
     VehiculeComponent,
     TransportComponent,
     FooterComponent,

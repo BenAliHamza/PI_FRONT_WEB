@@ -7,7 +7,7 @@
             <img style="width: 100%" src="assets/img/theme/team-1-800x800.jpg" alt="Trust & Co.">
           </div>
           <div class="icon">
-            <a href="#" class="iconBox {{offre.type}}"> <span class="material-symbols-outlined">
+            <a href="#" class="iconBox {{offre.type}}" data-toggle="modal" data-target="#exampleModal">  <span class="material-symbols-outlined">
                 arrow_outward
               </span></a>
           </div>
@@ -37,5 +37,52 @@
       </div>
     </div>
 
+  </div>
+
+<div class="container">
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class=" container modal-dialog modal-lg modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="cardModalLabel">{{offre.titre}}</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <!-- Card HTML -->
+          <div class="card">
+            <div class="card-inner" style="--clr:#fff;">
+              <div class="box">
+                <div class="imgBox">
+                  <img style="width: 100%" src="assets/img/theme/team-1-800x800.jpg" alt="Trust & Co.">
+                </div>
+              </div>
+            </div>
+            <div class="content">
+              <h5>{{offre.titre}} -{{offre.type}}</h5>
+              <div>
+                <p>Details:</p>
+                <ul>
+                  <li>From: {{offre.lieu_depart.ville}} - {{offre.lieu_depart.adresse}}</li>
+                  <li>To: {{offre.lieu_arrive.ville}} - {{offre.lieu_arrive.adresse}}</li>
+                  <li *ngIf="!!user">by: {{user.firstname}} {{user.lastname}}</li>
+                </ul>
+              </div>
+              <ul>
+                <li style="--clr-tag:#d3b19a;" class="{{offre.type}}">{{offre.type}}
+                  <a routerLink="/co-transport/createReservation/{{offre._id}}">
+                    <span style="float: right;position:absolute; right: 5px">
+                      <span class="btn btn-success">Reserver</span>
+                    </span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
   </div>
 </section>
