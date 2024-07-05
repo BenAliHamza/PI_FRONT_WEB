@@ -14,6 +14,19 @@ import {User} from "../../../../interfaces/user.interface";
   styleUrls: ['./reservation-details.component.scss']
 })
 export class ReservationDetailsComponent implements OnInit {
+Refuser(id: string) {
+  this.reservationService.refuseReservation(id).subscribe(a=>{
+    this.toastr.error("reservation reffuser")
+
+})
+}
+Accepter(id:string) {
+  console.log(id)
+this.reservationService.acceptReservation(id).subscribe(a=>{
+  this.toastr.success("reservation accepter")
+})
+}
+
 
   constructor(private ac : ActivatedRoute, private offService :OffreService,
               private router : Router, private reservationService : ReservationService ,
