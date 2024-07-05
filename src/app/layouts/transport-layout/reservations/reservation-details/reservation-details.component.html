@@ -6,9 +6,13 @@
   <div class="row justify-content-around">
     <div class="col-sm-4">
         <app-offre-item [offre]="offre"></app-offre-item>
+        <button (click)="Accepter(reservation._id)" class="btn btn-success" >Accepter</button>
+        <button (click)="Refuser(reservation._id)"class="btn btn-danger" >Reffuser</button>
     </div>
     <div style="padding-top: 80px;" class="col-sm-5">
         <app-reservation-item [reservation]="reservation"></app-reservation-item>
+        <hr>
+        
     </div>
   </div>
 
