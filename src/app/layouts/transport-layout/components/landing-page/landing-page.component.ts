@@ -1,4 +1,12 @@
-import {Component, OnInit, ElementRef, Renderer2, ViewChild, AfterViewInit} from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ElementRef,
+  Renderer2,
+  ViewChild,
+  AfterViewInit,
+  ChangeDetectionStrategy, ChangeDetectorRef
+} from '@angular/core';
 import { Annonce } from "../../../../interfaces/annonce";
 import { AccesoryInterface } from "../../../../interfaces/accesory.interface";
 import { OffreService } from "../../../../services/offre/offre.service";
@@ -31,14 +39,15 @@ export class LandingPageComponent implements OnInit {
     private userService: UserService,
     private productService: AccesoryService,
     private renderer: Renderer2,
-    private el: ElementRef
+    private el: ElementRef,
+    private cd :ChangeDetectorRef
   ) {}
 
   ngOnInit(): void {
     this.spinner.show();
     forkJoin([
       this.productService.getll(),
-      this.userService.getall(),
+      this.userService.getalluser(),
       this.annonceService.getallAnnonce(),
       this.offreService.getAllOffre()
     ]).subscribe({
@@ -48,6 +57,7 @@ export class LandingPageComponent implements OnInit {
         this.users = this.getRandomItems(users.users as User[], 5);
         this.products = this.getRandomItems(products as AccesoryInterface[], 5);
         this.annonces = this.getRandomItems(annonces as Annonce[], 5);
+        this.cd.detectChanges()
         this.spinner.hide();
       },
       error: (error) => {

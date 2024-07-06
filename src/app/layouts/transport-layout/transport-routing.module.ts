@@ -5,6 +5,8 @@ import { SignUpComponent} from "./pages/sign-up/sign-up.component";
 import {LoginComponent} from "./pages/login/login.component";
 import {OffreComponent} from "./offre/offre/offre.component";
 import {LandingPageComponent} from "./components/landing-page/landing-page.component";
+import {CreateOffreComponent} from "./offre/create-offre/create-offre.component";
+import { CreatevehiculeComponent } from './vehicule/create-vehicule/create-vehicule.component';
 import {CreateReservationComponent} from "./reservations/create-reservation/create-reservation.component";
 import {AnnonceCreationComponent} from "./annonce/annonce-creation/annonce-creation.component";
 import {ProfilePageComponent} from "./profile/profile-page/profile-page.component";
@@ -27,8 +29,6 @@ import {UsersComponent} from "./dashboard/users/users.component";
 import {AdminGuard} from "../../services/admin.guard";
 import {AnnoncesComponent} from "./dashboard/annonces/annonces.component";
 import {ReservationComponent} from "./dashboard/reservation/reservation.component";
-import { VehiculeComponent } from './vehicule/vehicule/vehicule.component';
-import { MesOffreComponent } from './offre copy/mesOffres/mes-offre.component';
 import {ProduitsComponent} from "./dashboard/produits/produits.component";
 import {CategoriesComponent} from "./dashboard/categories/categories.component";
 import {CreateCatComponent} from "./dashboard/create-cat/create-cat.component";
@@ -46,10 +46,10 @@ const routes: Routes = [
         path : 'offre' ,component :OffreComponent
       },
       {
-        path : 'mesoffres' ,component :MesOffreComponent
+        path : 'createOffre' ,component :CreateOffreComponent
       },
       {
-        path : 'vehicule' ,component :VehiculeComponent ,
+        path : 'createvehicule' ,component :CreatevehiculeComponent ,
       },
       {
         path : "createReservation/:id" , component :CreateReservationComponent
@@ -120,7 +120,9 @@ const routes: Routes = [
         path : "createUser" , component :AdminUserCreateComponent
       },{
         path:  "reclamations" , component:  ReclamationComponent
-      },
+      },{
+        path:  "offres" , component:  OffreComponent
+      }
     ]
   }
 ] ;

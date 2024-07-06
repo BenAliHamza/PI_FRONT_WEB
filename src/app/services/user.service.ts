@@ -66,4 +66,7 @@ export class UserService {
   getall() {
     return this.http.get(this.Base + '/users/getallAdminUsers');
   }
+  getalluser() {
+    return this.http.get(this.Base + '/users/getall');
+  }
 }
