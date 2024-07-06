@@ -144,19 +144,16 @@ export class ReclamationComponent implements OnInit {
 
   onDelete(): void {
     if (this.selectedReclamation) {
-      this.spinner.show();
       const mod = this.modal.open(ConfirmationModalComponent, {
         centered: true, backdropClass: 'light-blue-backdrop', windowClass: 'light-blue-backdrop2', size: 'lg',
       })
       mod.componentInstance.data = "Are you sure you want to delete this reclamation?";
       mod.result.then(res => {
         if (res) {
-          this.spinner.show();
           this.reclamationService.delete(this.selectedReclamation._id!)
             .subscribe(res => {
               this.toastr.success("Reclamation has been deleted");
               this.ngOnInit();
-              this.spinner.hide();
             });
         }
       });
