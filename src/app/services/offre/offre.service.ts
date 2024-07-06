@@ -15,8 +15,16 @@ export class OffreService {
     return this.http.post(this.base, offre);
   }
 
+  update(id: string,offre: Offre) {
+    return this.http.put(this.base + '/' + id, offre);
+  }
+
+
   getAllOffre() {
     return this.http.get(this.base);
+  }
+  getAdminOffre() {
+    return this.http.get(this.base + '/all');
   }
   getOffreWithFilter(params: any) {
     const filter: {titre?:string , type?:string} = {};
@@ -36,6 +44,10 @@ export class OffreService {
 
   getById(id: String): Observable<any> {
     return this.http.get(this.base + '/' + id);
+  }
+
+  delete(id: String): Observable<any> {
+    return this.http.delete(this.base + '/' + id);
   }
   getNbrPlaceDispo(id: string) {
     return this.http.get(this.base + '/' + id + '/placesDisponible');

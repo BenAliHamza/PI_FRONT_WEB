@@ -120,7 +120,7 @@ const routes: Routes = [
         path : "createUser" , component :AdminUserCreateComponent
       },{
         path:  "reclamations" , component:  ReclamationComponent
-      }
+      },
     ]
   }
 ] ;

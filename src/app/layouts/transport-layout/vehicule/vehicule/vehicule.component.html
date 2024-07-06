@@ -2,15 +2,8 @@
 <br>
 <br>
 <br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Open modal for @mdo</button>
+<button type="button" class="btn center btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Open modal for @mdo</button>
+
 
 
 <div class="container">
@@ -39,15 +32,22 @@
 
           <div class="form-group">
             <label class="form-control-label" for="marque">marque : </label>
-            <input formControlName="marque"  type="text" id="marque" class="form-control form-control-alternative">
+            <select  class="form-control form-control-alternative" formControlName="marque" (change)="onBrandChange()">
+            <option *ngFor="let carBrand of carBrands" [value]="carBrand.brand">{{ carBrand.brand }}</option>  </select>
           </div>
           <div class="form-group">
             <label class="form-control-label" for="model">model : </label>
-            <input formControlName="model" type="text" id="model" class="form-control form-control-alternative" placeholder="model">
-          </div>
+            <select formControlName="model" type="text" id="model" class="form-control form-control-alternative" placeholder="model">
+              <option *ngFor="let carModel of carModels" [value]="carModel.model_name">{{ carModel.model_name }}</option>  </select>
+            </div>
           <div class="form-group">
             <label class="form-control-label" for="places">places : </label>
-            <input formControlName="places" type="number" id="places" class="form-control form-control-alternative" placeholder="places">
+            <input type="file" formControlName="places" type="number" id="places" class="form-control form-control-alternative" placeholder="places">
+          </div>
+
+          <div class="form-group">
+            <label class="form-control-label" for="image">image : </label>
+            <input type="file" formControlName="image" id="image" class="form-control form-control-alternative" placeholder="image">
           </div>
  
  

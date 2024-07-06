@@ -4,4 +4,5 @@ export interface Vehicule {
   model  : string;
   places : number ;
   proprietaire?: string;
+  image: string
 }
