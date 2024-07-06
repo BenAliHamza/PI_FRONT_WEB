@@ -39,5 +39,7 @@ export class ReservationService {
   getById(id : string){
     return this.http.get<Reservation>(this.base + '/' + id);
   }
-
+  getReservationEnAttente(){
+    return this.http.get<Reservation[]>(this.base + '/en_attente')
+  }
 }
