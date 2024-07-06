@@ -29,9 +29,9 @@
         </div>
         <ul>
           <li style="--clr-tag:#d3b19a;" class="{{offre.type}}">{{offre.type}}
-            <a routerLink="/co-transport/createReservation/{{offre._id}}" >
+            <a (click)="delete(offre._id)" >
             <span  style="float: right;position:absolute; right: 5px">
-                <span class="btn btn-success">Update</span>
+                <span class="btn btn-danger">Delete</span>
               </span>
             </a>
           </li>

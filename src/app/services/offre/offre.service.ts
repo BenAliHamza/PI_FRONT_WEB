@@ -19,6 +19,9 @@ export class OffreService {
     return this.http.put(this.base + '/' + id, offre);
   }
 
+  ajoutSub(topic:string){
+    this.http.post("http://localhost:3000/subscriptions",{topic : topic})
+  }
 
   getAllOffre() {
     return this.http.get(this.base);

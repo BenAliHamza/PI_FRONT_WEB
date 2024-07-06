@@ -106,11 +106,13 @@ console.log(this.offreForm.value.dateDepart);
      this.router.navigate(['/co-transport/offre']).then();
     },
     (error: any) => {
-  
+
         this.toastr.info('An error occurred. Please try again.');
     }
     )
 }
 
-
+delete(id:string){
+this.offreService.delete(id).subscribe(res => console.log(res));
+}
 }

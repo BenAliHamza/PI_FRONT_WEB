@@ -19,5 +19,12 @@ export class MonOffreItemComponent implements OnInit {
     this.userService.getById(id).subscribe(user=> {
       this.user = user ;
     })
+
+
+
   }
+
+  delete(id:any){
+    this.offreService.delete(id).subscribe(res => console.log(res));
+    }
 }
