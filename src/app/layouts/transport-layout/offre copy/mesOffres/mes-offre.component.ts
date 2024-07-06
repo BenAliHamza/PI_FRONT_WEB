@@ -99,7 +99,6 @@ console.log(this.offreForm.value.dateDepart);
     type : this.offreForm.value.type
   }
 
-
   this.offreService.create(offre)
     .subscribe(result => {
      this.toastr.info("created");
@@ -110,9 +109,10 @@ console.log(this.offreForm.value.dateDepart);
         this.toastr.info('An error occurred. Please try again.');
     }
     )
+
+
+
 }
 
-delete(id:string){
-this.offreService.delete(id).subscribe(res => console.log(res));
-}
+
 }

@@ -2,7 +2,7 @@
 <br>
 <br>
 <br>
-<button type="button" class="btn center btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Open modal for @mdo</button>
+<button type="button" class="btn center btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Create Vehicule</button>
 
 
 
@@ -49,17 +49,17 @@
             <label class="form-control-label" for="image">image : </label>
             <input type="file" formControlName="image" id="image" class="form-control form-control-alternative" placeholder="image">
           </div>
- 
- 
+
+
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             <button  [disabled]="vehiculeForm.invalid" class="btn btn-primary"
             (click)="submit()">Send message</button>
           </div>
- 
+
         </form>
       </div>
-      
+
     </div>
   </div>
 </div>

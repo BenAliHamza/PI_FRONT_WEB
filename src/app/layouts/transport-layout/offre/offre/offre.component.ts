@@ -3,6 +3,7 @@ import {User} from "../../../../interfaces/user.interface";
 import {OffreService} from "../../../../services/offre/offre.service";
 import {UserService} from "../../../../services/user.service";
 import { Vehicule } from 'src/app/interfaces/vehicule.interface';
+
 import { VehiculeService } from 'src/app/services/vehicule/vehicule.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
@@ -69,7 +70,7 @@ export class OffreComponent implements OnInit {
 
 
   filter(){
-    var filter:OffreFilter = {
+    var filter = {
       type : this.filterForm.value.type,
       titre : this.filterForm.value.titre
     }
@@ -108,7 +109,7 @@ console.log(this.offreForm.value.dateDepart);
      this.router.navigate(['/co-transport/offre']).then();
     },
     (error: any) => {
-  
+
         this.toastr.info('An error occurred. Please try again.');
     }
     )
