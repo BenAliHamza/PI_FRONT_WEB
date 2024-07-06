@@ -1,6 +1,6 @@
 import {Component, Input, OnInit, Output,EventEmitter} from '@angular/core';
 import {AccesoryInterface} from "../../../../interfaces/accesory.interface";
-
+declare var JitsiMeetExternalAPI: any;
 @Component({
   selector: 'app-accosory-item',
   templateUrl: './accosory-item.component.html',
@@ -26,5 +26,15 @@ export class AccosoryItemComponent implements OnInit {
     }else {
 
     }
+  }
+  launchJitsi() {
+    const domain = 'meet.jit.si';
+    const options = {
+      roomName: 'ContactSellerRoom_' + this.accesory._id,
+      width: 700,
+      height: 700,
+      parentNode: document.querySelector('#meet')
+    };
+    const api = new JitsiMeetExternalAPI(domain, options);
   }
 }
