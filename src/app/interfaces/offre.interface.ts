@@ -12,4 +12,5 @@ interface Offre {
   vehicule?: string; // Assuming vehicule is a string representation of mongoose.Schema.Types.ObjectId
   expediteur? :string,
   _id? :string
+  image?: string
 }
