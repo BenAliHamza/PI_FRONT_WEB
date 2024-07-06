@@ -1,11 +1,16 @@
 <div class="card" style="width: 18rem;">
-  <img class="card-img-top" [src]="accesory.image ?accesory.image : genericImage" alt="Card image cap">
+  <img class="card-img-top" [src]="accesory.image ? accesory.image : genericImage" alt="Card image cap">
   <div class="card-body">
     <h5 class="card-title">{{ accesory.titre }}</h5>
-        <p  class="card-text" style="color: darkgreen">Price : {{accesory.prix}}$</p>
+    <p class="card-text" style="color: darkgreen">Price : {{ accesory.prix }}$</p>
 
-    <button *ngIf="!isList"  style="width: 100%"  (click)="handleAction()"  class="btn btn-primary">{{ isOwner ? "Edit": "Contact seller"  }}</button>
-    <a routerLink="/co-transport/accossorieDetails/{{accesory._id}}" *ngIf="isList && !isDashboard"  style="width: 100%" class="btn btn-primary">Check details</a>
-    <a routerLink="/co-transport/admin/accossorieDetails/{{accesory._id}}" *ngIf="isList && isDashboard"  style="width: 100%" class="btn btn-primary">Check details</a>
+    <button *ngIf="!isList" style="width: 100%" (click)="launchJitsi()" class="btn btn-primary">
+      {{ isOwner ? "Edit" : "Contact seller" }}
+    </button>
+
+    <a routerLink="/co-transport/accossorieDetails/{{ accesory._id }}" *ngIf="isList && !isDashboard" style="width: 100%" class="btn btn-primary">Check details</a>
+    <a routerLink="/co-transport/admin/accossorieDetails/{{ accesory._id }}" *ngIf="isList && isDashboard" style="width: 100%" class="btn btn-primary">Check details</a>
   </div>
 </div>
+
+<div id="meet"></div>
