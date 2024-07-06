@@ -29,12 +29,14 @@ export class AccosoryItemComponent implements OnInit {
   }
   launchJitsi() {
     const domain = 'meet.jit.si';
+    const roomName = 'ContactSellerRoom_' + this.accesory._id;
     const options = {
-      roomName: 'ContactSellerRoom_' + this.accesory._id,
+      roomName: roomName,
       width: 700,
       height: 700,
       parentNode: document.querySelector('#meet')
     };
     const api = new JitsiMeetExternalAPI(domain, options);
-  }
+
+}
 }
