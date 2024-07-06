@@ -31,10 +31,10 @@ export class ReservationService {
     return this.http.get<Reservation[]>(this.base  + status);
   }
   acceptReservation(id : string)  {
-    return this.http.put<Reservation>(this.base + '/accept/', id);
+    return this.http.put<Reservation>(this.base + '/accept/'+ id,{});
   }
   refuseReservation(id:string)  {
-    return this.http.put<Reservation>(this.base + '/refuse/', id);
+    return this.http.put<Reservation>(this.base + '/refuse/'+ id,{});
   }
   getById(id : string){
     return this.http.get<Reservation>(this.base + '/' + id);
