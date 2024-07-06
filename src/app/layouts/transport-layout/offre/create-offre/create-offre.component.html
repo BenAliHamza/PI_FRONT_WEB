@@ -1,0 +1,59 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <h1  class="title" >Veuillez crée ton offre !!! </h1>
+  </div>
+   <div class="row justify-content-center">
+
+     <div class="col-sm-8">
+       <form [formGroup]="offreForm" method="post">
+
+         <div *ngIf="optionsType.length" class="form-group">
+           <label class="form-control-label" >Type d'offre : </label>
+           <select formControlName="type"  class="form-control">
+             <option *ngFor="let role of optionsType" [value]="role.value" >{{role.label}}</option>
+           </select>
+         </div>
+         <div class="form-group">
+           <label class="form-control-label" for="title">Title : </label>
+           <input formControlName="titre" type="text" id="title" class="form-control form-control-alternative" placeholder="Title">
+         </div>
+         <div class="form-group">
+           <label class="form-control-label" for="VilleD">Ville départ : </label>
+           <input formControlName="ville_depart" type="text" id="VilleD" class="form-control form-control-alternative" placeholder="Ville départ">
+         </div>
+         <div class="form-group">
+           <label class="form-control-label" for="AddressD">Address départ : </label>
+           <input formControlName="lieu_depart" type="text" id="AddressD" class="form-control form-control-alternative" placeholder="Address départ">
+         </div>
+         <div class="form-group">
+           <label class="form-control-label" for="heeure">Heure de  départ : </label>
+           <input formControlName="heure_depart"  type="time" id="heeure" class="form-control form-control-alternative">
+         </div>
+         <div class="form-group">
+           <label class="form-control-label" for="AddressA">Ville d'arrivée : </label>
+           <input formControlName="ville_arrive" type="text" id="VilleA" class="form-control form-control-alternative" placeholder="Ville d'arrivée">
+         </div>
+         <div class="form-group">
+           <label class="form-control-label" for="AddressA">Address d'arrivée : </label>
+           <input formControlName="lieu_arrive" type="text" id="AddressA" class="form-control form-control-alternative" placeholder="Address d'arrivée">
+         </div>
+
+         <div *ngIf="userVehicule.length" class="form-group">
+           <label class="form-control-label" >Vehicule : </label>
+            <select formControlName="vehicule" class="form-control">
+              <option *ngFor="let veh of userVehicule" [value]="veh._id" >{{veh.marque}} {{veh.model}} - {{veh.places}} places</option>
+            </select>
+         </div>
+          <div class="form-group">
+            <button  [disabled]="offreForm.invalid" style="width: 100%;" class="btn btn-primary"
+            (click)="submit()"
+            >Create</button>
+          </div>
+
+
+       </form>
+     </div>
+  </div>
+
+
+</div>

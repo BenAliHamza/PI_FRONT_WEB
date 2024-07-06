@@ -3,6 +3,4 @@ export interface Vehicule {
   marque : string ;
   model  : string;
   places : number ;
-  proprietaire?: string;
-  image: string
 }

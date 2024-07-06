@@ -11,14 +11,7 @@ export class VehiculeService {
   private  base = environment.BASE + "/Vehicules"
   constructor(private  http : HttpClient) {}
 
-  getCarBrands(): Observable<any> {
-    return this.http.get<any>(`${this.base}/brands`);
-  }
-
-  getCarModels(brand: string): Observable<any> {
-    return this.http.get<any>(this.base + '/models/' + brand);
-  }
-  create(vehicule : FormData) {
+  create(vehicule : Vehicule) {
     return this.http.post<Vehicule>(this.base , vehicule);
   }
   getAllVehicules() {

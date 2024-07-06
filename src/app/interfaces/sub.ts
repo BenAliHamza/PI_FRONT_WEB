@@ -1,3 +1,0 @@
-interface Sub {
-  topic: string
-}
